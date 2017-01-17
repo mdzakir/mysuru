@@ -1,0 +1,757 @@
+@font-face {
+    font-family: 'KTAdminUI_Regular';
+    src: url('../fonts/proxima-nova-for-adminui/mark_simonson_-_proxima_nova_regular.eot');
+    src: url('../fonts/proxima-nova-for-adminui/mark_simonson_-_proxima_nova_regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proxima-nova-for-adminui/mark_simonson_-_proxima_nova_regular.woff') format('woff'),
+         url('../fonts/proxima-nova-for-adminui/mark_simonson_-_proxima_nova_regular.ttf') format('truetype'),
+         url('../fonts/proxima-nova-for-adminui/mark_simonson_-_proxima_nova_regular.svg#KTAdminUI_Regular') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KTAdminUI_Light';
+    src: url('../fonts/proxima-nova-for-adminui/proximanova-light.eot');
+    src: url('../fonts/proxima-nova-for-adminui/proximanova-light.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proxima-nova-for-adminui/proximanova-light.woff2') format('woff2'),
+         url('../fonts/proxima-nova-for-adminui/proximanova-light.woff') format('woff'),
+         url('../fonts/proxima-nova-for-adminui/proximanova-light.ttf') format('truetype'),
+         url('../fonts/proxima-nova-for-adminui/proximanova-light.svg#KTAdminUI_Light') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KTAdminUI_Bold';
+    src: url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.eot');
+    src: url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.woff2') format('woff2'),
+         url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.woff') format('woff'),
+         url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.ttf') format('truetype'),
+         url('../fonts/proxima-nova-for-adminui/proxima_nova_bold.svg#KTAdminUI_Bold') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'KTAdminUI_Medium';
+    src: url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.eot');
+    src: url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.woff2') format('woff2'),
+         url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.woff') format('woff'),
+         url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.ttf') format('truetype'),
+         url('../fonts/proxima-nova-for-adminui/ProximaNovaSemibold.svg#KTAdminUI_Medium') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #fff;
+    font-family: KTAdminUI_Regular, Montserrat, Arial, Sans;
+    font-size: 14px;
+    line-height: 1.4555;
+}
+
+.form-control{
+    font-family: KTAdminUI_Regular, Montserrat, Arial, Sans;
+    font-size: 14px;
+    line-height: 1.4555;
+}
+
+/* Start Flat Styling */
+
+.btn {
+    border-radius: 2px;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-shadow: none;
+}
+
+b, strong {
+    font-family: KTAdminUI_Medium, KTAdminUI_Bold, Arial;
+}
+
+.tac{text-align: center;}
+.tal{text-align: left;}
+.tar{text-align: right;}
+
+.btn-flat-primary{
+    color: #fff;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+.btn-flat-primary:hover, .btn-flat-primary.hover, .btn-flat-primary:focus, .btn-flat-primary:active, .btn-flat-primary.active, .open>.dropdown-toggle.btn-flat-primary{
+    color: #fff;
+    background-color: #48c9b0;
+    border-color: #48c9b0;
+}
+
+.btn-flat-primary-bt{
+    color: #222;
+    background-color: #1abc9c;
+    border-color: #1abc9c;
+}
+
+.btn-flat-primary-bt:hover, .btn-flat-primary-bt.hover, .btn-flat-primary-bt:focus, .btn-flat-primary-bt:active, .btn-flat-primary-bt.active, .open>.dropdown-toggle.btn-flat-primary-bt{
+    color: #222;
+    background-color: #48c9b0;
+    border-color: #48c9b0;
+}
+
+.btn-flat-info {
+    color: #fff;
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.btn-flat-info:hover, .btn-flat-info.hover, .btn-flat-info:focus, .btn-flat-info:active, .btn-flat-info.active, .open>.dropdown-toggle.btn-flat-info{
+    color: #fff;
+    background-color: #5dade2;
+    border-color: #5dade2;
+}
+
+.btn-flat-warning {
+    color: #fff;
+    background-color: #ec971f;
+    border-color: #d58512;
+}
+
+.btn-flat-warning:hover, .btn-flat-warning.hover, .btn-flat-warning:focus, .btn-flat-warning:active, .btn-flat-warning.active, .open>.dropdown-toggle.btn-flat-warning{
+    color: #fff;
+    background-color: #f4d313;
+    border-color: #f4d313;
+}
+
+.btn-flat-default {
+    color: #333;
+    background-color: #ededed;
+    border-color: #cacfd2;
+}
+
+.btn-flat-default:hover, .btn-flat-default.hover, .btn-flat-default:focus, .btn-flat-default:active, .btn-flat-default.active, .open>.dropdown-toggle.btn-flat-default{
+    color: #fff;
+    background-color: #5dade2;
+    border-color: #5dade2;
+}
+
+.btn-flat-danger {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+.btn-flat-danger:hover, .btn-flat-danger.hover, .btn-flat-danger:focus, .btn-flat-danger:active, .btn-flat-danger.active, .open>.dropdown-toggle.btn-flat-danger{
+    color: #fff;
+    background-color: #ec7063;
+    border-color: #ec7063;
+}
+
+.btn-flat-success {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+
+.btn-flat-success:hover, .btn-flat-success.hover, .btn-flat-success:focus, .btn-flat-success:active, .btn-flat-success.active, .open>.dropdown-toggle.btn-flat-success{
+    color: #fff;
+    background-color: #58d68d;
+    border-color: #58d68d;
+}
+
+.btn-flat-inverse {
+    color: #fff;
+    background-color: #34495e;
+}
+
+.btn-flat-inverse:hover, .btn-flat-inverse.hover, .btn-flat-inverse:focus, .btn-flat-inverse:active, .btn-flat-inverse.active, .open>.dropdown-toggle.btn-flat-inverse{
+    color: #fff;
+    background-color: #415b76;
+    border-color: #415b76;
+}
+
+.btn-flat-orange {
+    color: #fff;
+    background-color: #d35400;
+}
+
+.btn-flat-orange:hover, .btn-flat-orange.hover, .btn-flat-orange:focus, .btn-flat-orange:active, .btn-flat-orange.active, .open>.dropdown-toggle.btn-flat-orange{
+    color: #fff;
+    background-color: #e67e22;
+    border-color: #e67e22;
+}
+
+
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    color: #666;
+    background-color: #bdc3c7;
+    border-color: #bdc3c7;
+}
+
+.btn-flat-brd {
+    background-color: #fff;
+}
+
+.btn-flat-info.btn-flat-brd{color :#3498db;}
+.btn-flat-info.btn-flat-brd:hover{color :#fff;}
+
+/* End Flat Styling */
+
+.page-header{
+    font-size: 24px;
+    margin: 0 0 15px 0;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: KTAdminUI_Bold, KTAdminUI_Regular, Montserrat, Arial, Sans;
+}
+
+label{
+    font-family: KTAdminUI_Medium, KTAdminUI_Bold, KTAdminUI_Regular, Montserrat, Arial, Sans;
+    font-weight: normal;
+}
+
+.form-control, input[type="text"], input[type="email"], input[type="tel"], input[type="search"], input[type="url"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input{
+    border-radius: 0;
+}
+
+.select2-search input{
+    font-family: KTAdminUI_Regular, Montserrat, Arial, Sans;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.navbar-brand>img {
+    height: auto;
+    margin: 0;
+}
+
+.navbar-inverse.sidebar {
+    margin-top: 60px;
+    padding: 0;
+}
+
+.nav-right-links {
+    margin-right: 0;
+    margin-top: 8px;
+}
+
+#side-menu {
+    margin: 20px 0;
+}
+
+#side-menu li a {
+    color: #555;
+    text-align: left;
+    border-left: 4px solid #fff;
+}
+
+#side-menu li a:focus,
+#side-menu li a:hover {
+    color: #222;
+    background-color: #eee;
+    border-left: 4px solid #bbb;
+}
+
+.sidebar #side-menu li.active a {
+    background-color: #eee;
+    border-left: 4px solid #29C0A2;
+}
+
+.list-of-elements {
+    list-style: none;
+    padding: 0 0 0 15px;
+    margin: 0 0 0 0;
+}
+
+.list-of-elements li label {
+    font-weight: normal;
+    font-family: KTAdminUI_Regular, Montserrat, Arial;
+}
+
+.wizard-content .select2-container, .form-group .select2-container{
+    width: 100% !important;
+}
+
+.select2-container .select2-choice {
+    display: block;
+    height: auto;
+    padding: 6px 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+     line-height: 1.55555; 
+    color: #444;
+    text-decoration: none;
+    border-radius: 0px;
+    background-clip: padding-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #fff;
+    background-image: none;
+    background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 50%);
+    background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 50%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+    background-image: none;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    height: auto;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered{
+    line-height: 32px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 32px;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 28px;
+}
+
+.select2-container .select2-choice .select2-arrow{
+    border-radius: 0;
+}
+
+.room-occ-row {
+
+}
+
+.room-occ-row .occ-label {
+    font-weight: normal;
+}
+
+.room-occ-row input {
+    text-align: center;
+}
+
+.room-occ-row .occPrice{
+    background: #fff;
+    border:1px solid #ccc;
+}
+
+.room-occ-row .occPrice.readonly{
+    background: #ddd;
+}
+
+.rp-based-room-occ-price .theader th,
+.rp-occ-price-table .theader th{
+    background-color:#f8f8f8;
+}
+
+.rp-based-room-occ-price .theader .rp-based-rp-name,
+.rp-occ-price-table .theader .rp-based-rp-name{
+    text-align:center;
+    vertical-align:middle;
+    background-color:#ECF0F1;
+    font-family:KTAdminUI_Medium, KTAdminUI_Regular, Arial;
+    font-weight: normal;
+}
+
+
+/* NEW ADMIN UI */
+
+.navbar.navbar-default{
+    background-color: #2c3e50;
+    border-color: #2c3e50;
+    min-height: 0;
+    border-radius: 0;
+}
+
+.navbar-nav>li>a{
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #eee;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus{
+    color: #fff;s
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background-color: #10253A;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #fff;
+    background-color: #10253A;
+}
+
+.container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header{
+    margin-left: 0;
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: -15px;
+    text-align: left;
+    padding: 7px 10px 0 0;
+    width: 200px;
+}
+
+footer{
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    bottom:0;
+}
+
+#page-wrapper {
+    background-color: transparent;
+    min-height: 540px;
+}
+
+/* start jquery data-tables */
+.dataTables_wrapper .dataTables_filter input{
+    border: 1px solid #ccc;
+    box-shadow: inset 1px 1px 1px #ddd;
+}
+/* end jquery data-tables */
+
+/* START Create HOTEL / EDIT Hotel */
+.wizard-header li.done a {
+  color: #229400;
+}
+
+.wizard-content {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: 0;
+}
+
+.wizard-step {
+  display: none;
+  opacity: 0;
+  width: 100%;
+  -webkit-transition: left 0.5s ease-in-out, opacity 0.5s ease;
+  transition: left 0.5s ease-in-out, opacity 0.5s ease; }
+  .wizard-step.done {
+    display: none;
+    }
+  .wizard-step.active {
+    display: block; 
+opacity: 1}
+.wizard-step.active + .wizard-step {
+    /*left: 100%;
+    z-index: 0; */
+}
+/* END Create HOTEL / EDIT Hotel */
+
+/* Custom Date Picker styles */
+
+.ui-datepicker-buttonpane .ui-datepicker-current{
+    display:none;
+}
+
+.ui-datepicker {
+    font: 12px KTAdminUI_Regular, Arial, Muli Reg,Muli Light,Lato,Open Sans;
+}
+
+.ui-datepicker {
+    border-radius: 0;
+    display: none;
+    padding: 0;
+    width: 20em !important;
+}
+
+.ui-datepicker table{
+    margin-bottom:0px;
+}
+
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+  background-color: #EEEEEE;
+  border: 1px solid #BBBBBB;
+  width: 70px;
+  font-family: KTAdminUI_Regular, Montserrat, Arial, Muli Reg,Muli Light,Lato,Open Sans;
+  padding: 3px 8px;
+}
+
+.ui-datepicker select.ui-datepicker-year{
+  margin-left: 4px;
+}
+
+.ui-datepicker th, .ui-datepicker td, .ui-datepicker td span, .ui-datepicker td a, .ui-datepicker td .ui-state-default {
+    font-family: KTAdminUI_Regular, Montserrat, Arial, Muli Reg,Muli Light,Lato,Open Sans;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.ui-autocomplete{
+    border-radius:0;
+    background-color: #fff;
+    font: 14px KTAdminUI_Regular, Montserrat, Arial, Muli Reg,Muli Light,Lato,Open Sans;
+    padding:0;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active, .ui-menu .ui-menu-item a.ui-widget-content{
+    font-weight:normal;
+}
+
+.ui-datepicker-header.ui-widget-header{
+    background:none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-datepicker.ui-widget{
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 0 5px #999999;
+    z-index: 10051 !important;
+}
+
+.ui-datepicker td .ui-state-active{
+    background: none repeat scroll 0 0 #aaa;
+    border-radius: 0;
+}
+
+.ui-datepicker td .ui-state-default {
+    border-radius: 0;
+    color: #000;
+    font: 14px/1.5 KTAdminUI_Regular, Montserrat, Arial,Open Sans,Sans-serif;
+    height: 30px;
+}
+
+.ui-datepicker-multi .ui-datepicker-group table {
+    margin: 0 auto 0;
+    width: 100%;
+}
+
+.ui-datepicker td .ui-state-highlight {
+    background: none repeat scroll 0 0 #16a085;
+    color: #fff;
+    font-weight: 400;
+}
+
+.ui-datepicker td .ui-state-hover {
+    background: none repeat scroll 0 0 #48c9b0;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+    color: #fff;
+    text-shadow: 0 0;
+}
+
+.ui-datepicker td .ui-state-active{
+    background: none repeat scroll 0 0 #304458;
+    color: #fff;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 0px solid #ddd;
+    border-radius: 0;
+    padding:8px 0;
+}
+
+.ui-datepicker td {
+    border: 1px solid #ddd;
+    height: 31px;
+    padding: 0;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+    top: 0;
+    left: 0;
+}
+
+.ui-datepicker .ui-datepicker-next {
+    top: 0;
+    right: 0;
+}
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    height: 2.6em;
+    width: 2.6em;
+}
+
+.ui-datepicker-header .ui-state-hover, .ui-datepicker-header .ui-state-focus{
+    background: #ddd;
+    border:0;
+    border-radius:0;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon{
+    background: url(../images/sprite_web.png) no-repeat scroll 0 0 transparent;
+    height:17px;
+    margin-top:-9px;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon-circle-triangle-w{
+    background: url("../images/chevronleft32x32.png") no-repeat scroll center center transparent;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon-circle-triangle-e{
+    background: url(../images/chevronright32x32.png) no-repeat scroll center center transparent;
+}
+
+#stay-dp .ui-datepicker {
+  width: 100% !important;
+  box-shadow: none;
+  border: 0px solid #ccc;
+}
+
+#stay-dp .ui-datepicker .ui-datepicker-header{
+  background: none repeat scroll 0 0 #fff;
+  border-bottom: 1px solid #ddd;
+  border-radius: 0;
+  padding: 2px 0 3px 0;
+  border-top: 1px solid #ddd;
+}
+
+/* UI Datepicker */
+
+.datepicker{
+    background: url(/static/images/blcalsmright.png) no-repeat scroll right 8px transparent !important;
+}
+
+label.fwn{
+    font-family: KTAdminUI_Regular;
+    font-size: 14px;
+}
+
+.dropdown-menu > li > a{
+    padding: 8px 20px 8px 15px;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #262626;
+    text-decoration: none;
+    color: #fff;
+    background-color: #0088cc;
+}
+
+/* Start Create Demo Hotel Page */
+form#hotelDetail {
+    float: left;
+    width: 100%;
+}
+/* End Create Demo Hotel Page */
+
+/* Start Create / EDIT Hotel Page */
+form#create-edit-hotel-form .form-group{
+    position: relative;
+}
+
+form#create-edit-hotel-form label.error {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    font-family: KTAdminUI_Regular;
+    font-size: 12px;
+    color: red;
+}
+
+form#create-edit-hotel-form .form-group > .row > div > label.error{
+    left: 15px;
+}
+
+form#create-edit-hotel-form input[type="text"].error,
+form#create-edit-hotel-form select.error,
+form#create-edit-hotel-form textarea.error,
+form#create-edit-hotel-form .error a{
+    border-color: red;
+}
+
+.wizard-btns .btn{
+    min-width: 80px;
+}
+
+.roomsParda {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ddd;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.roomsBaseLabel {
+    display: inline-block;
+    background: #BDE8AB;
+    padding: 0px 8px;
+    border-radius: 3px;
+    margin-left: 10px;
+    font-family: KTAdminUI_Regular, Arial;
+}
+
+.select2-drop, .select2-container .select2-choice > .select2-chosen{
+    font-family: KTAdminUI_Regular, Montserrat, Arial, Sans;
+}
+
+#create-edit-hotel-form .nav-tabs > li > a{
+    pointer-events: none;
+}
+
+#create-edit-hotel-form .nav-tabs > li.editHotel > a{
+    pointer-events: all;
+}
+
+/* End Create / EDIT Hotel Page */
+
+
+/* Start Create Demo Hotel Page */
+.login-container .form-control{
+    padding: 8px 15px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.login-container .login-btn{
+    min-width: 100px;
+}
+/* End Create Demo Hotel Page */
+
+.sortable-header{
+    background: #ecf0f1;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.s-item{
+    padding: 8px;
+    border: 1px solid #ddd;
+    cursor: move;
+}
+
+.radio-item{
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.names-header{
+    background: #2c3e50;
+    padding: 8px;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+.list-wrapper .s-item:hover{
+    background: #ecf0f1;
+}
+
+.list-wrapper .radio-item:hover{
+    background: #ecf0f1;
+}
+
+.scrolling {
+    overflow: scroll;
+    height: 300px;
+}
+
+.metrics-to-be-displayed input {
+    display: none;
+}

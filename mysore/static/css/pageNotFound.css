@@ -1,0 +1,28 @@
+.main{
+	text-align:center;
+	background: rgba(255, 255, 255, 0.04);
+	font-weight:bold;
+	margin-top:160px;
+	border:1px solid rgba(102, 102, 102, 0.31);
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	padding: 30px;
+}
+.main h1{
+	font-size:40px;
+	margin-top:15px;
+	color:#1CD3CB;
+	text-transform:uppercase;
+	font-family: 'Fenix', serif;
+	margin : 50px 0;
+}
+
+.prod-name{
+	text-align: center;
+	font : bold 33px Arial;
+}
+
+.go-back-home{
+	margin-bottom : 30px;
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Knights Templar",
+  "homepage": "https://github.com/axisrooms/knights-templar",
+  "authors": [
+    "=Pradeep Sasidhara <pradeep@axisrooms.com>",
+    "=Karthikeyan Chellappa <karthikeyan.c@axisrooms.com>",
+    "=Ghanshyam Pathak <ghanshyam.pathak@axisrooms.com>",
+    "=Bharathi Ponnusamy <bharathi.p@axisrooms.com>",
+    "=Vijay Karthik <vijay.k@axisrooms.com>",
+    "=Nabeel Kausari <nabeel@axisrooms.com>",
+    "=Satyanjal Prakash <satyanjal@axisrooms.com>",
+    "=Muhammad Zakir <muhammad.zakir@axisrooms.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.1",
+    "angular-animate": "^1.5.1",
+    "angular-bootstrap": "^1.2.4",
+    "angular-cookies": "^1.5.3",
+    "angular-jwt": "~0.0.9",
+    "angular-ui-router": "^0.2.18",
+    "angular-ui-sortable": "^0.13.4",
+    "c3": "0.4.10",
+    "d3": "3.5.10",
+    "font-awesome": "^4.5.0",
+    "jquery": "^2.2.2",
+    "jquery-ui": "~1.11.4",
+    "lodash": "^4.6.1",
+    "moment": "~2.12.0",
+    "ng-dialog": "^0.5.9",
+    "ng-sortable": "^1.3.4",
+    "ngprogress": "^1.1.3",
+    "angular-mocks": "^1.5.5",
+    "angular-cache": "^4.6.0",
+    "angular-ui-select": "^0.19.4",
+    "angular-sanitize": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "select2": "^3.4.8",
+    "angular-ui-select2": "^0.0.5",
+    "ng-file-upload": "^12.2.12",
+    "angular-datatables": "^0.5.5"
+  },
+  "resolutions": {
+    "angular": "^1.5.1",
+    "d3": "3.5.10",
+    "font-awesome": "^4.5.0"
+  }
+}

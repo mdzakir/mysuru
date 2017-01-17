@@ -1,0 +1,1118 @@
+/* create-rule.css */
+
+/* rule based pricing */
+
+.mandatory-symbol{
+    color: red;
+    font-size: 15px;
+}
+
+#create-rule label {
+    font-size: 16px;
+    font-weight: normal;
+    color: #444;
+}
+
+.or-selector {
+    background: #F1F1F1;
+}
+
+.or-s-header {
+    background: #999999;
+    background-color: #16a085;
+}
+
+.or-s-name {
+    background: #B3B3B3;
+    background-color: #1abc9c;
+    color: #fff;
+    padding: 10px 15px;
+    margin-left: 30px;
+}
+
+.or-s-content {
+    background-color: #bbb;
+    position: relative;
+}
+
+.or-s-inner {
+    margin-left: 30px;
+    padding: 20px 15px;
+    background-color: #F1F1F1;
+}
+
+.rt-holder + .rt-holder{
+    margin-top: 10px;
+}
+
+.rt-h-left {
+    float: left;
+    width: 90px;
+    font-size: 11px;
+}
+
+.rt-h-right {
+    float: right;
+    width: 142px;
+    text-align: right;
+}
+
+ .box-final-p{
+    width: 60px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+}
+
+input.box-final-p{
+    border: 1px solid #ddd;
+    width: 60px;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    color: #333;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+}
+
+label.box-final-p{
+    font-weight: normal;
+}
+
+input.box-final-p:hover, input.box-final-p:focus, input.box-final-p:active{
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.price-filler {
+    width: 90px;
+    float: left;
+}
+
+.pf-plus-minus{
+    float: left;
+}
+
+input.fillit {
+    width: 50px;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    color: #333;
+    float: left;
+    padding: 0;
+    margin: 0;
+    font-size: 10px;
+}
+
+input.fillit:hover{
+    background-color: #fff;
+}
+
+.pf-dd-holder {
+    background-color: #b3b3b3;
+    float: left;
+    width: 20px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.pf-dd {
+    display: none;
+    position: absolute;
+    width: 15px;
+    left: 0;
+    top: 20px;
+    box-shadow: 0 0 20px #999;
+    z-index: 1;
+    border: 1px solid #999;
+}
+
+.pf-sel {
+    display: block;
+    padding: 3px 0px;
+}
+
+.pf-dd-ele {
+    display: block;
+    background: #ddd;
+    padding: 3px 0px;
+}
+
+.pf-dd-ele + .pf-dd-ele{
+    border-top: 1px solid #bbb;
+}
+
+.pf-dd-ele:hover{
+    background: #ccc;
+}
+
+
+/* or-s-cl */
+
+.or-s-cl {
+    display: none;
+    position: absolute;
+    left: 10px;
+    top: 20px;
+}
+
+.or-s-cl ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.or-s-cl li {
+    margin-bottom: 17px;
+    line-height: 12px;
+    position: relative;
+}
+
+.or-s-cl li .ors-child {
+    font-size: 6px;
+    line-height: 9px;
+}
+
+.connect-to-parent {
+    height: 25px;
+    border-left: 1px solid #333;
+    position: absolute;
+    left: 49%;
+    top: -20px;
+}
+
+.connect-side {
+    border-bottom: 1px solid #333;
+    width: 8px;
+    position: absolute;
+    height: 1px;
+    top: 8px;
+    left: 8px;
+}
+
+.rule-settings{
+    margin-bottom: 30px;
+}
+
+.rule-s-pricing .price-filler{
+    width: 100%;
+}
+
+.rule-s-pricing .pf-dd-holder{
+    width: 80px;
+}
+
+.rule-s-pricing .pf-perc-fixd {
+    width: 20px;
+}
+
+.rule-s-pricing .pf-sel{
+    padding: 3px 5px;
+}
+
+.rule-s-pricing .pf-dd{
+    width: 20px;
+}
+
+.rule-s-pricing .pf-less-great .pf-dd{
+    width: 80px;
+}
+
+.rule-s-pricing .fillop{
+    background-color: #fff;
+    width: 30px;
+}
+
+.rt-holder{
+    position: relative;
+}
+
+.add-hoc, .remove-hoc{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 2px 3px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.add-hoc {background-color: #27ae60;color: #fff;}
+.remove-hoc {background-color: #c0392b; color: #fff;}
+
+.cmn-dp input.uidp {
+    width: 100%;
+}
+
+.or-s-datepickers{
+    margin: 0 30px;
+}
+
+/* Custom Date Picker styles */
+
+.ui-datepicker-buttonpane .ui-datepicker-current{
+    display:none;
+}
+
+.ui-datepicker {
+    font: 12px Arial, Muli Reg,Muli Light,Lato,Open Sans;
+}
+
+.ui-datepicker {
+    border-radius: 0;
+    display: none;
+    padding: 0;
+    width: 20em !important;
+}
+
+.ui-datepicker table{
+    margin-bottom:0px;
+}
+
+.ui-datepicker select.ui-datepicker-month, .ui-datepicker select.ui-datepicker-year {
+    background-color: #EEEEEE;
+    border: 1px solid #BBBBBB;
+    width: 45%;
+    margin: 0px 2px;
+}
+
+.ui-datepicker th, .ui-datepicker td, .ui-datepicker td span, .ui-datepicker td a, .ui-datepicker td .ui-state-default {
+    font-family: Arial, Muli Reg,Muli Light,Lato,Open Sans;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.ui-autocomplete{
+    border-radius:0;
+    background-color: #fff;
+    font: 13px Open Sans,Lato;
+    padding:0;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active, .ui-menu .ui-menu-item a.ui-widget-content{
+    font-weight:normal;
+}
+
+.ui-datepicker-header.ui-widget-header{
+    background:none repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.ui-datepicker.ui-widget{
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 0 0 5px #999999;
+}
+
+.ui-datepicker td .ui-state-active{
+    background: none repeat scroll 0 0 #aaa;
+    border-radius: 0;
+}
+
+.ui-datepicker td .ui-state-default {
+    border-radius: 0;
+    color: #000;
+    font: 13px/1.5 Arial,Open Sans,Sans-serif;
+    height: 30px;
+}
+
+.ui-datepicker-multi .ui-datepicker-group table {
+    margin: 0 auto 0;
+    width: 100%;
+}
+
+.ui-datepicker td .ui-state-highlight {
+    background: none repeat scroll 0 0 #415b76;
+    color: #fff;
+    font-weight: 400;
+}
+
+.ui-datepicker td .ui-state-hover {
+    background: none repeat scroll 0 0 #48c9b0;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 0;
+    color: #fff;
+    text-shadow: 0 0;
+}
+
+.ui-datepicker td .ui-state-active{
+    background: none repeat scroll 0 0 #48c9b0;
+    color: #fff;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 0px solid #ddd;
+    border-radius: 0;
+    padding:8px 0;
+}
+
+.ui-datepicker-calendar > thead{
+    background-color: transparent;
+}
+
+.ui-datepicker td {
+    border: 1px solid #ddd;
+    height: 31px;
+    padding: 0;
+}
+
+.ui-datepicker .ui-datepicker-prev {
+    top: 0;
+    left: 0;
+}
+
+.ui-datepicker .ui-datepicker-next {
+    top: 0;
+    right: 0;
+}
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    height: 2.6em;
+    width: 2.6em;
+}
+
+.ui-datepicker-header .ui-state-hover, .ui-datepicker-header .ui-state-focus{
+    background: #ddd;
+    border:0;
+    border-radius:0;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon{
+    background: url(../images/sprite_web.png) no-repeat scroll 0 0 transparent;
+    height:17px;
+    margin-top:-9px;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon-circle-triangle-w{
+    background: url("../images/chevronleft32x32.png") no-repeat scroll center center transparent;
+}
+
+.ui-datepicker-header.ui-widget-header .ui-icon-circle-triangle-e{
+    background: url(../images/chevronright32x32.png) no-repeat scroll center center transparent;
+}
+
+.uidp{
+    background: url(../images/blcalsmright.png) no-repeat scroll right center transparent;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="tel"], input[type="search"], input[type="url"], input[type="password"], .ui-autocomplete-input, textarea, .uneditable-input, textarea.form-control{
+    border-radius:0;
+    padding: 8px 10px;
+    border: 1px solid #aaa;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #E8EDF2;
+    opacity: 1;
+}
+
+.uitp{
+    background: url(../images/time25x18.png) no-repeat scroll right center transparent;
+}
+
+.ui-timepicker-div {
+  padding: 10px 20px 0px 20px;
+}
+
+.ui-timepicker-div .ui-widget-header{
+  border-radius: 0;
+  background: none;
+  border: 0;
+  color: #000;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+dt.ui_tpicker_time_label {
+  display: inline-block;
+}
+
+dd.ui_tpicker_time {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+dt.ui_tpicker_hour_label {
+  margin-bottom: 5px;
+}
+
+dd.ui_tpicker_hour {
+  margin-bottom: 10px;
+}
+
+/* END UI Datepicker */
+
+.uidp{
+    background: url(../images/blcalsmright.png) no-repeat scroll right center #fff;
+}
+
+input.uidp[readonly]{
+    cursor:pointer;
+    background-color:#fff;
+}
+
+/* Checkbox Buttons */
+
+#create-rule .dayOfWeek label {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    margin-left: -1px;
+    padding: 3px 6px;
+    position: relative;
+    cursor: pointer;
+}
+
+#create-rule .dayOfWeek .btn-group > .btn:focus,
+#create-rule .dayOfWeek .btn-group > .btn:active,
+#create-rule .dayOfWeek .btn-group > .btn:hover{
+    outline: 2px solid #31C3D9;
+    box-shadow: 0 0 1px 1px #31C3D9;
+}
+
+#create-rule .dayOfWeek label input {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+
+#create-rule .dayOfWeek label.active {
+    color: #fff;
+    background-color: #3498db;
+    border-color: #066EB3;
+    box-shadow: none;
+}
+
+.dayOfWeek > label.ww-ina, .dayOfWeek > label.ww-ina {
+    background-color:#eee;
+    text-decoration:line-through;
+}
+
+.dayOfWeek {
+    display: inline;
+}
+
+.checkUncheckButtons {
+
+}
+
+.checkUncheckButtons a.ctrl-for-inputs{
+    font-size: 12px;
+    font-weight: normal;
+    color: #348390;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+/* rooms */
+
+.room-name{
+    width: 180px;
+    text-align: left;
+}
+
+.rooms, .occ-item{
+    margin-bottom: 20px;
+}
+
+span.occ-error {
+    float: right;
+    color: red;
+}
+.bt{
+    border-top: 1px solid #ddd;
+}
+
+.fwn{font-weight: normal;}
+
+.pt10{
+    padding-top: 10px;
+}
+
+.rooms .room-name {
+    font-size: 12px;
+    font-weight: normal;
+    width: 180px;
+    padding-right: 15px;
+    display: inline-block;
+    min-width: 160px;
+    max-width: 250px;
+}
+
+.rooms .base-room, .inherited-rooms {
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.rooms .base-room .br-inner {
+    color: #fff;
+    background-color: #31C3D9;
+    padding: 3px 8px;
+}
+
+.rooms input {
+    padding: 6px 8px;
+    width: 65px;
+    text-align: center
+}
+
+.rooms input[readonly]{
+    background: #eee;
+}
+
+.inherited-rooms{
+    position: relative;
+}
+
+.inherited-rooms .ir-ver {
+    border-left: 1px solid #31C3D9;
+    position: absolute;
+    width: 1px;
+    height: 30px;
+    top: -32px;
+    left: 48%;
+}
+
+.inherited-rooms .ir-plus{
+    color: #fff;
+    background-color: #31C3D9;
+    padding: 3px 8px;
+}
+
+.inherited-rooms .ir-hor{
+    border-top: 1px solid #31C3D9;
+    position: absolute;
+    width: 33px;
+    height: 1px;
+    left: 36px;
+    top: 7px;
+}
+
+.delta-price{
+    margin-left: 15px;
+}
+
+.equal-to{
+    display: inline-block;
+    font-size: 15px;
+    padding: 0 10px;
+}
+
+/* angular Datepicker */
+
+.dtpk .dropdown-menu{
+    margin: 0;
+    padding: 0;
+}
+
+.dtpk thead{
+    background: none;
+}
+
+.text-muted {
+    color: #ddd;
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    color: #A9A5A5;
+    background-color: #EAEAEA;
+    border-color: #bdc3c7;
+}
+
+.uib-button-bar {
+    padding: 5px 9px 5px;
+    display: block;
+    overflow: hidden;
+}
+
+.uib-day button, .uib-month button, .uib-year button {
+    min-width: 100%;
+    border-radius: 0px !important;
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: -1px;
+}
+
+.uib-daypicker thead tr th {
+    font-size: 12px;
+}
+
+.uib-weeks td em {
+    font-style: normal;
+}
+
+/* Slider */
+
+.slider {
+    height: 100px;
+    background: #fff;
+    margin: 30px 0;
+    float: left;
+    width: 100%;
+}
+
+.part {
+    height: 100%;
+    background: #31C3D9;
+    display: inline-block;
+    border: 2px solid #31C3D9;
+    color: #fff;
+    padding: 30px 0 0 0;
+    position: relative;
+    text-align: center;
+}
+
+.part:hover {
+    border: 2px solid #1D9AAD;
+}
+
+.occupancy-rule .part input.price-value {
+    background: #F8FEFF;
+    width: 110px;
+    border: 0;
+    text-align: center;
+    box-shadow: inset 0 4px 3px rgba(0, 0, 0, 0.1);
+    color: #000;
+    padding-left: 25px;
+}
+
+.occupancy-rule .part .slider-handler-bottom input {
+    width: 35px;
+    left: 0px;
+    position: absolute;
+    background: #F8FEFF;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+    padding: 0px 0 0 2px;
+    color: #000;
+    font-size: 14px;
+    line-height: 1.45677;
+    border: 0;
+}
+
+.occupancy-rule .part .slider-handler-bottom input[readonly]{
+    background: #ccc;
+}
+
+.occupancy-rule .part-percent-symbol{
+    position: absolute;
+    right: 0;
+    height: 22px;
+    padding: 2px 2px 0px 0px;
+}
+
+.occupancy-rule .part input:hover{
+    /*background: #1D9AAD;*/
+}
+
+.style-4 {
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px #c9c9c9;
+    transition: border 0.3s;
+    display: inline;
+}
+
+.revcal {
+    width: 500px;
+    margin: auto;
+}
+
+.style-4:focus,
+.style-4.focus {
+    border-bottom: solid 2px #969696;
+}
+
+.price-value {
+    font-size: 20px !important;
+    display: block;
+    margin: auto;
+}
+.percent-value {
+    font-size: 14px;
+    display: block;
+    margin: auto;
+}
+
+.occupancy-percentage{
+    display: block;
+}
+
+.slider-handler{
+    position: absolute;
+    right: -6px;
+    top: -15px;
+    height: 130px;
+    width: 10px;
+}
+
+.slider-handler-top, .slider-handler-bottom, .slider-handler-mid {
+    position: absolute;
+    background-color: #348390;
+    height: 15px;
+    width: 15px;
+    left: -3px;
+    top: auto;
+    bottom: auto;
+    -moz-transition-duration: .2s;
+    -webkit-transition-duration: .2s;
+    -o-transition-duration: .2s;
+    -ms-transition-duration: .2s;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+a.slider-handler-top{
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    left: -7px;
+    z-index: 1;
+    cursor: pointer;
+    padding-top: 4px;
+    color: #fff;
+}
+
+a.slider-handler-top i{
+    color: #fff;
+}
+
+a.slider-handler-top:hover, a.slider-handler-top:focus{
+    color: #fff;
+    outline: none;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 5px #348390;
+}
+
+.slider-handler-bottom {
+    bottom: 0;
+    left: -20px;
+    width: 50px;
+    background: #348390;
+    border-radius: 0;
+    height: 22px;
+    text-align: left;
+    border: 1px solid #348390;
+    z-index: 1;
+}
+
+.slider-handler:hover .slider-handler-bottom{
+    bottom: 0;
+    left: -20px;
+}
+
+.slider-handler-mid {
+    height: 110px;
+    width: 2px;
+    left: 4px;
+    top: 8px;
+}
+
+.remove-part {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #D4EFF3;
+}
+
+.remove-part:hover{
+    color: #fff;
+}
+
+.occ-rev-display{
+    margin: 10 0 0 0;
+    text-align: center;
+}
+
+.tac{text-align: center;}
+
+.price-percent-wrapper{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.price-input-wrapper{
+    display: inline-block;
+    position: relative;
+}
+
+.currency-symbol{
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 25px;
+    height: 27px;
+    color: #31C3D9;
+    font-size: 20px;
+    border-right: 1px solid;
+    line-height: 1.5;
+}
+
+.part-percent-occ-label {
+    position: relative;
+    top: 22px;
+    right: 12px;
+    color: #348390;
+    font-weight: normal;
+    font-size: 12px;
+    cursor: default;
+}
+
+.price-percent-input{
+    margin: 15px 0 0 0;
+}
+
+.rooms-wrapper{
+    margin-top: 20px;
+}
+
+.room-list {
+    /*margin-left: 60px;*/
+}
+
+.final-price{
+    text-align: right;
+    display: inline-block;
+    width: 50px;
+}
+
+.dummy-span {
+    display: inline-block;
+    padding: 0 15px;
+}
+
+.dummy-span .br-inner {
+    width: 82px;
+    display: inline-block;
+}
+
+
+@media all and (max-width: 1200px) and (min-width: 990px) {
+    .dummy-span{padding: 0;}
+    .equal-to{padding: 0;}
+    .rooms .room-name{padding-right: 0;}
+    .rooms input{margin: 0;}
+    .inherited-rooms .ir-hor{width: 19px;}
+}
+
+.btn-cancel {
+    margin-right: 10px;
+}
+
+.info-below-label{
+    color:#999;
+    display:block;
+    font-size: 12px;
+}
+
+#create-rule .form-control {
+    height: auto;
+}
+
+.slider-handler-msg {
+    right: -15px;
+    width: 290px;
+    top: -70px;
+    background: #000;
+    color: #fff;
+    padding: 5px 12px;
+    /* pointer-events: none; */
+    position: absolute;
+    /* width: 100%; */
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -ms-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    /* transition: all .25s ease-out; */
+    /* -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28); */
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 0 0 10px #bbb;
+    z-index: 11;
+}
+
+.slider-handler-msg:before {
+    bottom: -20px;
+    content: " ";
+    display: block;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.slider-handler-msg:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid #000 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    left: 94%;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+}
+
+.header-desc {
+    position: relative;
+    bottom: 25px;
+    color: #888;
+}
+
+.dp{
+    background: url(/static/images/blcalsmright.png) no-repeat scroll right 8px transparent !important;
+}
+
+.tooltip-inner ul li{
+    padding: 0px 0;
+    display: table-row;
+    line-height: 1.4555;
+}
+
+.tooltip-inner ul li i{
+    display: table-cell;
+    width: 20px;
+}
+
+.tooltip-checklist{
+    padding: 3px 0 3px 0;
+    display: table-cell;
+}
+
+#create-rule .occ-type-btns label{
+    background: #fff;
+}
+
+#create-rule .occ-type-btns label.active{
+    color: #fff;
+    background-color: #3498db;
+    border-color: #066EB3;
+    box-shadow: none;
+}
+
+.change-differentials-btn-wrapper{
+    margin: 20px 0;
+}
+
+.change-differentials-btn-wrapper .edit-differentials{
+    cursor: pointer;
+    color: #348390;
+    border-bottom: 1px dotted;
+    margin-right: 10px;
+}
+
+.change-differentials-btn-wrapper .edit-differentials:hover{
+    cursor: pointer;
+    color: #348390;
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+
+.save-rule-btns-wrapper{
+    margin: 15px 0;
+}
+
+.pt8{
+    padding-top: 8px;
+}
+
+.plr15{
+    padding: 0 15px;
+}
+
+.occupancy-bar-wrapper .occ-bar-heading-label {
+    width: 100%;
+    float: left;
+}
+
+.occ-entity {
+    float: left;
+    padding-right: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    color: #777;
+    font-weight: normal;
+}
+
+.inner-oe{
+    float: left;
+    padding-right: 10px;
+    max-width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.occ-entity small{
+    color: #777;
+}
+
+.page-header {
+    position: relative;
+    color: #333;
+}
+
+.kt-page-title {
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+#create-rule .checkbox label, #create-rule .inner-label, #create-rule .btn{
+    font-size: 13px;
+}
+
+.popup--room-name,
+.popup--rateplan-name,
+.popup--occupancy-name,
+.popup--extra-name {
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 200px;
+}
+
+.rule--room-name,
+.rule--comp-name{
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.pricing-differentials-modal .ngdialog-close,
+.base-rates-modal .ngdialog-close{
+    display: none;
+}
+
+.create-rule-listOfHolidays{
+  max-height: 150px;
+  overflow: auto;
+  padding: 0px 0 0 15px;
+}

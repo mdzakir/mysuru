@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Supplier Details Knights Templar</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.css">
+    <link href="/static/bower_components/select2/select2.css" rel="stylesheet">
+    {% include 'admin_head_tag.html' %}
+
+    <!-- Custom CSS -->
+</head>
+
+<body onload="init();">
+<div id="wrapper">
+    <!-- Navigation -->
+    {% include 'admin_header.html' %}
+    <script>var selectedRooms = [], selectedRP = [];</script>
+    <div id="page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        {% if hotel %}
+                            Edit Hotel : <span style="color:#999">{{ hotel.name }}</span>
+                        {% else %}
+                            Create Hotel
+                        {% endif %} </h1>
+
+                    <input type="hidden" id="room_deltas" value='{{ room_deltas|safe }}'/>
+                    <input type="hidden" id="rate_plan_deltas" value='{{ rate_plan_deltas|safe }}'/>
+                    {% if message %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endif %}
+                    {#                        {% for id in mapped_room_ids %}#}
+                    {#                             <script>selectedRooms.push({{id}})</script>#}
+                    {#                        {% endfor %}#}
+                    {##}
+                    {#                        {% for id in mapped_rate_plan_ids %}#}
+                    {#                            <script>selectedRP.push({{id}})</script>#}
+                    {#                        {% endfor %}#}
+
+                    <form class="create-edit-hotel-form" id="create-edit-hotel-form" method="post"
+                          action="/admin/addHotel" name="hotelList">
+                        <input type="hidden" id="rp_prices" name="rates" value=""/>
+                        <input type="hidden" id="hotel_id" name="hotel_id" value="{{ hotel.id }}"/>
+                        <div class="wizard-header">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="wizard-step-indicator basic_details_tab"><a
+                                        href="#basic_details">Basic Details</a></li>
+                                <li role="presentation" class="wizard-step-indicator rooms_tab"><a
+                                        href="#rooms">Rooms</a></li>
+                                <li role="presentation" class="wizard-step-indicator rateplan_tab"><a href="#rateplans">Rateplans</a>
+                                </li>
+                                <li role="presentation" class="wizard-step-indicator occ_tab"><a href="#rateplans_occ">Occupancies</a>
+                                </li>
+                                <li role="presentation" class="wizard-step-indicator pms_config"><a href="#pms">PMS
+                                    Config</a></li>
+                                <li role="presentation" class="wizard-step-indicator summary_tab"><a href="#summary">Summary</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="wizard-content">
+                            <div id="basic_details" class="wizard-step">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">State</label>
+                                            <div class="">
+                                                <select required name="state"
+                                                        onchange="setCities(document.hotelList.city,this.value,-1)"
+                                                        class="stateId chosen">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">City</label>
+                                            <div class="">
+                                                <select required name="city" onchange="setArcHotels()"
+                                                        class="cityId chosen">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Channel Manager Product</label>
+                                            <div class="">
+                                                <select required onchange="fetchRooms()" name="cm_id"
+                                                        class="cm-id chosen">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">GoldenEye Product ID</label>
+                                            <div class="">
+                                                <input type="text" class="form-control" name="ge_id" required
+                                                       value="{{ hotel.ge_product_id }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">GoldenEye Product Name</label>
+                                            <div class="">
+                                                <input type="text" class="form-control" name="gename"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Hotel Name</label>
+                                            <div class="">
+                                                <input required type="text" class="form-control" name="name"
+                                                       value="{{ hotel.name }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="">Hotel Capacity</label>
+                                            <div class="">
+                                                <input required type="text" class="form-control" name="capacity"
+                                                       value="{{ hotel.hotel_capacity }}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="">Currency</label>
+                                            <div class="">
+                                                <select name="currency" class="form-control currency" type="text">
+                                                    {% for currency in Currency %}
+                                                        <option value="{{ currency.id }}"
+                                                                {% if currency.id == hotel.currency %}
+                                                                selected="selected" {% endif %}>{{ currency.iso_code }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Min &amp; Max Price</label>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input required name="min_price" placeholder="Min. Price"
+                                                           class="form-control ge-id" type="text"
+                                                           value="{{ hotel.min_price }}">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input required name="max_price" placeholder="Max. Price"
+                                                           class="form-control ge-id" type="text"
+                                                           value="{{ hotel.max_price }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">PMS</label>
+                                            <div class="">
+                                                <select name="pms_id" class="form-control">
+                                                    <option value="1" {% if 1 == hotel.pms_id %}
+                                                            selected="selected" {% endif %} >CM
+                                                    </option>
+                                                    <option value="2" {% if 2 == hotel.pms_id %}
+                                                            selected="selected" {% endif %}>WinHms
+                                                    </option>
+                                                    <option value="3" {% if 3 == hotel.pms_id %}
+                                                            selected="selected" {% endif %}>Axisrooms
+                                                    </option>
+                                                    <option value="4" {% if 4 == hotel.pms_id %}
+                                                            selected="selected" {% endif %} >Data Devices
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="">Check-in Time</label>
+                                            <div class="">
+                                                <select name="checkintime" class="form-control">
+                                                    <option value="11" {% if 11 == hotel.check_in_time %}
+                                                            selected="selected" {% endif %}>11:00
+                                                    </option>
+                                                    <option value="12" {% if 12 == hotel.check_in_time %}
+                                                            selected="selected" {% endif %}>12:00
+                                                    </option>
+                                                    <option value="13" {% if 13 == hotel.check_in_time %}
+                                                            selected="selected" {% endif %}>13:00
+                                                    </option>
+                                                    <option value="14" {% if 14 == hotel.check_in_time %}
+                                                            selected="selected" {% endif %}>14:00
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="">Check-out Time</label>
+                                            <div class="">
+                                                <select name="checkouttime" class="form-control">
+                                                    <option value="11" {% if 11 == hotel.check_out_time %}
+                                                            selected="selected" {% endif %}>11:00
+                                                    </option>
+                                                    <option value="12" {% if 12 == hotel.check_out_time %}
+                                                            selected="selected" {% endif %}>12:00
+                                                    </option>
+                                                    <option value="13" {% if 13 == hotel.check_out_time %}
+                                                            selected="selected" {% endif %}>13:00
+                                                    </option>
+                                                    <option value="14" {% if 14 == hotel.check_out_time %}
+                                                            selected="selected" {% endif %}>14:00
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="">Disable KPI</label>
+                                            <div class="">
+                                                    {% for data_detail in Booking_data %}
+                                                        <input name="data_detail" type="checkbox"
+                                                        {% if data_detail.id in selectedBookingData %}
+                                                        checked="checked" 
+                                                        {% endif %}
+                                                          value="{{ data_detail.get_id}}">{{ data_detail.get_name}}
+                                                    {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <label class="">Enable import feature</label>
+                                            <div>
+                                            <label>
+                                            <input type="checkbox" name="is_import" value="1" {% if hotel.is_import == True %} checked="checked" {% endif %}> Click to enable</label>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                </div>
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-next btn btn-flat-primary first-tab-btn">Next</button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+                            <div id="rooms" class="wizard-step">
+                                <h2>Rooms</h2>
+                                <div class="row room_rp_order">
+                                    <div class="col-md-6 room_order">
+                                        <div class="room-info"><i class="fa fa-info-circle"></i> Drag and drop the rooms
+                                            to set as a base room.
+                                        </div>
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Room Name</th>
+                                                <th>Delta</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="room-selection-error" style="display:none;color:red;">Please select at least
+                                    one room
+                                </div>
+                                <div class="room-value-error" style="display:none;color:red;">Please enter values for
+                                    the selected rooms.
+                                </div>
+
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-prev btn btn-flat-primary">Previous</button>
+                                    <button type="button" class="wizard-next btn btn-flat-primary rooms-selection">
+                                        Next
+                                    </button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+
+                            <div id="rateplans" class="wizard-step">
+                                <div class="col-md-12 rp_order">
+                                    <h2>Rateplans</h2>
+                                    <div class="rp-info"><i class="fa fa-info-circle"></i> Drag and drop the rateplans
+                                        to set as a base rateplan.
+                                    </div>
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Rate Plan</th>
+                                            <th>Delta</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="rp-selection-error" style="display:none;color:red;">Please select at least
+                                    one rateplan
+                                </div>
+                                <div class="rp-value-error" style="display:none;color:red;">Please enter values for the
+                                    selected rateplans.
+                                </div>
+
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-prev btn btn-flat-primary">Previous</button>
+                                    <button type="button" class="wizard-next btn btn-flat-primary rp-selection">Next
+                                    </button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+
+                            <div id="rateplans_occ" class="wizard-step">
+                                <h2>Occupancies</h2>
+                                <div class="row">
+                                    <div class="col-md-12 rate_types">
+                                    </div>
+                                </div>
+
+                                <div class="row rp-based-room-occ-price">
+                                    <div class="col-md-12 rp-occ-price">
+
+                                    </div>
+                                </div>
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-prev btn btn-flat-primary">Previous</button>
+                                    <button type="button" class="wizard-next btn btn-flat-primary">Next</button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+                            <div id="pms" class="wizard-step">
+                                <h2>PMS</h2>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>PMS Configuration (PMS PRODUCT ID - {{ hotel.pms_product_id }})</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Rate Plan List</h5>
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>RM ROOM ID</th>
+                                                <th>Rooms</th>
+                                                <th>PMS Room Code</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% if pms_mapped_rooms %}
+                                                {% for rooms in pms_mapped_rooms %}
+                                                    <tr>
+                                                        <td>{{ rooms.id }}</td>
+                                                        <td>{{ rooms.mapped_id }}</td>
+                                                        <td>{{ rooms.mapped_name.0 }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Rate Plans Config</h5>
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>RM RATE ID</th>
+                                                <th>Rateplans</th>
+                                                <th>PMS Rate Code</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% if pms_rate_plan_mapping %}
+                                                {% for rate in pms_rate_plan_mapping %}
+                                                    <tr>
+                                                        <td>{{ rate.id }}</td>
+                                                        <td>{{ rate.mapped_id }}</td>
+                                                        <td>{{ rate.mapped_name.0 }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Channel Manager Configuration (CM PRODUCT ID
+                                            - {{ hotel.cm_product_id }})</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Rooms Config</h5>
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>RM ROOM ID</th>
+                                                <th>Rooms</th>
+                                                <th>CM Room Code</th>
+                                            </tr>
+                                            </thead>
+                                            <div>{{ rooms.id }} {{ rooms.mapped_id }} {{ rooms.mapped_name }}</div>
+                                            <tbody>
+                                            {% for rooms in cm_mapped_rooms %}
+                                                <tr>
+                                                    <td>{{ rooms.id }}</td>
+                                                    <td>{{ rooms.mapped_id }}</td>
+                                                    <td>{{ rooms.mapped_name.0 }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Rate Plans Config</h5>
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>RM RATE ID</th>
+                                                <th>Rateplans</th>
+                                                <th>CM Rate Code</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for rate in cm_rate_plan_mapping %}
+                                                <tr>
+                                                    <td>{{ rate.id }}</td>
+                                                    <td>{{ rate.mapped_id }}</td>
+                                                    <td>{{ rate.mapped_name.0 }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-prev btn btn-flat-primary">Previous</button>
+                                    <button type="button" class="wizard-next btn btn-flat-primary">Next</button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+                            <div id="summary" class="wizard-step">
+                                <h2>Summary</h2>
+                                <div class="summary-tab-content">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                        Coming soon...
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="row">
+                                        <div class="col-md-6">
+                                            Summary Content Left
+                                        </div>
+                                        <div class="col-md-6">
+                                            Summary Content Right
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="tac wizard-btns">
+                                    <button type="button" class="wizard-prev btn btn-flat-primary">Previous</button>
+                                    <button type="submit" class="wizard-finish btn btn-flat-success">Submit</button>
+                                    <a type="button" class="btn btn-flat-danger" href="/admin/hotelList">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="roomlistInput" value=""/>
+                        <input type="hidden" name="rplistInput" value=""/>
+
+                    </form>
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+{% include 'admin_footer.html' %}
+
+<!-- jQuery -->
+<script type="text/javascript" src="/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script type="text/javascript" src="/static/js/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/static/js/locationJS.js"></script>
+<script type="text/javascript" src="/static/bower_components/select2/select2.min.js"></script>
+<script src="/static/js/vendor/jquery.simplewizard.js"></script>
+<script>
+
+    var roomsOrder = [];
+
+    var roomlistInput = [], rplistInput = [];
+
+    $(function () {
+        $("#create-edit-hotel-form").simpleWizard({
+            cssClassStepActive: "active",
+            cssClassStepDone: "done",
+            onFinish: function () {
+
+                $('.room_order table tbody tr').each(function () {
+                    if ($(this).find('[name="roomId"]').is(':checked')) {
+                        roomlistInput.push($(this).find('[name="roomId"]').attr('value'));
+                    }
+                });
+                $('.rp_order table tbody tr').each(function () {
+                    if ($(this).find('[name="rpId"]').is(':checked')) {
+                        rplistInput.push($(this).find('[name="rpId"]').attr('value'));
+                    }
+                });
+
+                $('[name="roomlistInput"]').attr('value', roomlistInput);
+                $('[name="rplistInput"]').attr('value', rplistInput);
+
+                $('#create-edit-hotel-form').submit();
+            }
+        });
+
+        $('.rooms-selection, .rateplan_tab').click(function (argument) {
+
+            var rmBase = false;
+            var rmValuesFlag = true;
+            var rmCheckBoxFlag = false;
+
+            $('.room-rp-selection-error').hide();
+            $('.room-info').css('color', '#333');
+            $('.room-value-error').hide();
+
+
+            if ($('[name="roomId"]:checked').length > 0) {
+                rmCheckBoxFlag = true;
+            } else {
+                rmCheckBoxFlag = false;
+            }
+
+            $('.room_order .req-delta').each(function () {
+                if ($.trim($(this).val()) === '' || !$.trim($(this).val()).match(/^\d+$/)) {
+                    rmValuesFlag = false;
+                } else {
+                    rmValuesFlag = true;
+                }
+            });
+
+            if ($('[name="baseRoom"]').length == 0) {
+                rmBase = false;
+            } else {
+                rmBase = true;
+            }
+
+            if (!rmCheckBoxFlag) {
+                $('.room-selection-error').show();
+                return false;
+            } else if (!rmBase) {
+                $('.room-info').css('color', 'red');
+                return false;
+            }
+            else if (!rmValuesFlag) {
+                $('.room-value-error').show();
+                return false;
+            } else {
+
+                $('.room-selection-error').hide();
+                $('.room-info').css('color', '#333');
+                $('.room-value-error').hide();
+
+            }
+
+        });
+
+        $('.rp-selection, .occ_tab').click(function (argument) {
+
+            var rpBase = false;
+            var rpValuesFlag = true;
+            var rpCheckBoxFlag = false;
+
+            $('.rp-selection-error').hide();
+            $('.rp-info').css('color', '#333');
+            $('.rp-value-error').hide();
+
+
+            if ($('[name="rpId"]:checked').length > 0) {
+                rpCheckBoxFlag = true;
+            } else {
+                rpCheckBoxFlag = false;
+            }
+
+            $('.rp_order .req-delta').each(function () {
+                if ($.trim($(this).val()) === '' || !$.trim($(this).val()).match(/^\d+$/)) {
+                    rpValuesFlag = false;
+                } else {
+                    rpValuesFlag = true;
+                }
+            });
+
+            if ($('[name="baseRP"]').length == 0) {
+                rpBase = false;
+            } else {
+                rpBase = true;
+            }
+
+            if (!rpCheckBoxFlag) {
+                $('.rp-selection-error').show();
+                return false;
+            } else if (!rpBase) {
+                $('.rp-info').css('color', 'red');
+                return false;
+            }
+            else if (!rpValuesFlag) {
+                $('.rp-value-error').show();
+                return false;
+            } else {
+
+                $('.rp-selection-error').hide();
+                $('.rp-info').css('color', '#333');
+                $('.rp-value-error').hide();
+
+                var selectedRateplans = [];
+                $('.rp_order table tbody tr').each(function () {
+                    selectedRateplans.push($(this).find('[name="rpId"]:checked').attr('value'));
+                });
+                fetchRateType(selectedRateplans);
+
+            }
+
+        });
+
+        $('.first-tab-btn, .rooms_tab').click(function (argument) {
+            $('.room_order table tbody').sortable({
+                stop: function (event, ui) {
+                    var tbody = $(this);
+                    roomOrder = $.map(tbody.find('tr'), function (el) {
+                        return $(el).index();
+                    });
+                    saveOrder('room_order')
+                }
+            });
+
+            $('.rp_order table tbody').sortable({
+                stop: function (event, ui) {
+                    var tbody = $(this);
+                    roomOrder = $.map(tbody.find('tr'), function (el) {
+                        return $(el).index();
+                    });
+                    saveOrder('rp_order');
+                }
+            });
+
+
+        })
+    });
+
+    function saveOrder(entity_class) {
+        for (var ro = 0; ro < roomOrder.length; ro++) {
+            var pos = ro;
+            pos++;
+            $('.' + entity_class + ' table tbody tr').each(function (index) {
+                var ele = $(this);
+                if (pos = index + 1) {
+                    ele.find('.order-value').attr('value', pos);
+                }
+                if (pos == 1) {
+                    $('.' + entity_class + ' table tbody .delta-value').show();
+                    ele.find('.delta-value').hide().attr('value', 0);
+                    ele.find('input[type="checkbox"]').prop('checked', true);
+                    $('.' + entity_class + ' table tbody .roomsParda, .' + entity_class + ' table tbody .roomsBaseLabel').remove();
+                    var room_value = $(this).attr('id')
+                    if (entity_class == 'rp_order') {
+                        ele.find('.ro-roomName').append('<label class="roomsBaseLabel">Base<input type="hidden" name="baseRP" value="' + room_value + '"></label>')
+                    } else {
+                        ele.find('.ro-roomName').append('<label class="roomsBaseLabel">Base<input type="hidden" name="baseRoom" value="' + room_value + '"></label>')
+                    }
+                    ele.find('td').first().append('<span class="roomsParda"></span>');
+                }
+                rmrpSelection(ele.find('.change-order'));
+            })
+
+        }
+    }
+
+    function rmrpSelection(ele) {
+        if ($(ele).is(':checked')) {
+            $(ele).parent().siblings().find('.delta-value').addClass('req-delta').prop('disabled', false);
+        } else {
+            $(ele).parent().siblings().find('.delta-value').removeClass('req-delta').prop('disabled', true);
+        }
+    }
+
+</script>
+
+<script type="text/javascript">
+        var stateElement    = $('[name="state"]'),
+            cityElement     = $('[name="city"]'),
+            cmHotelElement  = $('[name="cm_id"]');
+
+    function init() {
+
+        setStates(document.hotelList.state, document.hotelList.city, 1, -1);
+
+        CM_URL = "https://www.axisrooms.com/"
+
+        stateElement.select2();
+        cityElement.select2();
+        cmHotelElement.select2();
+        hotelObj = '{{hotel.id}}';
+
+        if (hotelObj != '') {
+
+            cityElement.val({{hotel.state_id}});
+
+            var hotelId = '{{hotel.state_id}}';
+
+            $('[name="state"] option').each(function () {
+                if ($(this).attr('value') == hotelId) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+            stateElement.select2();
+            setCities(document.hotelList.city, stateElement.val(), -1);
+
+            var cityId = '{{hotel.city_id}}';
+
+            $('[name="city"] option').each(function () {
+                if ($(this).attr('value') == cityId) {
+                    $(this).attr('selected', 'selected');
+                }
+            });
+            cityElement.select2();
+            setArcHotels();
+        } else {
+            $('.pms_config, #pms').remove();
+        }
+
+    }
+</script>
+<script type="text/javascript">
+
+    function changeOrder(ele) {
+        $('.base-room-indicator').hide();
+        $('.room-order-value').show();
+        $('.room-order-value').each(function () {
+            $(this).attr('value', '')
+        });
+        $(ele).parent().siblings().find('.base-room-indicator').show();
+        $(ele).parent().siblings().find('.room-order-value').hide().attr('value', '1');
+    }
+
+
+    function fetchRooms() {
+
+        var cmId = cmHotelElement.val();
+
+        if (hotelObj == '') {
+            $('[name="name"]').val($('.cm-id option:selected').text());
+        }
+
+        if ($.trim(cmId) == '') {
+
+        } else {
+            var url = CM_URL + 'api/getRoomsRateplansBooking';
+            $.post(url, {
+                'productId': cmId
+            }, function (res) {
+                var rooms = res.roomList.length;
+
+                var roomDeltas = $('#room_deltas').val();
+                roomDeltas = roomDeltas == '' ? [] : $.parseJSON(roomDeltas);
+
+                var cmRoomsMap = {};
+                $.each(res.roomList, function (index, value) {
+                    cmRoomsMap[value.roomId] = value
+                });
+                var roomDeltaMap = {};
+                $.each(roomDeltas, function (index, value) {
+                    roomDeltaMap[value[0]] = value[1]
+                });
+                var $tbody = $('.room_order table tbody')
+                $tbody.html('');
+                $.each(roomDeltas, function (index, item) {
+                    var result = cmRoomsMap[item[0]];
+                    if (result) {
+                        result.delta_price = item[1];
+                        result.selected = true;
+                        result.order = index + 1;
+                        if (index == 0) {
+                            result.base = true;
+                        }
+                        $tbody.append(makeRoom(result));
+                    }
+                });
+
+                $.each(res.roomList, function (index, item) {
+                    var result = roomDeltaMap[item.roomId];
+                    if (result === undefined) {
+                        item.order = roomDeltas.length + index + 1;
+                        if (hotelObj == '') {
+                            if (index == 0) {
+                                item.delta_price = 0;
+                                item.selected = true;
+                                item.base = true;
+                            }
+                        }
+                        $tbody.append(makeRoom(item));
+                    }
+                });
+
+
+                var ratePlanDeltas = $('#rate_plan_deltas').val();
+                ratePlanDeltas = ratePlanDeltas == '' ? [] : $.parseJSON(ratePlanDeltas);
+                var cmRatePlanMap = {};
+                $.each(res.ratePlanList, function (index, item) {
+                    cmRatePlanMap[item.ratePlanId] = item;
+                });
+
+                var ratePlanDeltaMap = {};
+                $.each(ratePlanDeltas, function (index, value) {
+                    ratePlanDeltaMap[value[0]] = value[1];
+                });
+
+                $tbody = $('.rp_order table tbody');
+                $tbody.html('');
+                $.each(ratePlanDeltas, function (index, value) {
+                    var result = cmRatePlanMap[value[0]];
+                    if (result) {
+                        result.delta_price = value[1];
+                        result.selected = true;
+                        result.order = index + 1;
+                        if (index == 0) {
+                            result.base = true;
+                        }
+                        $tbody.append(makeRatePlan(result))
+                    }
+                });
+
+                $.each(res.ratePlanList, function (index, value) {
+                    var result = ratePlanDeltaMap[value.ratePlanId];
+                    if (result === undefined) {
+                        value.order = ratePlanDeltas.length + index + 1;
+                        if (hotelObj == '') {
+                            if (index == 0) {
+                                value.delta_price = 0;
+                                value.selected = true;
+                                value.base = true;
+                            }
+                        }
+                        $tbody.append(makeRatePlan(value));
+                    }
+                });
+            });
+        }
+    }
+
+    function getMaxOfArray(numArray) {
+        return Math.max.apply(null, numArray);
+    }
+
+
+    function fetchRateType(selectedRateplans) {
+        var rateplanlist = '';
+        for (var srp = 0; srp < selectedRateplans.length; srp++) {
+            var url = CM_URL + 'api/getRateType';
+            $.post(url, {
+                'productId': cmHotelElement.val(),
+                'ratePlanId': selectedRateplans[srp],
+            }, function (resp) {
+                for (var len = 0; len < resp.length; len++) {
+                    res = resp[len];
+                    var lenghtofOcc = [];
+                    for (var i = 0; i < res.length; i++) {
+                        lenghtofOcc.push(res[i].rates.length);
+                    }
+
+                    var maxOfOcc = getMaxOfArray(lenghtofOcc);
+                    if (maxOfOcc > 0) {
+                        rateplanlist += '<table class="table table-bordered rp-occ-price-table room-occ-row" >' +
+                                '<tbody>' +
+                                '<tr class="theader">' +
+                                '<th rowspan="' + res.length + 1 + '" class="rp-based-rp-name">' + res[0].ratePlanName + '</th>' +
+                                '<th>Room Name</th>' +
+                                '<th colspan="' + maxOfOcc + '">Occupancies</th>';
+
+                        for (var i = 0; i < res.length; i++) {
+                            res[i].rates.sort(function (a, b) {
+                                return a.occ > b.occ;
+                            });
+                            rateplanlist += '<tr class="tcontent">'+
+                                    '<td>' + res[i].name + '</td>';
+                            var singlePrice = res[i].rates[0] != null ? res[i].rates[0].price : res[i].rates[1].price;
+                            for (var j = 0; j < res[i].rates.length; j++) {
+                                var final_price = 0;
+                                if (res[i].rates[j].occ == 1 || res[i].rates[j].occ == 2 || res[i].rates[j].occ == 3 || res[i].rates[j].occ == 4) {
+                                    final_price = res[i].rates[j].price - singlePrice
+                                } else {
+                                    final_price = res[i].rates[j].price
+                                }
+
+                                rateplanlist += '<label style="display:none" class="occ-label">' + res[i].rates[j].occ + '</label>';
+                                rateplanlist += '<td>' + res[i].rates[j].occname + '<br />' +
+                                        '<input name="occu_'+res[0].ratePlanId+'_'+res[i].roomId +'_'+res[i].rates[j].occ+'" size="10" class="rp-room-value occPrice" value="'+(res[i].rates[j].occ)+'" type="hidden" />';
+                                if(j == 0){
+                                    rateplanlist += '<input readonly="readonly" name="price_'+res[0].ratePlanId+'_'+res[i].roomId +'_'+res[i].rates[j].occ+'" size="10" class="rp-room-value occPrice readonly" value="'+(final_price)+'" type="text" /></td>';
+                                } else {
+                                    rateplanlist += '<input name="price_'+res[0].ratePlanId+'_'+res[i].roomId +'_'+res[i].rates[j].occ+'" size="10" class="rp-room-value occPrice" value="'+(final_price)+'" type="text" /></td>';
+                                }
+                            }
+                            rateplanlist += '</tr>';
+                        }
+                        rateplanlist += '</tbody>' +
+                                '</table>';
+                    }
+
+                }
+                $('.rate_types').html(rateplanlist);
+            });
+        }
+    }
+
+    function createHotel() {
+        var rateTypes = [];
+
+        $('.room-occ-row').each(function () {
+            var roomOccRow = {}, rates = [], occRow = $(this);
+            occRow.find('.roomPrices').each(function () {
+                var occRates = {}, rateRow = $(this);
+                occRates = {
+                    "occ": rateRow.find('.occ-label').text(),
+                    "price": rateRow.find('.occPrice').val(),
+                }
+                rates.push(occRates);
+            });
+            roomOccRow = {
+                "roomId": occRow.find('.roomId').attr('id'),
+                "rates": rates
+            }
+            rateTypes.push(roomOccRow);
+        });
+
+        $('#rp_prices').val(JSON.stringify(rateTypes));
+        document.hotelList.submit()
+    }
+
+    function setArcHotels() {
+        var cityId = cityElement.val();
+        $.ajax({
+            url: CM_URL + 'api/fetchArcHotel',
+            type: 'GET',
+            data: {city_id: cityId},
+            dataType: 'json',
+            success: function (data) {
+                var hotelSelect = document.hotelList.cm_id;
+                hotelSelect.length = 0;
+                var option = document.createElement('option');
+                option.value = '';
+                option.text = 'Select Hotel';
+                hotelSelect[hotelSelect.length] = option;
+                var json = data;
+                for (var i = 0; i < json.length; i++) {
+                    var option = document.createElement('option');
+                    option.value = json[i].id;
+                    option.text = json[i].name + ' (' + (json[i].id) + ')';
+                    hotelSelect[hotelSelect.length] = option;
+                }
+
+                var cmId = '{{hotel.cm_product_id}}';
+
+                $('[name="cm_id"] option').each(function () {
+                    if ($(this).attr('value') == cmId) {
+                        $(this).attr('selected', 'selected');
+                    }
+                });
+
+                cmHotelElement.select2();
+
+
+                if (hotelObj != '') {
+                    fetchRooms();
+                }
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+
+
+    function makeElement(elem, id, name, baseName, cbName) {
+        var tr = $('<tr/>', {id: id});
+        console.log(tr);
+        var td1 = $('<td/>', {style: 'position:relative;'});
+        var orderInput = $('<input/>', {
+            onChange: 'rmrpSelection(this);',
+            name: cbName,
+            value: id,
+            'class': 'change-order',
+            type: 'checkbox',
+            checked: elem.selected
+        });
+        td1.append(orderInput);
+
+        var td2 = $('<td/>', {'class': 'ro-roomName'});
+        td2.text(name);
+        if (elem.base) {
+            var label = $('<label/>', {'class': 'roomsBaseLabel'});
+            var caption = $('<span/>');
+            caption.text('Base');
+            var input = $('<input/>', {name: baseName, value: id, type: 'hidden'});
+            label.append(caption).append(input);
+            td2.append(label);
+            td1.append($('<span/>', {'class': 'roomsParda'}));
+        }
+
+        var td3 = $('<td/>');
+        var ordInput = $('<input/>', {
+            name: 'order_' + id,
+            'class': 'order-value',
+            type: 'hidden',
+            value: elem.order
+        });
+        var deltaInput = $('<input/>', {
+            name: 'delta_' + id,
+            size: '5',
+            'class': 'delta-value',
+            'type': 'text',
+            'disabled': !elem.selected,
+            'value': elem.delta_price
+        });
+
+        if(elem.base) {
+            deltaInput.hide();
+        }
+
+        td3.append(ordInput).append(deltaInput);
+
+        tr.append(td1).append(td2).append(td3);
+        return tr;
+    }
+
+    function makeRoom(room) {
+        return makeElement(room, room.roomId, room.roomName, 'baseRoom', 'roomId');
+    }
+
+    function makeRatePlan(rp) {
+        return makeElement(rp, rp.ratePlanId, rp.ratePlanName, 'baseRP', 'rpId');
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Hotels List - Admin - Knights Templar</title>
+    {% include 'admin_head_tag.html' %}
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery.dataTables.min.css">
+
+</head>
+<body>
+
+    <form name="edithotel" action="/admin/editHotel" method="post">
+        <input type="hidden" name="hotel_id" value="">
+    </form>
+    <form name="deletehotel" action="/admin/deleteHotel" method="post">
+        <input type="hidden" name="hotel_id" value="">
+    </form>
+    <div id="wrapper">
+
+        {% include 'admin_header.html' %}
+
+        <div id="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">List of Hotels</h1>
+
+                        <table id="hotelDetail" class="row-border cell-border hover order-column" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Hotel ID</th>
+                                    <th>Hotel Name</th>
+                                    <th>Star Rating</th>
+                                    <th>Address</th>
+                                    <th>Location</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Country</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for hotel in hotels %}
+                                <tr class="odd">
+                                    <td>{{hotel.id}}</td>
+                                    <td>{{hotel.name}}</td>
+                                    <td>{{hotel.star_rating}}</td>
+                                    <td>{{hotel.address}}</td>
+                                    <td>{{hotel.locality}}</td>
+                                    <td>{{hotel.city}}</td>
+                                    <td>{{hotel.state}}</td>
+                                    <td>{{hotel.country}}</td>
+                                    <td style="width:90px;">
+                                    <button class="btn btn-flat-primary btn-xs" type="button" onClick="editHotel('{{hotel.id}}')">Edit</button>
+                                    <button class="btn btn-flat-danger btn-xs" type="button" onClick="deleteHotel('{{hotel.id}}')">Delete</button>
+                                    </td>
+                                </tr>
+                             {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    {% include 'admin_footer.html' %}
+
+    <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
+    
+    <script src="/static/js/vendor/bootstrap-dialog.min.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var table = $('#hotelDetail').DataTable();
+
+        $('#hotelDetail tbody')
+            .on('mouseenter', 'td', function() {
+                var colIdx = table.cell(this).index().column;
+
+                $(table.cells().nodes()).removeClass('highlight');
+                $(table.column(colIdx).nodes()).addClass('highlight');
+            });
+    });
+    function editHotel(hotel_id) {
+        var hotel_id = hotel_id;
+        $('[name="edithotel"] [name="hotel_id"]').val(hotel_id)
+        document.edithotel.submit()
+    }
+    function deleteHotel(hotel_id) {
+        var hotel_id = hotel_id;
+        BootstrapDialog.confirm('Are you sure you want to Delete?', function(result) {
+            if (result) {
+                $('[name="deletehotel"] [name="hotel_id"]').val(hotel_id)
+                document.deletehotel.submit()
+
+            } else {}
+        });
+    }
+    </script>
+
+</body>
+
+</html>

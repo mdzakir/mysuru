@@ -1,0 +1,169 @@
+.input-holder label:first-child {
+    width: 55px;
+}
+
+.input-holder.form-group {
+    margin-bottom: 10px !important;
+}
+
+.input-holder input {
+    width: 50px !important;
+    text-align: center;
+    margin-right: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-inline {
+    margin-top: 15px;
+}
+
+.error-block p {
+    color: #a94442;
+    margin-top: 10px;
+}
+
+.header-desc {
+    position: relative;
+    bottom: 25px;
+    color: #888;
+}
+
+.d-x {
+    color: #888;
+}
+
+.competition-rule .part input.price-value {
+    width: 93px;
+    height: 30px;
+    padding: 0;
+    background: #F8FEFF;
+    border: 0;
+    text-align: center;
+    box-shadow: inset 0 4px 3px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.competition-rule .part input.price-value.pleft{
+    padding: 0 0 0 23px;
+}
+
+.competition-rule .part input.price-value.pright{
+    padding: 0 23px 0 0;
+}
+
+.competition-rule .price-input-wrapper{
+    position: relative;
+}
+
+.competition-rule .price-input-wrapper .os-currency,
+.competition-rule .price-input-wrapper .os-percentage{
+    position: absolute;
+    top: 0px;
+    background: #EDFAFF;
+    width: 23px;
+    height: 30px;
+    padding-top: 4px;
+    color: #1B8FA0;
+    font-size: 18px;
+} 
+
+.competition-rule .price-input-wrapper .os-currency{
+    left: 0;
+    border-right: 1px solid #DCDCDC;
+}
+
+.competition-rule .price-input-wrapper .os-percentage{
+    right: 0;
+    border-left: 1px solid #DCDCDC;
+}
+
+.competition-rule .part .slider-handler-bottom input {
+    width: 35px;
+    left: 0px;
+    position: absolute;
+    background: #F8FEFF;
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.1);
+    padding: 0px 0 0 2px;
+    color: #000;
+    font-size: 14px;
+    line-height: 1.45677;
+    border: 0;
+}
+
+.competition-rule .part .slider-handler-bottom input[readonly]{
+    background: #ccc;
+}
+
+.competition-rule .price-percent-symbol {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    width: 25px;
+    height: 27px;
+    color: #31C3D9;
+    font-size: 19px;
+    border-right: 1px solid;
+    line-height: 1.5;
+    border-left: 1px solid;
+}
+
+.competition-rule .price-percent-discount {
+    font-size: 11px;
+    display: block;
+}
+
+.competition-rule .part-percent-occ-label {
+    position: relative;
+    top: 25px;
+    right: 14px;
+    color: #348390;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: default;
+}
+
+.competition-rule.slider {
+    margin: 30px 0;
+}
+
+select.rule-type {
+    border-radius:0;
+    padding: 8px 10px;
+    border: 1px solid #aaa;
+}
+
+.change-prices-wrapper .table th{
+    background: #eee;
+}
+
+.change-prices-wrapper .table th,
+.change-prices-wrapper .table td{
+    border:0;
+}
+
+.change-prices-wrapper .panel-title{
+    font-size: 13px;
+}
+
+.change-prices-wrapper a:focus, .change-prices-wrapper a:hover{
+    color: #23527c;
+    text-decoration: underline;
+}
+
+.competition-rule .part-percent-symbol {
+    position: absolute;
+    right: 0;
+    height: 22px;
+    padding: 2px 2px 0px 0px;
+}
+
+#create-rule .ge-kt-mapping-msg {
+    margin-left: 50px;
+    font-size: 11px;
+    color: #c31e1e;
+}

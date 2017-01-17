@@ -1,0 +1,41 @@
+
+    <div class="row login-row">
+        <div class="browser-check">
+            <uib-alert ng-if="!chromeBrowser && browserAlert" type="danger" close="closeBrowserCheckAlert()">You are using a browser that is not supported by the application.<br /> Please use the latest version of <strong>Google Chrome</strong> browser.</uib-alert>
+        </div>
+        <div class="col-md-4 col-md-offset-4 login-area">
+            <div class="login-panel">
+                <h2 class="intro-logo tac"><img src="/static/images/kt_logo_white.png" alt="Knights Templar"></h2>
+                <div class="tac">
+
+                    <form role="form" method="post" ng-submit="loginUser()">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control input-lg" placeholder="Email" ng-model="email" type="text" autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control input-lg" placeholder="Password" ng-model="password" type="password" value="">
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <div class="tac">
+                                <a class="fp-link pull-left" tabindex="1" href="{%  url "password_reset_recover" %}">Forgot password?</a>
+                                <button type="submit" class="pull-right btn btn-lg btn-flat-primary login-btn" tabindex="0">Login</button>
+                            </div>
+                            <div style="color: #FF7E7E;margin-top: 10px;display: block;clear: both;float: left;width: 100%;" ng-show="invalidLogin" >Invalid Email or Password</div>
+                        </fieldset>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="login-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copy-right-text">Copyrights &copy; 2016 All Rights Reserved by AxisRooms Travel Distribution Pvt. Ltd.</div>
+                </div>
+            </div>
+        </div>
+    </footer>

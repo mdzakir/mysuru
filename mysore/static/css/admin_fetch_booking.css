@@ -1,0 +1,30 @@
+.req-field.error, .req-field.error .select2-choice{
+    border-color: red;
+}
+
+.req-field.success , .req-field.success .select2-choice{
+    border-color: green;
+}
+
+.fb-progress {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.8;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    text-align: center;
+    padding-top: 110px;
+}
+
+.fbp-heading{
+    font-family: KTAdminUI_Bold, KTAdminUI_Regular, Arial;
+    font-size: 20px;
+    display: block;
+}
+
+.fbp-body {
+    font-size: 20px;
+}

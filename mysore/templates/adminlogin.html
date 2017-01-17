@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://goldeneye.axisrooms.com/login?next=%2F -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>Knights Templar</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin-style.css">
+</head>
+<body cz-shortcut-listen="true">
+    <nav class="navbar navbar-default navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <img class="img-responsive" src="/static/images/kt_logo_white.png" alt="Knights Templar">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container login-container">
+    	<div class="row">
+            <div class="col-md-4 col-md-offset-4">
+    	        <div class="intro-logo">
+    	            <h1 class="tac">Login{{auth}}</h1>
+                    {% if messages %}
+                     <ul class="messages">
+                         {% for message in messages %}
+                         <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                         {% endfor %}
+                     </ul>
+                    {% endif %}
+    	        </div>
+    	        <form class="form" action="/admin/home" method="post" name="login">{% csrf_token %}
+    	            <div class="form-group">
+    	                <input class="form-control" id="email" name="email" placeholder="Email" type="text" value="">
+    	            </div>                
+    	            <div class="form-group">
+    	                <input class="form-control" id="password" name="password" placeholder="Password" type="password" value="">
+    	            </div>
+                    <div class="form-group tac">
+    	               <button class="btn login-btn btn-flat-success" type="submit" id="submit">Login</button>
+                    </div>
+    	        </form>
+            </div>
+	    </div>
+    </div>
+    <!-- jQuery -->
+    <script src="/static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/static/js/locationJS.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/static/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="/static/bower_components/select2/select2.min.js"></script>
+    <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/static/js/vendor/sb-admin-2/js/sb-admin-2.js"></script>
+</body></html>

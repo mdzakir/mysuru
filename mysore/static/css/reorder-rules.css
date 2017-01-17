@@ -1,0 +1,244 @@
+ul#list-rules {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul#list-rules > li{
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  padding: 10px;
+  float: left;
+  width: 100%;
+  height: auto !important;
+}
+
+ul#list-rules > li:hover, ul#list-rules > li.lr-opened  {
+  border: 1px solid #aaa;
+}
+
+.btn-default.btn-on.active{background-color: #5BB75B;color: white;}
+.btn-default.btn-off.active{background-color: #DA4F49;color: white;}
+
+.lr-name{
+  float: left;
+  margin: 0;
+  cursor: pointer;
+  text-transform: capitalize;
+  color: #d35400;
+}
+
+.lr-name:hover{
+  color: #e67e22;
+}
+
+.lr-header, .lr-body{
+  float: left;
+  width: 100%;
+}
+
+.lr-header-summary {
+    margin-left: 15px;
+    float: left;
+}
+
+.lr-body {
+    color: #666;
+    border-top: 1px solid #ddd;
+    padding: 10px 10px 0 10px;
+    margin-top: 10px;
+}
+
+.large-summary {
+    display: block;
+    padding-top: 10px;
+}
+
+.table{
+  margin-bottom: 0;
+}
+
+/*
+.lr-days-of-week > span {
+    border-radius: 2px;
+    border: 1px solid #c0392b;
+    border-bottom-width: 2px;
+    width: 20px;
+    display: inline-block;
+    text-align: center;
+}*/
+
+.lr-days-of-week > span {
+    border-radius: 0px;
+    border-bottom: 1px solid #16a085;
+    border-bottom-width: 1px;
+    display: inline-block;
+    text-align: center;
+    padding: 0 2px;
+    margin-bottom: -1px;
+    width: auto;
+}
+
+.lr-days-of-week > .dow-yes{
+  border-color: #16a085;
+}
+
+.lr-rt-name {
+    cursor: pointer;
+    color: black;
+}
+
+.lr-rt-name i{
+  font-size: 9px;
+}
+
+.eb--wrap{
+  margin-right: 10px;
+}
+
+.blacktext{
+  color: #222;
+}
+
+
+/* Checkbox Buttons */
+
+.status-check > label, .status-check > label {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    float: left;
+    font: 13px Arial,Open Sans,Lato;
+    margin-left: -1px;
+    padding: 3px 6px;
+    position:relative;
+    cursor:pointer;
+}
+
+.status-check label input, .status-check label input {
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+
+.dayOfWeek label.active, .dayOfWeek label.active {
+    color: #fff;
+    background-color: #3498db;
+    border-color: #3498db;
+}
+
+.dayOfWeek > label.ww-ina, .dayOfWeek > label.ww-ina {
+    background-color:#eee;
+    text-decoration:line-through;
+}
+
+.dayOfWeek {
+    display: inline;
+}
+
+.rule-description {
+  margin-bottom: 5px;
+}
+
+.no-rules-msg{
+  font: 25px montserrat, Arial;
+}
+
+.svgIcon {
+    height: 16px;
+    width: 16px;
+}
+
+.itemRow-dragIcon {
+    float: left;
+    margin-right: 8px;
+}
+
+.drag-and-drop {
+    background: url(/static/images/drag-and-drop.png) no-repeat scroll 0 0;
+    height: 20px;
+    width: 5px;
+    display: inline-block;
+    margin-right: 1px;
+    float: left;
+}
+
+.drag-and-drop + .drag-and-drop{
+  margin-right: 8px;
+}
+
+.rooms-slab{
+  margin: 0px 0 15px 0;
+}
+
+.myHandle{
+  cursor: move;
+}
+
+.rearrange-rules {
+    background: #000;
+    color: #fff;
+    padding: 5px 12px;
+    /*pointer-events: none;*/
+    position: absolute;
+    width: 100%;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -ms-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    left: 10px;
+    width: auto;
+    border-radius: 5px;
+    border: 1px solid #000;
+    box-shadow: 0 0 10px #bbb;
+    top: -38px;
+    z-index: 11;
+}
+
+.rearrange-rules:before {
+    bottom: 0px;
+    content: " ";
+    display: block;
+    height: 10px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.rearrange-rules:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid #000 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    left: 10%;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+}
+
+.rearrange-rules .close-kpi-overlay {
+    cursor: pointer;
+    color: #31c3d9;
+}
+
+.info-for-rules{
+    position: absolute;
+    left: 15px;
+    top: 45px;
+    height: 100px;
+}

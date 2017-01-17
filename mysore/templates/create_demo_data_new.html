@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Supplier Details Knights Templar</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery-ui-1.10.3.custom-bs.css">
+    <link href="/static/bower_components/select2/select2.css" rel="stylesheet">
+    {% include 'admin_head_tag.html' %}
+
+    <!-- Custom CSS -->
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        {% include 'admin_header.html' %}
+        <div id="page-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Create Demo Data</h1>
+                        <form class="form-horizontal" id="hotelDetail" 
+                            action="/admin/addRandomData" name="create_random_data" method="post">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Hotel </label>
+                                <div class="col-sm-6">
+                                    <select name="hotelCapacity" class="form-control" type="text" required>
+                                        {% for hotel in hotels %}
+                                        <option value=",{{hotel.hotel_capacity}},{{hotel.name}},{{hotel.id}}">
+                                            {{hotel.name}}
+                                        </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Format :</label>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="format" value="RM" checked> RM<br>
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="format" value="CM"> CM<br>
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="format" value="json"> JSON<br>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Property Type :</label>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="propType" value="business" checked> Business<br>
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="propType" value="leisure"> Leisure<br>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Average Room Rate :</label>
+                                <div class="col-sm-2">
+                                    <input name="arr" class="form-control" type="text" value="5000" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Date Range :</label>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="year" value="previous"> Last 2 years (2015-2016)<br>
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input type="radio" name="year" value="current" checked> Current year<br>
+                                    </label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label class="fwn">
+                                        <input onclick="customizedDateRange(this);" type="radio" name="year" value="customized"> Custom Date Range<br>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group customized" id="dateRange" style="display: none;">
+                                <label class="control-label col-sm-3">Start Date</label>
+                                <div class="col-sm-3">
+                                    <input name="start" type="text" class="col-sm-3 form-control datepicker" readonly>
+                                </div>
+                                <label class="control-label col-sm-1">End Date</label>
+                                <div class="col-sm-3">
+                                    <input name="end" type="text" class="col-sm-3 form-control datepicker" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-3 tac">
+                                    <button type="submit" class="btn btn-flat-success"><i class="fa fa-download"></i> Download Demo Data</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    
+    <!-- jQuery -->
+    {% include 'admin_footer.html' %}
+    <script src="/static/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+
+        function customizedDateRange(ele){
+            if($(ele).is(':checked')){
+                $(".customized").show();
+            }else{
+                $(".customized").hide();
+            }
+        }
+        $('.datepicker').datepicker({
+            dateFormat:"dd/mm/yy"
+        });
+
+
+</script>
+
+
+</body>
+
+
+</html>

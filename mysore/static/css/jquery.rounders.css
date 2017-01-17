@@ -1,0 +1,133 @@
+
+/* generic styles */
+    .progress {
+        position:relative;
+		-moz-box-sizing   : border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing        : border-box;
+        background:#660088;
+        overflow:hidden;
+    }
+    .progress .cover {
+        position:absolute;
+        top:10%;
+        left:10%;
+        width:80%;
+        height:80%;
+		-moz-box-sizing   : border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing        : border-box;
+		text-align:center;
+		color:#FFF;
+		font-weight:bold;
+    }
+
+    .progress .controls {
+        position:absolute;
+        width:100%;
+        height:50%;
+        top:25%;
+        left:0;
+        text-align:center;
+    }
+    .progress .controls input[type="text"]{
+        width:40px;
+    }
+
+/* circular or disc progress bar */
+    .progress.circle {
+        display:inline-block;
+        width:200px;
+        height:200px;
+		-webkit-border-radius: 100px;
+		-moz-border-radius   : 100px;
+		border-radius        : 100px;
+    }
+    .progress.circle .cover { /* make the circle into a disc */
+		background:#660088;
+		-webkit-border-radius: 100px;
+		-moz-border-radius   : 100px;
+		border-radius        : 100px;
+    }
+    .progress.circle.disc .cover {
+        background:none;
+    }
+    .progress .obscure {
+        position:absolute;
+        width:50%;
+        height:100%;
+		overflow:hidden;
+		-moz-box-sizing   : border-box; 
+		-webkit-box-sizing: border-box;
+		box-sizing        : border-box;
+        opacity:0.7;
+    }
+    .progress .obscure div {
+        position:absolute;
+        width:200%;
+        height:200%;
+        background:#CCC;
+    }
+
+    .progress .obscure.right {
+        top:0;
+        left:50%;
+    }
+    .progress .obscure.right div {
+        top:0;
+        right:100%;
+        transform-origin: 100% 25%;
+        -ms-transform-origin: 100% 25%;
+        -moz-transform-origin: 100% 25%;
+        -o-transform-origin: 100% 25%;
+        -webkit-transform-origin: 100% 25%;
+    }
+    .progress .obscure.left {
+        top:0;
+        left:0;
+    }
+    .progress .obscure.left div {
+        top:0;
+        left:100%;
+        transform-origin: 0% 25%;
+        -ms-transform-origin: 0% 25%;
+        -moz-transform-origin: 0% 25%;
+        -o-transform-origin: 0% 25%;
+        -webkit-transform-origin: 0% 25%;
+    }
+
+/* bar progress bar */
+    .progress.bar {
+        display:block;
+        width:auto;
+        height:auto;
+        margin-bottom:0.5em;
+    }
+    .progress.bar.hbar .barprogress {
+        height:2em;
+        width:0;
+        background:#CCC;
+        opacity:0.7;
+    }
+    .progress.bar.hbar .cover {
+        text-align:right;
+    }
+    .progress.bar.vbar {
+        display:inline-block;
+        width:50px;
+        height:160px;
+    }
+    .progress.bar.vbar .barprogress {
+        position:absolute;
+        bottom:0;
+        left:0;
+        height:0;
+        width:100%;
+        background:#CCC;
+        opacity:0.7;
+    }
+
+
+
+
+

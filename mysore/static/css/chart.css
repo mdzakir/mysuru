@@ -1,0 +1,416 @@
+.chart-tooltip {
+    position: absolute;
+    height: 45px;
+    padding: 7px;
+    font-size: 12px;
+    background-color: #31C3D9;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #888;
+    shape-rendering: crispEdges;
+}
+
+.axis .tick text {
+    fill: #888;
+    font-size: 10px;
+}
+
+.axis.weekend .tick line,
+.axis.weekend path {
+    stroke: transparent;
+}
+
+.legends {
+    color: #888;
+    margin-top: -37px;
+    text-align: center;
+    display: inline-block;
+}
+
+.legends span {
+    margin-right: 10px;
+    cursor: default;
+}
+
+span.box {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+}
+
+.legends .segments,
+.legends .channels {
+    display: inline-block;
+}
+
+.legends .channels {
+    margin-left: 50px;
+}
+
+.hotelTooltip,
+.curveTooltip {
+    display: none;
+    background: #fff;
+    position: absolute;
+    text-align: left;
+    max-width: 240px;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.hotelTooltip h3,
+.curveTooltip h3 {
+    background: #2196F3;
+    padding: 10px;
+    margin: 0;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.tableContainer {
+    padding: 5px 15px;
+}
+
+.hotelTooltip ul {
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.tooltipTable {
+    width: 100%;
+}
+
+.tooltipTable tr td {
+    border-bottom: 1px solid #444;
+    padding: 5px 0;
+    color: #7f8c8d;
+}
+
+.tooltipTable tr td:first-child {
+    padding-right: 10px;
+    border-right: 1px solid #444;
+}
+
+.tooltipTable tr td:last-child {
+    padding-left: 10px;
+    text-align: right;
+}
+
+.tooltipTable tr:last-child td {
+    border-bottom: none;
+}
+
+.curveTooltip {
+    z-index: 9;
+}
+
+.curveTooltip .tooltipTable tr:last-child td {
+    font-weight: bold;
+}
+
+.powered {
+    text-align: right;
+    margin-top: -20px;
+}
+
+.alerts {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    width: 16%;
+    z-index: 1;
+    color: #757575;
+}
+
+.condition {
+    padding: 10px 5%;
+    background-color: #eee;
+    margin-bottom: 10px;
+}
+
+.condition .sign,
+.condition .message {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.condition .sign {
+    width: 20%;
+}
+
+.condition .message {
+    width: 75%;
+    font-size: 12px;
+    font-family: sans-serif;
+    padding: 1%;
+}
+
+.condition.worse i {
+    color: #d62728;
+}
+
+.condition.better i {
+    color: #2ca02c;
+}
+
+.condition .percentage {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.condition .bookings {
+    font-size: 14px;
+}
+
+.condition .percentage,
+.condition .bookings {
+    text-align: right;
+    display: block;
+    padding-right: 5px;
+}
+
+.condition .fa {
+    font-size: 58px;
+}
+
+.goback {
+    height: 25px;
+}
+
+.goback i {
+    text-align: left;
+}
+
+/*.home-tabs {
+    width: 85%;
+}*/
+
+.chartContainer {
+    height: 300px !important;
+}
+
+.c3-tooltip .name {
+    text-align: left;
+    vertical-align: top;
+}
+.c3-tooltip .value {
+    font-family: monospace;
+}
+
+.c3-tooltip .absolute,
+.c3-tooltip .variance-text {
+    display: inline-block;
+    width: auto;
+    margin: 0 auto;
+}
+
+.c3-tooltip .variance-text {
+    font-weight: bold;
+    font-size: 10px;
+    display: block;
+}
+
+.no-data {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    font-size: 34px;
+    color: #ddd;
+}
+
+.settings{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.settings ul li {
+    cursor: pointer;
+    width: 100%;
+    padding: 5px 10px 5px 15px;
+    font-size: 13px;
+}
+
+.settings ul li:hover {
+    background: #eee;
+    color: #000;
+}
+
+.settings-icon {
+    position: absolute;
+    top: -35px;
+    font-size: 18px;
+    padding: 6px;
+    color: #666;
+    cursor: pointer;
+}
+
+.settings-icon.active {
+    color: #31C3D9;
+}
+
+.settingsDropdown {
+    position: absolute;
+    width: 180px;
+    border-radius: 0;
+    padding-top: 0;
+}
+
+
+.popover.bottom>.arrow {
+    margin-left: 32px;
+}
+
+.settingsDropdown .popover-title {
+    font-family: 'Montserrat';
+    color: #888;
+    pointer-events: none;
+}
+
+.settingsDropdown .arrow {
+    left: 65% !important;
+}
+
+.settingsDropdown .list-group {
+    margin-bottom: 0;
+    width: 175px;
+}
+
+.settingsDropdown .list-group div {
+    position: relative;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+.settingsDropdown i{
+    opacity: 0;
+    color: #31C3D9;
+    margin-right: 5px;
+}
+
+.settingsDropdown i.current {
+    opacity: 1;
+}
+
+.settingsDropdown .list-group-item {
+    border: 0;
+    cursor: pointer;
+}
+
+.settingsDropdown .form-control {
+    width: 50px;
+    height: 30px;
+    padding: 6px !important;
+    display: inline-block;
+    text-align: center;
+}
+
+.settingsDropdown .apply {
+    margin: 5px 0 8px;
+    text-align: center;
+}
+
+.add-chart {
+    float: right;
+    margin-right: 75px;
+}
+
+.add-chart > a {
+    padding: 3.4px;
+    position: absolute;
+    font-size: 15px;
+    background-color: #fff !important;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.add-chart > a:hover {
+    box-shadow: 0px 0px 5px;
+}
+
+.add-chart ul {
+    margin-top: 34px !important;
+    right: -75px;
+    left: auto;
+}
+
+.add-chart ul li {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #777;
+    white-space: nowrap;
+}
+
+.add-chart ul li:hover {
+    background-color: #f5f5f5;
+}
+
+.add-chart input[type="checkbox"][disabled]:before {
+    content: '';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    position: relative;
+    left: -1px;
+    background-color: #e0ebfc;
+    border-radius: 3px;
+}
+
+ input.require[type="checkbox"][disabled]:before {
+     content: "\f00c" !important;
+     font-family: 'FontAwesome';
+}
+
+.add-chart .max {
+    background: #F8F6D1;
+    margin-bottom: -5px;
+    font-size: 10px;
+    padding: 5px;
+    border-top: 1px solid #E7E5BF;
+    text-align: center;
+    color: #833900;
+}
+
+.walk-through {
+    background: #000;
+    color: #e8edf2;
+    padding: 5px 12px;
+    position: absolute;
+    transform: translateY(10px);
+    right: 0;
+    width: auto;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 10px #bbb;
+    top: 34px;
+    z-index: 11;
+}
+
+.walk-through:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-bottom: solid #000 10px;
+    top: -7px;
+    content: " ";
+    height: 0;
+    right: 28%;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+}
+
+.c3-axis > text,
+.c3-legend-item > text {
+    font-family: 'Montserrat', sans-serif;
+    fill: #666;
+    font-size: 11px;
+}

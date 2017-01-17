@@ -1,0 +1,223 @@
+/* import hotel data */
+
+.template-info {
+    border: 1px solid #bdc3c7;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.ti-icon i{
+    font-size: 50px;
+    color: #7f8c8d;
+    float: left;
+}
+
+.ti-icon span {
+    font-size: 20px;
+    line-height: 50px;
+    display: inline-block;
+    color: #d35400;
+    margin-left: 10px;
+    padding: 0 0 0 0;
+    text-transform: capitalize;
+}
+
+.ihd-main-wrapper{
+    margin-bottom: 20px;
+}
+
+.ihd-wrappers{
+    border-bottom-width: 2px;
+    padding: 20px;
+}
+
+.ihd-heading{
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #d35400;
+}
+
+.ti-content{
+    margin-top: 20px;
+}
+
+.ti-content ul{
+    padding-left: 52px;
+}
+
+.ti-content ul li{
+    margin-bottom: 10px;
+}
+
+.upload-file-field{
+    margin-top: 30px;
+}
+
+.upload-file-field input{
+	height: auto;
+}
+
+.p--d-heading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.import-processed-alert, .ihd-summary-wrapper, .import-error-alert{
+    margin-top: 20px;
+    display: none;
+}
+
+.ihd-summary-wrapper .ctrl-btns{
+    margin-bottom: 10px;
+}
+
+.import-processed-alert .close,
+.import-error-alert .close{
+    color: #222;
+}
+
+.nav-justified>li.s-total-records-c>a,
+.nav-justified>li.s-total-records-c.active>a{
+    color: #2c3e50;
+}
+
+.nav-justified>li.s-passed-records-c>a,
+.nav-justified>li.s-passed-records-c.active>a{
+    color: #3c763d;
+}
+
+.nav-justified>li.s-failed-records-c>a,
+.nav-justified>li.s-failed-records-c.active>a{
+    color: #c0392b;
+}
+
+.p--d-crown{
+    font-size: 20px;
+    color: #1FB722;
+}
+
+.summary-tab{
+	margin-bottom:15px;
+}
+
+.summary-tab .table{
+    margin: 0; 
+}
+
+.summary-tab .tab-pane{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-top: 0;
+}
+
+.btn-lg{
+
+}
+
+/* processing--display */
+
+.processing--display{
+    display: none;
+}
+
+.imp-sum-box {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+.imp-sum-box .ips-label{
+    font-size: 18px;
+    display: block;
+}
+
+.imp-sum-box .ips-count {
+    font-size: 40px;
+    display: block;
+    font-weight: bold;
+    font-family: courier new;
+}
+
+.ips-count.dup-count {
+    color: #9E9E9E;
+}
+
+.ips-count.failed-count {
+    color: #ff0000;
+}
+
+.ips-count.pass-count {
+    color: #4CAF50;
+}
+
+.ips-count.modify-count {
+    color: #1B1BFF;
+}
+
+.mt20{
+    margin-top: 20px;
+}
+.box {
+    margin-top: 70px;
+}
+
+.upload-file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-file-input + label {
+    font-size: 20px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+
+.upload-file-input:focus + label,
+.upload-file-input.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.upload-file-input + label * {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.upload-file-input + label svg {
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-right: 4px;
+    width: 100%;
+    height: 100%;
+    fill: #f1e5e6;
+}
+
+.upload-file-input:focus + label,
+.upload-file-input.has-focus + label {
+    color: #209aab;
+}
+
+.upload-file-input + label figure {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #31c3d9;
+    display: block;
+    padding: 20px;
+    margin: 0 auto 10px;
+}
+
+.upload-file-input:focus + label figure,
+.upload-file-input.has-focus + label figure,
+.upload-file-input + label:hover figure {
+    background-color: #209aab;
+}

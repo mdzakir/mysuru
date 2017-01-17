@@ -1,0 +1,130 @@
+/* All the default sidebar styles */
+/* toggle button settings */
+/* Note: this disables navbar-toggle class hide function. set visibility with the boostrap visible/hidden classes */
+.navbar.navbar-static .navbar-header {
+  float: left;
+}
+
+.navbar .navbar-toggle.toggle-left {
+  float: left;
+  margin-left: 15px;
+}
+
+.navbar .navbar-toggle.toggle-right {
+  float: right;
+  margin-right: 15px;
+}
+
+.navbar .navbar-toggle.toggle-sidebar, [data-toggle="sidebar"] {
+  display: block;
+}
+
+/* sidebar settings */
+.sidebar {
+  position: fixed;
+  display: block;
+  top: 0px;
+  bottom:0;
+  z-index: 1009;
+  min-height: 100%;
+  max-height: none;
+  overflow: auto;
+}
+
+.menusidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    width: 50px;
+    height: 100%;
+    /*margin-left: -250px;*/
+    background: #32262c;
+
+  }
+  .calendersidebar-wrapper{
+    width:250px;
+    margin-left:50px;
+  }
+.calender-container {
+    background: #ecf0f1;
+    position: absolute;
+    width: 250px;
+    min-height: 93.8%;
+    border-right: 1px solid #ddd;
+}
+
+.custom-calendar-wrapper {
+    margin-top: 20px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 80px;
+}
+.sidebar-nav {
+    position: absolute;
+    top: 25px;
+    width: 50px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 3px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    padding-right: 5px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+
+.select-metrics {
+    margin-top: 25px;
+}
+
+.select-metrics .btn-group{
+}
+
+.select-metrics .btn-group .btn{
+  border-radius: 0;
+}
+
+.sm-cog {
+    background-color: #000;
+    padding: 8px 10px 10px 10px;
+    margin-right: -4px;
+}
+
+.sm-cog i{
+  color: #fff;
+}

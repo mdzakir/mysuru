@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create User - Admin - Knights Templar</title>
+    {% include 'admin_head_tag.html' %}
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+
+        {% include 'admin_header.html' %}
+
+        <div id="page-wrapper">
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        {% if message %}
+                        <div class="alert alert-success">{{message}}</div>
+                        {% endif %}
+
+                        <h1 class="page-header">
+                            {% if user %}
+                            Edit User : <span style="color:#999">{{user.first_name}} {{user.last_name}}</span>
+                            {% else %}
+                            Create User
+                            {% endif %} </h1>
+                    
+                        <form class="form-horizontal" action="/admin/addUser" name="create_user_form" method="post">{% csrf_token %}
+                            <input name="id" class="form-control" type="hidden" value="{{user.id}}">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">First Name</label>
+                                    <div class="col-sm-6">
+                                        <input placeholder="First Name" name="first_name" class="form-control" type="text" value="{{user.first_name}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Last Name</label>
+                                    <div class="col-sm-6">
+                                        <input placeholder="Last Name" name="last_name" class="form-control" type="text" value="{{user.last_name}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Phone</label>
+                                    <div class="col-sm-6">
+                                        <input placeholder="Phone" name="phone" class="form-control" type="text" value="{{user.phone}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Email</label>
+                                    <div class="col-sm-6">
+                                        <input placeholder="Email" name="email" class="form-control" type="email" value="{{user.email}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">Password</label>
+                                    <div class="col-sm-6">
+                                        <input placeholder="Password" name="password" class="form-control" type="password" value="{{user.password}}">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-6 col-sm-offset-3 tac">
+                                        <a href="/admin/home" class="btn btn-flat-danger">Cancel</a>
+                                        <button type="submit" class="btn btn-flat-success"><i class="fa fa-save"></i> Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+
+    {% include 'admin_footer.html' %}
+    
+    <script src="/static/js/locationJS.js"></script>
+    <script src="/static/bower_components/select2/select2.min.js"></script>
+    <script src="/static/js/vendor/jquery.dataTables.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+</body>
+
+</html>

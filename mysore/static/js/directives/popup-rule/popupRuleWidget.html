@@ -1,0 +1,84 @@
+
+  <div class="row por-head">
+      <div class="col-md-12">
+          <span class="rule-name" onClick="toggleIt(this);" ng-class="{'rule-in-popup-open':rule.parent}">
+          <i class="fa fa-chevron-right"></i> {[{ rule.name }]}</span>
+          <div class="popup-rule-ctrl">
+              <button class="btn btn-flat-default btn-xs edit-btn" type="button" title="Edit rule" ng-click="editRule(rule, rule.type)"><i class="fa fa-pencil"></i></button>
+              <button style="display: none;" class="btn btn-flat-danger btn-xs edit-btn" type="button" title="Delete rule" ng-click="deleteRule(rule)"><i class="fa fa-times" ></i> Delete</button>
+          </div><br />
+          <span class="validity">
+              <span class="popup-label">Validity : </span>
+              <span ng-show="{[{rule.rule_type === 'multiple'}]}">
+                  D-{[{rule.start_time}]} to D-{[{rule.end_time}]}
+              </span>
+
+              <span ng-show="{[{rule.rule_type === 'single'}]}" >
+                  D-{[{rule.start_time}]}
+              </span>
+              <span ng-show="{[{rule.type == 'promo'}]}" >(</span>
+                  <span ng-show="{[{rule.rule_type === 'multiple'}]}">{[{ rule.date_range.start.$date | date:'MMM d, y' }]} - </span>
+                  <span ng-show="{[{rule.type === 'occupancy' || rule.type === 'competition' }]}">{[{ rule.date_range.start.$date | date:'MMM d, y' }]} - </span>
+              {[{ rule.date_range.end.$date | date:'MMM d, y' }]}
+              <span ng-show="{[{rule.type == 'promo'}]}" >)</span>
+          </span>
+          <span class="applied-on">
+              <span ng-show="{[{rule.type == 'occupancy' || rule.type == 'competition'}]}" class="popup-dow"><span class="popup-label">Applied on : </span>
+                  <span class="lr-days-of-week">
+                      <span ng-show="{[{rule.days[0]}]}" class="dow">Mo</span>
+                      <span ng-show="{[{rule.days[1]}]}" class="dow">Tu</span>
+                      <span ng-show="{[{rule.days[2]}]}" class="dow">We</span>
+                      <span ng-show="{[{rule.days[3]}]}" class="dow">Th</span>
+                      <span ng-show="{[{rule.days[4]}]}" class="dow">Fr</span>
+                      <span ng-show="{[{rule.days[5]}]}" class="dow">Sa</span>
+                      <span ng-show="{[{rule.days[6]}]}" class="dow">Su</span>
+                  </span>
+              </span>
+          </span><br />
+          <span style="margin-left:15px;" ng-if="rule.isHoliday">
+            <span class="popup-label">Holidays covered :</span> {[{rule.holidayNames}]}
+          </span>
+
+      </div>
+  </div>
+  <div class="row por-body" ng-class="{'showRuleBody':rule.parent, 'hideRuleBody':!rule.parent}">
+
+      <div class="col-md-4 applied-rooms" ng-show="{[{rule.type == 'promo'}]}">
+          <p><strong>Applied Rooms</strong></p>
+          <div ng-repeat="room in rule.rooms">
+              <i class="fa fa-check"></i> {[{room.name}]} - <span ng-bind-html="currency_class"></span> {[{rule.room_price[room.order]}]}
+          </div>
+      </div>
+      <div class="col-md-3 selected-competitors" ng-show="{[{rule.type == 'competition'}]}">
+          <p><strong>Competitors</strong></p>
+          <div ng-repeat="competitor in rule.competitor_names">
+              <i class="fa fa-check"></i> {[{competitor}]}
+          </div>
+      </div>
+      <div class="col-md-2 selected-otas" ng-show="{[{rule.type == 'competition'}]}">
+          <p><strong>OTAs</strong></p>
+          <div ng-repeat="ota in rule.otas">
+              <i class="fa fa-check"></i> {[{ota}]}
+          </div>
+      </div>
+
+      <div class="col-md-12">
+          <div class="occ-slab-wrapper">
+              <span class="slab-occ-0">0%</span>
+              <div class="occ-slab-item" ng-repeat="slab in rule.occupancyBar" style="width:{[{slab.offset}]}%">
+                  <div class="price-n-rooms">
+                      <span class="popup-slab-price">
+                        <span ng-bind-html="currency_class" ng-show="rule.type == 'occupancy'"></span>
+                        <span ng-bind-html="currency_class" ng-show="slab.priceType == 'Fixed'"></span>
+                        {[{slab.price | number}]}<span ng-show="slab.priceType == 'Percentage'">%</span>
+                      </span>
+                      <span ng-show="rule.type == 'promo'" class="discount-txt">discount</span>
+                      <span ng-show="rule.type == 'competition'" class="variance-txt">variance</span>
+                      <span class="noOfRooms">{[{slab.noOfRooms}]} Rooms</span>
+                  </div>
+                  <span class="slab-sep" ng-hide="$index == 0"></span>
+                  <span class="slab-occ">{[{slab.occupancy}]}%</span>
+              </div>
+          </div>
+      </div>
+  </div>

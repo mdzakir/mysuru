@@ -1,0 +1,1672 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"rule",
+				"rule_type"
+			],
+			[
+				"compei",
+				"competition"
+			],
+			[
+				"delt",
+				"delta_price"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"date",
+				"dateData	price.optimizer.js"
+			],
+			[
+				"room",
+				"roomType"
+			],
+			[
+				"room_base",
+				"room_base_price"
+			],
+			[
+				"di",
+				"div	Tag"
+			],
+			[
+				"pa",
+				"padding-right"
+			],
+			[
+				"sam",
+				"small	Tag"
+			],
+			[
+				"i",
+				"italic"
+			],
+			[
+				"padd",
+				"padding-right"
+			],
+			[
+				"cell",
+				"cellspacing	Attr"
+			],
+			[
+				"ngD",
+				"ngDialog"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"applie",
+				"applied_rule_type_list"
+			],
+			[
+				"fal",
+				"false	price.optimizer.js"
+			],
+			[
+				"occ",
+				"occ_key	price.optimizer.js"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"mar",
+				"margin-left"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"tex",
+				"text-transform"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"day",
+				"dayinFormatx	price.optimizer.js"
+			],
+			[
+				"ng-bind",
+				"ng-bind	AngularJS"
+			],
+			[
+				"isCrea",
+				"isCreateRule"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"Tr",
+				"tr"
+			],
+			[
+				"t",
+				"table	Tag"
+			],
+			[
+				"dateSele",
+				"dateSelected	price.optimizer.js"
+			],
+			[
+				"allD",
+				"allDates	price.optimizer.js"
+			],
+			[
+				"new",
+				"newObj	price.optimizer.js"
+			],
+			[
+				"overR",
+				"overRiddenPrice	price.optimizer.js"
+			],
+			[
+				"rate",
+				"rate_plan	price.optimizer.js"
+			],
+			[
+				"map",
+				"map(fn)	stringmap.js"
+			],
+			[
+				"th",
+				"th	Tag"
+			],
+			[
+				"line_cha",
+				"line_chart_options	monthly-report.html"
+			],
+			[
+				"then",
+				"then(callback)	sidenav.js"
+			],
+			[
+				"rp",
+				"rpId"
+			],
+			[
+				"roomI",
+				"roomId"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"marin",
+				"margin"
+			],
+			[
+				"getHot",
+				"getHotelId()	edit_occupancy_pricing_rule_spec.js"
+			],
+			[
+				"toggleC",
+				"toggleClass(toggleClass)	panel.js"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"REVE",
+				"Revenue(metric)	month_strip.js"
+			],
+			[
+				"toS",
+				"toString()	PluginError.js"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"city",
+				"cityElement"
+			],
+			[
+				"remove",
+				"angular: removeAttr"
+			],
+			[
+				"baseR",
+				"baseRoom"
+			],
+			[
+				"rmrp",
+				"rmrpValuesFlag"
+			],
+			[
+				"c",
+				"class	Attr"
+			],
+			[
+				"select",
+				"select2"
+			],
+			[
+				"opt",
+				"option	Tag"
+			],
+			[
+				"roSpli",
+				"roSplit2"
+			],
+			[
+				"first",
+				"first-tab-btn"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"ngre",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"join",
+				"join"
+			],
+			[
+				"KPI",
+				"kpiList"
+			],
+			[
+				"dateRange",
+				"date_range"
+			],
+			[
+				"KT",
+				"KTAdminUI_Regular"
+			],
+			[
+				"K",
+				"KTAdminUI_Regular"
+			],
+			[
+				"reven",
+				"revenue"
+			],
+			[
+				"end",
+				"endDate"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"border-co",
+				"border-color"
+			],
+			[
+				"thi",
+				"thisRule"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"hotel",
+				"hotelId"
+			],
+			[
+				"start",
+				"startValidity"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"border-l",
+				"border-left-width"
+			],
+			[
+				"popup",
+				"popupDataSupply"
+			],
+			[
+				"ng-mou",
+				"ng-mouseenter	AngularJS"
+			],
+			[
+				"kpi",
+				"kpiList"
+			],
+			[
+				"selec",
+				"selected_kpi"
+			],
+			[
+				"for",
+				"angular.forEach"
+			],
+			[
+				"pre",
+				"pre-wrap"
+			],
+			[
+				"cou",
+				"countKPIs"
+			],
+			[
+				"kpiC",
+				"kpiChecked"
+			],
+			[
+				"Occ",
+				"occupancy"
+			],
+			[
+				"hoe",
+				"hotelId"
+			],
+			[
+				"htt",
+				"angular: $httpBackend"
+			],
+			[
+				"con",
+				"controller	Angular.js"
+			],
+			[
+				"crete",
+				"createPricingRule"
+			],
+			[
+				"mo",
+				"month"
+			],
+			[
+				"rooms",
+				"roomsService"
+			],
+			[
+				"round",
+				"roundToK"
+			],
+			[
+				"price",
+				"prices"
+			],
+			[
+				"hote",
+				"hotelId"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"ng-f",
+				"ng-if	AngularJS"
+			],
+			[
+				"Recom",
+				"recommended"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"paddin",
+				"padding-right"
+			],
+			[
+				"s",
+				"span	Tag"
+			],
+			[
+				"Rev",
+				"RevPAR"
+			],
+			[
+				"chek",
+				"ng-checked	AngularJS"
+			],
+			[
+				"wk",
+				"wkIndex"
+			],
+			[
+				"range",
+				"rangeOfDatesArray"
+			],
+			[
+				"album",
+				"albumNameArray"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS"
+			],
+			[
+				"ng-re",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"rules",
+				"rulesEmpty"
+			],
+			[
+				"st",
+				"STD"
+			],
+			[
+				"ng-r",
+				"ng-repeat	AngularJS"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
+				"to",
+				"tbody	Tag"
+			],
+			[
+				"lr",
+				"lr-body"
+			],
+			[
+				"ov",
+				"overTDIndex"
+			],
+			[
+				"po",
+				"po-table"
+			],
+			[
+				"this",
+				"thismonth"
+			],
+			[
+				"conin",
+				"Continue"
+			],
+			[
+				"mari",
+				"margin-top"
+			],
+			[
+				"modify",
+				"modify_count"
+			],
+			[
+				"pass",
+				"pass_count"
+			],
+			[
+				"faile",
+				"failed_count"
+			],
+			[
+				"moi",
+				"modify-count"
+			],
+			[
+				"failed",
+				"failed-count"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/zakir/prototyping/popups/popup.html",
+			"settings":
+			{
+				"buffer_size": 275,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 33.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"diff",
+				"Set Syntax: Diff"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"sublimelin",
+				"SublimeLinter: Disable Linter"
+			],
+			[
+				"lint mar",
+				"SublimeLinter: Choose Mark Style"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"repl:",
+				"SublimeREPL: Matlab"
+			],
+			[
+				"repl",
+				"SublimeREPL: Python"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"todo",
+				"TodoReview: Project Files"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"git ",
+				"Git: Blame"
+			],
+			[
+				"git bl",
+				"Git: Blame"
+			],
+			[
+				"list packages",
+				"Package Control: List Packages"
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"install package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 233.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/zakir/prototyping/popups"
+	],
+	"file_history":
+	[
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/reorder_pricing_rules.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/view_pricing_rules.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/view-rules.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/view.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/services.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/reorder_competition_rules.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/reorder_promotion_rules.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/create-promotion.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/create-promotion.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/create-competition.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/create-competition.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/price-optimizer.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/optimizer/templates/price-optimizer.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/create_competition_pricing_rule.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/create-rule.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/base/private.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/private.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/price.optimizer.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/app.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/login.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/create_promotion_pricing_rule.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/style.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/reorder-competition.html",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/hotel_service.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/settings/base.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/create-occupancy.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/reorder-occupancy.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/pricing-rules/reorder-promotion.html",
+		"/home/zakir/projectnew/knights-templar/webapp/imports/models/base.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/home.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/download-reports.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/report.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/create_pricing_rule.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/monthly-report.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/json-docs/style.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/import-bookings.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/aggregate_kpi_table.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/ota_wise_kpi_table.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/ota_wise_graphs.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/page_footer.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/page_header.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/solds_heading.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/bower_components/ng-dialog/js/ngDialog.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/bower_components/ng-dialog/README.md",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/reports/ota_wise_ranking.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/base/styles.src.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/login.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/admin-style.css",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/price_rules.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/hotel.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/hotel.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/occupancy_pricing.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/pickup.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/price-optimizer.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/month_strip.js",
+		"/tmp/fz3temp-1/custom.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/base/scripts.html",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/reports.py",
+		"/home/zakir/projectnew/knights-templar/webapp/admin/views/reports.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/optimizer.js",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/override_price.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/temp_json_files/sep_arr.json",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/temp_json_files/sep_revenue.json",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/temp_json_files/sep_occ_otawise.json",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/temp_json_files/sep_rooms.json",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/temp_json_files/sep_occ.json",
+		"/home/zakir/prototyping/kt-reporting/Monthly Performance Report (week wise)/index.html",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/optimize.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/celery_task.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/views/channel_manager.py",
+		"/home/zakir/projectnew/knights-templar/webapp/admin/views/user.py",
+		"/home/zakir/projectnew/SIDE-PANEL.txt",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/views.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/occupancy_count.py",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/utils.py",
+		"/home/zakir/projectnew/knights-templar/webapp/users/utils.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/urls.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/base/scripts.src.html",
+		"/home/zakir/prototyping/revamp_optimizer/step2-single-date-selection.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/optimizer/price.optimizer.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/optimizer/templates/price-optimizer.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/base/base.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/dashboard/base.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/controllers/segChartCtrl.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/controllers/priceChartCtrl.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/controllers/channel_mix.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/controllers/booking_curve.js",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/currency.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/user.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/create-hotel_new.html",
+		"/home/zakir/projectnew/knights-templar/webapp/hotels/models/settings.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/dashboard/metrics.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/dashboard/charts.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/directives/compareWidget.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/directives/charts.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/settings/local.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/__init__.py",
+		"/home/zakir/projectnew/knights-templar/sandbox/mocks/price_optimizer.html",
+		"/tmp/fz3temp-1/index.php",
+		"/tmp/fz3temp-1/font-awesome.css",
+		"/tmp/fz3temp-1/req_css.php",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/reorder-rules.css",
+		"/home/zakir/projectnew/knights-templar/webapp/bower.json",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/suppliers-list_new.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/admin_head_tag.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/sidebar.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/import.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/custom-dp.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/chart.css",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/js/metrics.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/dashboard/seg-table.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/css/new.css",
+		"/home/zakir/projectnew/knights-templar/webapp/goldeneye/urls.py",
+		"/home/zakir/projectnew/knights-templar/webapp/package.json",
+		"/tmp/fz3temp-1/mod_chronoforms5.php",
+		"/tmp/fz3temp-1/ajax.php",
+		"/tmp/fz3temp-1/chronoforms.php",
+		"/tmp/fz3temp-1/form.php",
+		"/tmp/fz3temp-1/chronoforms_router.php",
+		"/tmp/fz3temp-1/chronoforms5.php",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/static/bower_components/angular-sanitize/angular-sanitize.js",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/adminlogin.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/supplier-details_new.html",
+		"/home/zakir/projectnew/knights-templar/webapp/admin/urls.py",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/fetch-bookings.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/hotel-list_new.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/hotel-list.html",
+		"/home/zakir/projectnew/knights-templar/webapp/webapp/templates/suppliers-list.html"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"",
+			"*.*",
+			"*.html",
+			"",
+			"*.js",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"activePromoRules",
+			"viewPrice.activePromoRules",
+			"viewPrice.norule",
+			"ReorderPromotionPricingRule",
+			"params",
+			"dp_today",
+			"today",
+			"maxdate",
+			"occ-type-btns",
+			"minMax",
+			"ngProgress",
+			"progre",
+			"roomBaseRatesValidation",
+			"priceoptim",
+			"save",
+			"rulechange",
+			"reset",
+			"promotion-rule",
+			"price-input",
+			"room.name",
+			"room",
+			"5px",
+			"golden",
+			"Meal plans",
+			"occ-type-btns",
+			"info-icon",
+			"status",
+			"<td><span ng-bind-html=\"currency_class\"></span> ",
+			"hotelId",
+			"save",
+			"copiedRateplansDeltaDiff",
+			".open",
+			"console",
+			"copiedRoomsDeltaDiff",
+			"room_delta_prices",
+			"copiedRoomsDeltaDiff",
+			"room_prices",
+			" Number($scope.rule.room_price[r.id] - $scope.rule.",
+			"room_delta_prices",
+			"prom'",
+			"occu'",
+			"comp'",
+			"competition",
+			"comp'",
+			"prom'",
+			"occu'",
+			"statepar",
+			"room_prices",
+			"$scope.room_delta_prices",
+			"savePricingDifferentials",
+			"roomDiffChanged",
+			"copiedRooms",
+			"copiedRoomsDeltaDiff",
+			"copied",
+			"rooms[room.id].prices[0].price",
+			"room_price",
+			"content.thisRule.room_price[room.",
+			"room.id].prices[0].price | number}]}",
+			"_class\"></span> {[{rule.rooms[room.id].prices[0].price | number}]",
+			"day.content.thisRule.rooms[room.id].prices[0].price | number",
+			"rooms[room.id].prices[0].delta",
+			"room_price",
+			"rooms[room.id].prices[0].delta",
+			"ratePlanDiffChanged",
+			"copiedOcc",
+			"copiedOccupancyDeltaDiff",
+			"roomBaseRatesValidation",
+			"roomTypeDiffValidation",
+			"room_delta_prices",
+			"copiedRoomsDeltaDiff",
+			"copiedRoomsDeltaDiff\ncopiedRoomsDeltaDiff",
+			"copiedRoomsDeltaDiff",
+			"room_delta_prices",
+			"ngdi",
+			"pricing",
+			"default",
+			"= $scope",
+			"defaultRoomsDeltaDiff",
+			"$scope.defaultRoomsDeltaDiff",
+			"closeDialogAndResetBaseRates",
+			"class=\"pd-base\"",
+			"ng-class=\"pd-base\"",
+			"ratePlanDiffChanged",
+			"style=\"padding: 8px 0;display: block;\"",
+			"type=\"text\"",
+			"Base</span",
+			"type=\"text\"",
+			" == 'competition",
+			"applied rooms",
+			"console",
+			"console.log",
+			"$scope.competitors",
+			"competitors",
+			"checked",
+			"saave",
+			"activeTab=='comp",
+			"activeTab=='occu",
+			"getSelectedData",
+			"d[",
+			"d",
+			"<<<<<<< HEAD",
+			"uncheck",
+			"validRoomBaseRates",
+			"validRoomBaseRatesCheck",
+			"roomBaseRatesValidation",
+			"tac",
+			"makeComboChart",
+			"sep_daily_combo",
+			"daily occ",
+			"aggregate_kpi_table",
+			"body",
+			"ngDialogProvider",
+			"report-table",
+			"tac",
+			"Metric",
+			"intro-logo",
+			"closeDialogAndResetPricingDifferentials",
+			"room_delta_prices",
+			"partitions",
+			"partition",
+			"open",
+			"console",
+			"currdate",
+			"OptimizedLegend",
+			"toBeOptimizedLegend",
+			"room_delta_prices",
+			"console.log",
+			"pushSelectedDates"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"competition-rule",
+			"rmrpSelection",
+			"<",
+			"base_room.order",
+			"rule_type",
+			"mockReorderOccupancyPricingRule",
+			"scope.edit_rule",
+			"self.render(",
+			"Number(other.occupancy)",
+			"Number(this.occupancy)",
+			"Number(right.offset)",
+			"Number(left.offset)",
+			"Number(leftOffset)",
+			"right.occupancy",
+			"other.occupancy",
+			"this.occupancy",
+			"",
+			"'",
+			"./static",
+			"Lemon Tree Hotel",
+			"OakWood Hotel",
+			"Test 1",
+			"hotellist",
+			"webapp.views.",
+			"td>",
+			"td",
+			"../images/chosen-sprite.png",
+			"btn-xs\">Details",
+			"btn-sm\">Details",
+			"btn-sm\">Assign Hotels",
+			"Lato, ",
+			"Lato, 'Droid Serif'",
+			"padding:0px 10px 5px 10px",
+			"padding:0px 10px",
+			"font-weight:bold;",
+			"8px 8px",
+			"padding:5px 10px; ",
+			"9243 00 66 77",
+			"Next to Aditya School",
+			"1px solid #ddd",
+			"padding: 5px",
+			"'",
+			"1px solid #ccc",
+			"eee",
+			"#B69CD1",
+			"#C4ADDB",
+			"",
+			"											<!--					<div class=\"side-note-pane\">\n																	<div class=\"s-notes s-note-1\">\n																		<strong>Basic details of the hotel</strong>\n																	</div>\n																	<div class=\"data-fill-hotel\">\n																		\n																	</div>\n																</div> -->",
+			"fa fa-plus",
+			" ",
+			"images/",
+			"<div class=\"prop-img\">",
+			"<div class=\"prop-details\">\n  <h4 class=\"prop-name\">Hotel Gangotri</h4>\n  <div class=\"prop-desc\">Sample description of the property. Description of the property. Property description.</div>\n  <div class=\"stats-bar\">\n     <div><strong>200</strong><br>Bookings</div>\n     <div><strong>230</strong><br>Room Nights</div>\n     <div><strong>250</strong><br>Orders</div>\n  </div>\n</div>\n</div>",
+			"  <div class=\"prop-img\"><img src=\"images/hotel-images/1.jpg\"></div>",
+			"<div class=\"prop-img\"><img src=\"images/hotel-images/1.jpg\"></div>",
+			"                 <div class=\"prop-img\">",
+			"<div class=\"card-holder\"> \n",
+			"<div class=\"card-holder\"><div class=\"prop-img\">",
+			"10px",
+			"color:#0044dd;margin-bottom:8px;",
+			"padding:5px;",
+			"Prophet (pbuh)",
+			"content-wrapper",
+			""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/zakir/prototyping/popups/popup.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 414.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "popups.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"price.",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"reorderpricing",
+				"webapp/webapp/static/js/reorder_pricing_rules.js"
+			],
+			[
+				"viewrule",
+				"webapp/webapp/static/css/view-rules.css"
+			],
+			[
+				"viewpricing",
+				"webapp/webapp/static/js/view_pricing_rules.js"
+			],
+			[
+				"view.html",
+				"webapp/webapp/templates/pricing-rules/view.html"
+			],
+			[
+				"reordercomp",
+				"webapp/webapp/static/js/reorder_competition_rules.js"
+			],
+			[
+				"servcies",
+				"webapp/webapp/static/js/services.js"
+			],
+			[
+				"reorderpromo",
+				"webapp/webapp/static/js/reorder_promotion_rules.js"
+			],
+			[
+				"reorderp",
+				"webapp/webapp/static/js/reorder_pricing_rules.js"
+			],
+			[
+				"createcomp",
+				"webapp/webapp/static/js/create_competition_pricing_rule.js"
+			],
+			[
+				"createpro",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"createcom",
+				"webapp/webapp/static/css/create-competition.css"
+			],
+			[
+				"createpromot",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"create",
+				"webapp/webapp/templates/pricing-rules/create-competition.html"
+			],
+			[
+				"priceoptimi",
+				"webapp/webapp/templates/optimizer/templates/price-optimizer.html"
+			],
+			[
+				"price",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"createrule",
+				"webapp/webapp/static/css/create-rule.css"
+			],
+			[
+				"viewpri",
+				"webapp/webapp/static/js/view_pricing_rules.js"
+			],
+			[
+				"priceo",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"app.js",
+				"webapp/webapp/static/js/app.js"
+			],
+			[
+				"privte",
+				"webapp/webapp/static/js/private.js"
+			],
+			[
+				"private",
+				"webapp/webapp/templates/base/private.html"
+			],
+			[
+				"reorder",
+				"webapp/webapp/templates/pricing-rules/reorder-competition.html"
+			],
+			[
+				"style.css",
+				"webapp/webapp/static/css/style.css"
+			],
+			[
+				"createpromo",
+				"webapp/webapp/static/js/create_promotion_pricing_rule.js"
+			],
+			[
+				"createpromom",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"hotel",
+				"webapp/hotels/hotel_service.py"
+			],
+			[
+				"service",
+				"webapp/webapp/static/js/services.js"
+			],
+			[
+				"priceop",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"optmiizerc",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"priceoptimiz",
+				"webapp/webapp/templates/optimizer/templates/price-optimizer.html"
+			],
+			[
+				"base.",
+				"webapp/webapp/settings/base.py"
+			],
+			[
+				"createocc",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"price.op",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"base",
+				"webapp/webapp/settings/base.py"
+			],
+			[
+				"reordercom",
+				"webapp/webapp/static/js/reorder_competition_rules.js"
+			],
+			[
+				"reordre",
+				"webapp/webapp/templates/pricing-rules/reorder-competition.html"
+			],
+			[
+				"base.py",
+				"webapp/webapp/settings/base.py"
+			],
+			[
+				"base.p",
+				"webapp/imports/models/base.py"
+			],
+			[
+				"createoccu",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"reorderrule",
+				"webapp/webapp/static/js/reorder_pricing_rules.js"
+			],
+			[
+				"reorderoccu",
+				"webapp/webapp/templates/pricing-rules/reorder-occupancy.html"
+			],
+			[
+				"home",
+				"webapp/webapp/static/js/home.js"
+			],
+			[
+				"private.js",
+				"webapp/webapp/static/js/private.js"
+			],
+			[
+				"private.html",
+				"webapp/webapp/templates/base/private.html"
+			],
+			[
+				"priceoptim",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"createoccupan",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"competition",
+				"webapp/webapp/templates/pricing-rules/create-competition.html"
+			],
+			[
+				"competi",
+				"webapp/webapp/templates/pricing-rules/create-competition.html"
+			],
+			[
+				"createpromotion",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"create-pro",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"view",
+				"webapp/webapp/templates/pricing-rules/view.html"
+			],
+			[
+				"view.h",
+				"webapp/webapp/templates/pricing-rules/view.html"
+			],
+			[
+				"viewrpicing",
+				"webapp/webapp/static/js/view_pricing_rules.js"
+			],
+			[
+				"reorderpro",
+				"webapp/webapp/static/js/reorder_promotion_rules.js"
+			],
+			[
+				"createoccupancy",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"report",
+				"webapp/webapp/static/js/report.js"
+			],
+			[
+				"downlad",
+				"webapp/webapp/templates/download-reports.html"
+			],
+			[
+				"cretaecomp",
+				"webapp/webapp/static/js/create_competition_pricing_rule.js"
+			],
+			[
+				"createpricing",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"creatcomp",
+				"webapp/webapp/static/js/create_competition_pricing_rule.js"
+			],
+			[
+				"promotion",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"styl",
+				"webapp/webapp/static/css/json-docs/style.css"
+			],
+			[
+				"month",
+				"webapp/webapp/templates/monthly-report.html"
+			],
+			[
+				"style.",
+				"webapp/webapp/static/css/style.css"
+			],
+			[
+				"import.html",
+				"webapp/webapp/templates/import-bookings.html"
+			],
+			[
+				"reports.html",
+				"webapp/webapp/templates/download-reports.html"
+			],
+			[
+				"optimizer",
+				"webapp/webapp/templates/optimizer/templates/price-optimizer.html"
+			],
+			[
+				"viewprice",
+				"webapp/webapp/static/js/view_pricing_rules.js"
+			],
+			[
+				"createpricin",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"createproomo",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"pricing",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"createprom",
+				"webapp/webapp/static/js/create_promotion_pricing_rule.js"
+			],
+			[
+				"services",
+				"webapp/webapp/static/js/services.js"
+			],
+			[
+				"priceoptimizercss",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"createoccup",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"priceoptimizer",
+				"webapp/webapp/templates/optimizer/templates/price-optimizer.html"
+			],
+			[
+				"solds_heading",
+				"webapp/webapp/templates/reports/solds_heading.html"
+			],
+			[
+				"page_header.html",
+				"webapp/webapp/templates/reports/page_header.html"
+			],
+			[
+				"ota_wise_graphs",
+				"webapp/webapp/templates/reports/ota_wise_graphs.html"
+			],
+			[
+				"page_header",
+				"webapp/webapp/templates/reports/page_header.html"
+			],
+			[
+				"ota_wise_kpi_table",
+				"webapp/webapp/templates/reports/ota_wise_kpi_table.html"
+			],
+			[
+				"aggregate_kpi_table",
+				"webapp/webapp/templates/reports/aggregate_kpi_table.html"
+			],
+			[
+				"ngdis",
+				"webapp/webapp/static/bower_components/ng-dialog/js/ngDialog.js"
+			],
+			[
+				"createrule.",
+				"webapp/webapp/static/css/create-rule.css"
+			],
+			[
+				"ota_wise_ranking",
+				"webapp/webapp/templates/reports/ota_wise_ranking.html"
+			],
+			[
+				"style",
+				"webapp/webapp/templates/base/styles.src.html"
+			],
+			[
+				"aggregate_kpi_table.html",
+				"webapp/webapp/templates/reports/aggregate_kpi_table.html"
+			],
+			[
+				"price.optimizer",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"priceoptimzercss",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"create-rule",
+				"webapp/webapp/static/css/create-rule.css"
+			],
+			[
+				"admin-style",
+				"webapp/webapp/static/css/admin-style.css"
+			],
+			[
+				"view.",
+				"webapp/webapp/templates/pricing-rules/view.html"
+			],
+			[
+				"price-op",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"price_rule",
+				"webapp/hotels/views/price_rules.py"
+			],
+			[
+				"hotelsviewshotel",
+				"webapp/hotels/views/hotel.py"
+			],
+			[
+				"hotel.py",
+				"webapp/hotels/models/hotel.py"
+			],
+			[
+				"viewrule.cs",
+				"webapp/webapp/static/css/view-rules.css"
+			],
+			[
+				"viewpric",
+				"webapp/webapp/static/js/view_pricing_rules.js"
+			],
+			[
+				"occupancy",
+				"webapp/hotels/models/occupancy_pricing.py"
+			],
+			[
+				"promo",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"price.ip",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"pickup",
+				"webapp/webapp/static/js/pickup.js"
+			],
+			[
+				"optmiizercss",
+				"webapp/webapp/static/css/price-optimizer.css"
+			],
+			[
+				"monthstr",
+				"webapp/webapp/static/js/month_strip.js"
+			],
+			[
+				"createcompetit",
+				"webapp/webapp/static/css/create-competition.css"
+			],
+			[
+				"createrule.c",
+				"webapp/webapp/static/css/create-rule.css"
+			],
+			[
+				"price.o",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"optimizerhtml",
+				"webapp/webapp/templates/price-optimizer.html"
+			],
+			[
+				"create_p",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"createpriing",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"hotelser",
+				"webapp/hotels/hotel_service.py"
+			],
+			[
+				"createproom",
+				"webapp/webapp/static/js/create_promotion_pricing_rule.js"
+			],
+			[
+				"createpromotio",
+				"webapp/webapp/templates/pricing-rules/create-promotion.html"
+			],
+			[
+				"pickup.js",
+				"webapp/webapp/static/js/pickup.js"
+			],
+			[
+				"create-",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"create_pric",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"cretaepromo",
+				"webapp/webapp/static/js/create_promotion_pricing_rule.js"
+			],
+			[
+				"create-proc",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"createrule.cs",
+				"webapp/webapp/static/css/create-rule.css"
+			],
+			[
+				"create-rp",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"createoc",
+				"webapp/webapp/templates/pricing-rules/create-occupancy.html"
+			],
+			[
+				"style.src",
+				"webapp/webapp/templates/base/styles.src.html"
+			],
+			[
+				"creatpromo",
+				"webapp/webapp/static/css/create-promotion.css"
+			],
+			[
+				"create_proo",
+				"webapp/webapp/static/js/create_promotion_pricing_rule.js"
+			],
+			[
+				"optimizer.js",
+				"webapp/webapp/static/js/price.optimizer.js"
+			],
+			[
+				"create_pricing",
+				"webapp/webapp/static/js/create_pricing_rule.js"
+			],
+			[
+				"ota_wise_kpi_table.html",
+				"webapp/webapp/templates/reports/ota_wise_kpi_table.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/sublime_projects/kt.sublime-project"
+			],
+			[
+				"met",
+				"~/meteor_project/klassifieds.sublime-project"
+			],
+			[
+				"pro",
+				"~/sublime_projects/prototyping.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"supportviews",
+				"SupportViews"
+			],
+			[
+				"beviews",
+				"BEViews"
+			]
+		],
+		"width": 692.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 249.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

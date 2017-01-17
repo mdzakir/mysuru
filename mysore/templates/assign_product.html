@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Knights Templar</title>
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/static/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/admin-style.css">
+    <style type="text/css">
+    .list-group-item > .badge a {
+        color: #fff;
+        font-weight: normal;
+    }
+    
+    .admin-heading {
+        margin-bottom: 10px;
+    }
+    
+    .download-btn,
+    .download-btn:hover {
+        color: #0044ff;
+        font-weight: normal;
+    }
+    </style>
+</head>
+
+<body cz-shortcut-listen="true">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:void(0);">
+                    <img alt="Brand" src="/static/images/axisrooms-logo.png">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row admin-heading">
+            <div class="col-md-12">
+                <h2>Hotel List</h2>
+            </div>
+            <div class="col-md-4">
+                    <select class="form-control">
+                    <option value="">Select a Hotel</option>
+                    {% for hotel in hotels %}
+                    <option value="{{hotel.id}}">{{hotel.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>{{assigned_product}}
+            <div class="col-md-4">
+                <a href="refresh?id=570b875e5aa124498fc7b627" class="btn btn-primary"><i class="fa fa-refresh"></i> Assign Hotel</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

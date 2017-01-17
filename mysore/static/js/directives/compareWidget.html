@@ -1,0 +1,23 @@
+<span class="settings" uib-dropdown on-toggle="toggled(open)" auto-close="outsideClick">
+    <a href id="compare-widget" class="settings-icon settings-nav" uib-dropdown-toggle>
+        <i class="fa fa-gear" aria-hidden="true"></i>
+    </a>
+    <ul class="dropdown-menu pull-right settingsDropdown" uib-dropdown-menu aria-labelledby="add-chart">
+        <li class="popover-title">Compare With</li>
+        <li class=""
+            ng-repeat-start="option in options"
+            ng-click="vm.select(option, context)">
+            <i class="fa fa-check"
+               ng-class="{current: option.active}"></i>
+            <input type="number" class="form-control" min="1"
+                   ng-if="option.custom"
+                   ng-focus="vm.editing()"
+                   ng-model="option.code">
+            {[{ option.name }]}
+        </li>
+        <li ng-repeat-end ng-if="option.custom && applyBtn" class="apply">
+            <button class="btn btn-default btn-sm"
+                    ng-click="vm.select(option, context)">Apply</button>
+        </li>
+  </ul>
+</span>
