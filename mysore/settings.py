@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'room',
     'ratePlan',
     'report',
+    'deals',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -65,7 +66,7 @@ MIDDLEWARE_CLASSES = [
 
 
 ]
-
+CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'mysore.urls'
 
 TEMPLATES = [
@@ -171,13 +172,6 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'mysore/static'), )
 
 STATIC_URL = '/static/'
-CHANNEL_MANAGER_API_URL = 'http://jwt.axisrooms.com/'
-
-DATA_DEVICES_CONFIG = {
-    'url': 'http://115.249.123.244:16004',
-    'access_key': '51df3b88-e734-e340-b456-d9598d3264d8'
-}
-
 
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static", "static-only")

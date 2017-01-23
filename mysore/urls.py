@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^user/', include('users.urls')),
     url(r'^room/', include('room.urls')),
     url(r'^rate-plan/', include('ratePlan.urls')),
-    url(r'^booking/', include('booking.urls'))
+    url(r'^booking/', include('booking.urls')),
+    url(r'^deal/', include('deals.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
