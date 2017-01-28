@@ -50,7 +50,46 @@ class CreateBooking(APIView):
         booking_data.segment = segment
         booking_data.payment_type = payment_type
         booking_data.special_request = special_request
+        booking_data.generation_time = datetime.now()
         booking_data.save()
         return Response("Booking Created Successfully", status=status.HTTP_201_CREATED)
 
 
+
+
+class ViewBookings(APIView):
+    def post(self, request):
+        booking_list = list()
+        data = request.body.decode('utf-8')
+        body = json.loads(data)
+        hotel_id = body['hotel_id']
+        room_status = body['status']
+        start_date = body['start_date']
+        end_date = body['end_date']
+        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
+        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
+        bookings = BookingData.objects.filter(hotel_id=str(hotel_id))
+        # bookings = BookingData.objects.filter(hotel_id=str(hotel_id),check_in__gte= start,check_out__lte= start)
+        if bookings:
+            for booking in bookings:
+                booking_data =  {
+                    'reference_id': str(booking.reference_id),
+                    'hotel_id': str(booking.hotel_id),
+                    'room_id': str(booking.room_id),
+                    'rate_id': str(booking.rate_id),
+                    'total_amount': str(booking.total_amount),
+                    'total_tax': str(booking.total_tax),
+                    'checkin_date': str(booking.checkin_date.strftime('%Y-%m-%d')),
+                    'checkout_date': str(booking.checkout_date.strftime('%Y-%m-%d')),
+                    'special_request': str(booking.special_request),
+                    'no_of_adults': int(booking.no_of_adults),
+                    'no_of_child': int(booking.no_of_child),
+                    'segment': str(booking.segment),
+                    'payment_type': str(booking.payment_type),
+                    'generation_time': str(booking.generation_time.strftime('%Y-%m-%d')),
+                    'status': str(booking.status)
+                }
+                booking_list.append(booking_data)
+            return Response(json.loads(json.dumps(booking_list)), status=status.HTTP_200_OK)
+        else:
+            return Response('No Booking found', status=status.HTTP_200_OK)

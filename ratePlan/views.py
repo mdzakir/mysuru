@@ -65,6 +65,14 @@ class UpdateStatus(APIView):
         hotel_id = request.GET['hotel_id']
         rate_id = request.GET['rate_id']
         rate_status = request.GET['status']
+
+        if rate_status == 'ACTIVE':
+            rate_status = 1
+        elif rate_status == 'INACTIVE':
+            rate_status = 2
+        elif rate_status == 'DELETED':
+            rate_status = 3
+
         ratePlanEntity = RatePlanEntity.objects(id=str(rate_status),hotel_id=str(hotel_id))
         #Inactive Status =2 , 3 for delete
         ratePlanEntity.status = int(rate_status) 
@@ -107,8 +115,6 @@ class UpdatePrice(APIView):
             priceDetail.occupancy = int(key)
             priceDetail.price = int(value)
             price_detail_list.append(priceDetail)
-
-
 
 
         start = datetime.strptime(str(start_date), '%Y-%m-%d').date()

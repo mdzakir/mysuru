@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from booking.views import CreateBooking
+from booking.views import CreateBooking,ViewBookings
 
 urlpatterns = [
     url(r'^createBooking/', CreateBooking.as_view()),
-
+    url(r'^viewBooking', ViewBookings.as_view()),
+    url(r'^updateBooking/', ViewBookings.as_view()),
 ]

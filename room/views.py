@@ -42,14 +42,21 @@ class CreateRoom(APIView):
 
 class UpdateStatus(APIView):
     def get(self, request):
-    	hotel_id = request.GET['hotel_id']
-    	room_id = request.GET['room_id']
-    	room_status = request.GET['status']
-    	roomEntity = RoomEntity.objects(id=str(room_id),hotel_id=str(hotel_id))
-    	#Inactive Status =2 , 3 for delete
-    	roomEntity.status = int(room_status) 
-    	roomEntity.save()
-    	return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
+        hotel_id = request.GET['hotel_id']
+        room_id = request.GET['room_id']
+        room_status = request.GET['status']
+        if room_status == "ACTIVE":
+            room_status = 1
+        elif room_status == "INACTIVE":
+            room_status = 2
+        elif room_status == "DELETED":
+            room_status = 3
+            
+        roomEntity = RoomEntity.objects(id=str(room_id),hotel_id=str(hotel_id))
+
+        roomEntity.status = int(room_status) 
+        roomEntity.save()
+        return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
 
 class ViewRoom(APIView):
     def get(self, request):
