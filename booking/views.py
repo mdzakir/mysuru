@@ -36,13 +36,13 @@ class CreateBooking(APIView):
         guest.address = guest_address
 
         booking_data = BookingData()
-        booking_data.reference_id = refrence_id
+        booking_data.reference_id = "REVKEY-"+str(datetime.now().microsecond)
         booking_data.status = 1
         booking_data.hotel_id = hotel_id
-        booking_data.checkin_date = datetime.strptime(str(checkin_date), '%Y-%m-%d').date()
-        booking_data.checkout_date = datetime.strptime(str(checkout_date), '%Y-%m-%d').date()
-        booking_data.no_of_adults = int(no_of_adults)
-        booking_data.no_of_child = int(no_of_child)
+        booking_data.check_in = datetime.strptime(str(checkin_date), '%Y-%m-%d').date()
+        booking_data.check_out = datetime.strptime(str(checkout_date), '%Y-%m-%d').date()
+        booking_data.total_adult = int(no_of_adults)
+        booking_data.total_child = int(no_of_child)
         booking_data.room_id = room_id
         booking_data.rate_id = rate_id
         booking_data.total_amount = int(total_amount)
@@ -79,11 +79,11 @@ class ViewBookings(APIView):
                     'rate_id': str(booking.rate_id),
                     'total_amount': str(booking.total_amount),
                     'total_tax': str(booking.total_tax),
-                    'checkin_date': str(booking.checkin_date.strftime('%Y-%m-%d')),
-                    'checkout_date': str(booking.checkout_date.strftime('%Y-%m-%d')),
+                    'checkin_date': str(booking.check_in.strftime('%Y-%m-%d')),
+                    'checkout_date': str(booking.check_out.strftime('%Y-%m-%d')),
                     'special_request': str(booking.special_request),
-                    'no_of_adults': int(booking.no_of_adults),
-                    'no_of_child': int(booking.no_of_child),
+                    'no_of_adults': int(booking.total_adult),
+                    'no_of_child': int(booking.total_child),
                     'segment': str(booking.segment),
                     'payment_type': str(booking.payment_type),
                     'generation_time': str(booking.generation_time.strftime('%Y-%m-%d')),
