@@ -35,8 +35,7 @@ connect('mysore_local', host='mongo')
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:8081/',
-    'hostname.example.com'
+    'http://0.0.0.0:8083/'
 )
 
 # Application definition
@@ -75,8 +74,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 
 CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:8081/',
-    'hostname.example.com'
+    'http://0.0.0.0:8083/'
 )
 
 ROOT_URLCONF = 'mysore.urls'
