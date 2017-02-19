@@ -70,28 +70,32 @@ class UpdateStatus(APIView):
 
 class ViewRoom(APIView):
     def get(self, request):
-    	room_list = list()
-    	hotel_id = request.GET['hotel_id']
-    	room_status = request.GET['status']
-    	rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id))
-    	if rooms:
-    		for room in rooms:
-    			room_data =  {
-	                'id': str(room.id),
-	                'hotel_id': str(room.hotel_id),
-	                'name': str(room.name),
-	                'description': str(room.description),
-	                'is_smoking': str(room.is_smoking),
+        room_list = list()
+        hotel_id = request.GET['hotel_id']
+        room_status = request.GET['status']
+        if 'room_id' in request.GET:
+            room_id = request.GET['room_id']
+            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),id=str(room_id))
+        else:
+            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id))
+        if rooms:
+            for room in rooms:
+                room_data =  {
+                    'id': str(room.id),
+                    'hotel_id': str(room.hotel_id),
+                    'name': str(room.name),
+                    'description': str(room.description),
+                    'is_smoking': str(room.is_smoking),
                     'amenities': str(room.amenities),
                     'img_url': str(room.images[0].url),
                     'status': str(room.status),
                     'max_adult': str(room.max_adult),
-	                'type': str(room.type)
-            	}
-    			room_list.append(room_data)
-    		return Response(json.loads(json.dumps(room_list)), status=status.HTTP_200_OK)
-    	else:
-    		return Response('created', status=status.HTTP_200_OK)
+                    'type': str(room.type)
+                }
+                room_list.append(room_data)
+            return Response(json.loads(json.dumps(room_list)), status=status.HTTP_200_OK)
+        else:
+            return Response('created', status=status.HTTP_200_OK)
 
 
     
