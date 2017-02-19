@@ -3,7 +3,7 @@ import json
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from deals.models.deals import DealEntity
+from deals.models.deals import DealEntity,Period
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
@@ -31,15 +31,40 @@ class CreateDeal(APIView):
         else:
             dealEntity = DealEntity()
 
+        #booking period
+
+        bookingPeriod = Period()
+        booking_black_out_dates = list()
+        for date in booking_period['blackout_date']:
+            booking_black_out_dates.append(datetime.strptime(str(date), '%d-%m-%Y').date())
+
+        bookingPeriod.start = datetime.strptime(str(booking_period['start_date']), '%d-%m-%Y').date()
+        bookingPeriod.end = datetime.strptime(str(booking_period['end_date']), '%d-%m-%Y').date()
+        bookingPeriod.days = list(booking_period['days'])
+        bookingPeriod.black_out_dates = booking_black_out_dates
+
+        #checkin period
+        checkinPeriod = Period()
+        checkin_black_out_dates = list()
+        for date in check_in_period['blackout_date']:
+            checkin_black_out_dates.append(datetime.strptime(str(date), '%d-%m-%Y').date())
+
+        checkinPeriod.start = datetime.strptime(str(check_in_period['start_date']), '%d-%m-%Y').date()
+        checkinPeriod.end = datetime.strptime(str(check_in_period['end_date']), '%d-%m-%Y').date()
+        checkinPeriod.days = list(check_in_period['days'])
+        checkinPeriod.black_out_dates = checkin_black_out_dates
+
         dealEntity.name = name
         dealEntity.status = 1
         dealEntity.description = description
         dealEntity.hotel_id = hotel_id
         dealEntity.type = type
-        dealEntity.rate_plans = rate_plans
-        dealEntity.rooms = rooms
+        dealEntity.rate_types = list(rate_plans)
+        dealEntity.room_types = list(rooms)
         dealEntity.discount_type = discount_type
         dealEntity.discount_value = discount_value
+        dealEntity.checkIn = checkinPeriod
+        dealEntity.booking = bookingPeriod
         dealEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 

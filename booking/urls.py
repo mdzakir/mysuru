@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^createBooking/', CreateBooking.as_view()),
     url(r'^viewBooking', ViewBookings.as_view()),
     url(r'^updateBooking/', ViewBookings.as_view()),
+    url(r'^bookings/', ViewBookings.as_view()),
+
 ]

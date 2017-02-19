@@ -23,8 +23,8 @@ class DealEntity(Document):
     status = IntField()
     discount_type = StringField()
     discount_value = IntField()
-    check_in_period = Period()
-    booking_period = Period()
+    checkIn = EmbeddedDocumentField(Period)
+    booking = EmbeddedDocumentField(Period)
     room_types = ListField()
     rate_types = ListField()
 

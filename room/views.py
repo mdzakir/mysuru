@@ -3,7 +3,7 @@ import json
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from room.models.room import RoomEntity
+from room.models.room import RoomEntity,RoomImage
 from room.models.inventory import Inventory
 from bson import BSON
 from bson import json_util
@@ -12,33 +12,43 @@ from datetime import datetime,timedelta
 class CreateRoom(APIView):
     def post(self, request):
 
-    	data = request.body.decode('utf-8')
-    	body = json.loads(data)
-    	name = body['name']
-    	description = body['description']
-    	hotel_id = body['hotel_id']
-    	type = body['type']
-    	is_smoking = body['is_smoking']
-    	max_adult = body['max_adult']
-    	amenities = body['amenities']
-    	roomEntity = None
-    	if 'room_id' in body:
-    		room_id = body['room_id']
-    		roomEntity = RoomEntity.objects(id=str(room_id))
-    	else:
-    		roomEntity = RoomEntity()
+        data = request.body.decode('utf-8')
+        body = json.loads(data)
+        name = body['name']
+        description = body['description']
+        hotel_id = body['hotel_id']
+        type = body['type']
+        is_smoking = body['is_smoking']
+        max_adult = body['max_adult']
+        amenities = body['amenities']
+        images = body['images']
+        roomEntity = None
+        if 'room_id' in body:
+            room_id = body['room_id']
+            roomEntity = RoomEntity.objects(id=str(room_id))
+        else:
+            roomEntity = RoomEntity()
     	
-    	roomEntity.name = name
-    	#Active Status =2
-    	roomEntity.status = 1
-    	roomEntity.description = description
-    	roomEntity.hotel_id = hotel_id
-    	roomEntity.type = type
-    	roomEntity.is_smoking = is_smoking
-    	roomEntity.max_adult = max_adult
-    	roomEntity.amenities = amenities
-    	roomEntity.save()
-    	return Response('created', status=status.HTTP_201_CREATED)
+        imageList = list()
+        for image in images:
+            img = RoomImage()
+            img.name = 'name'
+            img.url = image['img_url']
+            img.order = 1
+            imageList.append(img)
+
+        roomEntity.name = name
+        roomEntity.images = imageList
+        #Active Status =2
+        roomEntity.status = 1
+        roomEntity.description = description
+        roomEntity.hotel_id = hotel_id
+        roomEntity.type = type
+        roomEntity.is_smoking = is_smoking
+        roomEntity.max_adult = max_adult
+        roomEntity.amenities = amenities
+        roomEntity.save()
+        return Response('created', status=status.HTTP_201_CREATED)
 
 class UpdateStatus(APIView):
     def get(self, request):
@@ -72,7 +82,11 @@ class ViewRoom(APIView):
 	                'name': str(room.name),
 	                'description': str(room.description),
 	                'is_smoking': str(room.is_smoking),
-	                'amenities': str(room.amenities)
+                    'amenities': str(room.amenities),
+                    'img_url': str(room.images[0].url),
+                    'status': str(room.status),
+                    'max_adult': str(room.max_adult),
+	                'type': str(room.type)
             	}
     			room_list.append(room_data)
     		return Response(json.loads(json.dumps(room_list)), status=status.HTTP_200_OK)
