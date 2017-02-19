@@ -28,7 +28,7 @@ class CreateRoom(APIView):
             roomEntity = RoomEntity.objects(id=str(room_id))
         else:
             roomEntity = RoomEntity()
-    	
+
         imageList = list()
         for image in images:
             img = RoomImage()
@@ -47,7 +47,10 @@ class CreateRoom(APIView):
         roomEntity.is_smoking = is_smoking
         roomEntity.max_adult = max_adult
         roomEntity.amenities = amenities
-        roomEntity.save()
+        if 'room_id' in body:
+            roomEntity.update()
+        else:
+            roomEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
 class UpdateStatus(APIView):
@@ -61,10 +64,10 @@ class UpdateStatus(APIView):
             room_status = 2
         elif room_status == "DELETED":
             room_status = 3
-            
+
         roomEntity = RoomEntity.objects(id=str(room_id),hotel_id=str(hotel_id))
 
-        roomEntity.status = int(room_status) 
+        roomEntity.status = int(room_status)
         roomEntity.save()
         return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
 
@@ -86,7 +89,7 @@ class ViewRoom(APIView):
                     'name': str(room.name),
                     'description': str(room.description),
                     'is_smoking': str(room.is_smoking),
-                    'amenities': str(room.amenities),
+                    'amenities': room.amenities,
                     'img_url': str(room.images[0].url),
                     'status': str(room.status),
                     'max_adult': str(room.max_adult),
@@ -98,7 +101,7 @@ class ViewRoom(APIView):
             return Response('created', status=status.HTTP_200_OK)
 
 
-    
+
 class UpdateInventory(APIView):
     def post(self, request):
     	data = request.body.decode('utf-8')
