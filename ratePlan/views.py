@@ -26,7 +26,7 @@ class CreateRatePlan(APIView):
         cut_of_days = body['cut_of_days']
         inclusions = body['inclusions']
         exclusions = body['exclusions']
-        close_out_preiod = body['close_out_preiod']
+        close_out_period = body['close_out_period']
         allow_modification = body['allow_modification']
         cancellation_policy = body['cancellation_policy']
         data_updated = ''
@@ -75,7 +75,7 @@ class UpdateStatus(APIView):
 
         ratePlanEntity = RatePlanEntity.objects(id=str(rate_status),hotel_id=str(hotel_id))
         #Inactive Status =2 , 3 for delete
-        ratePlanEntity.status = int(rate_status) 
+        ratePlanEntity.status = int(rate_status)
         ratePlanEntity.save()
         return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
 
@@ -138,6 +138,3 @@ class UpdatePrice(APIView):
 def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
-
-
-    
