@@ -70,27 +70,51 @@ class CreateDeal(APIView):
 
 class ViewDeal(APIView):
     def get(self, request):
-    	deal_list = list()
-    	hotel_id = request.GET['hotel_id']
-    	deal_status = request.GET['status']
-    	deals = DealEntity.objects.filter(hotel_id=str(hotel_id))
-    	if deals:
-    		for deal in deals:
-    			deal_data =  {
-	                'id': str(deal.id),
-	                'hotel_id': str(deal.hotel_id),
-	                'name': str(deal.name),
-	                'description': str(deal.description),
+        deal_list = list()
+        hotel_id = request.GET['hotel_id']
+        deal_status = request.GET['status']
+        if 'deal_id' in request.GET:
+            deal_id = request.GET['deal_id']
+            deals = DealEntity.objects.filter(hotel_id=str(hotel_id),id=str(deal_id))
+        else:
+            deals = DealEntity.objects.filter(hotel_id=str(hotel_id))
+
+        if deals:
+            for deal in deals:
+                check_in_blackout = list()
+                booking_blackout = list()
+                for chBod in deal.checkIn.black_out_dates:
+                    check_in_blackout.append(chBod.strftime('%d-%m-%Y'))
+
+                for bookingBod in deal.booking.black_out_dates:
+                    booking_blackout.append(bookingBod.strftime('%d-%m-%Y'))
+
+                deal_data =  {
+                    'id': str(deal.id),
+                    'hotel_id': str(deal.hotel_id),
+                    'name': str(deal.name),
+                    'check_in_period': {
+                                          'start_date':deal.checkIn.start.strftime('%d-%m-%Y'),
+                                          'end_date':deal.checkIn.end.strftime('%d-%m-%Y'),
+                                          'days':deal.checkIn.days,
+                                          'blackout_date':check_in_blackout,
+                                        },
+                    'booking_period': {
+                                          'start_date':deal.booking.start.strftime('%d-%m-%Y'),
+                                          'end_date':deal.booking.end.strftime('%d-%m-%Y'),
+                                          'days':deal.booking.days,
+                                          'blackout_date':booking_blackout,
+                                        },
+                    'description': str(deal.description),
                     'deal_status': deal.status,
                     'type': str(deal.type),
                     'ratePlans': deal.rate_types,
                     'rooms': deal.room_types,
                     'discount_type': str(deal.discount_type),
-                    'discount_value': str(deal.discount_value),
-                    'check_in_period': str(deal.check_in_period),
-                    'booking_period': str(deal.booking_period)
-            	}
-    			deal_list.append(deal_data)
-    		return Response(json.loads(json.dumps(deal_list)), status=status.HTTP_200_OK)
-    	else:
-    		return Response('No deal Created', status=status.HTTP_200_OK)
+                    'discount_value': str(deal.discount_value)
+                    
+                }
+                deal_list.append(deal_data)
+            return Response(json.loads(json.dumps(deal_list)), status=status.HTTP_200_OK)
+        else:
+            return Response('No deal Created', status=status.HTTP_200_OK)
