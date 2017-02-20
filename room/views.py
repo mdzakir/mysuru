@@ -80,6 +80,15 @@ class ViewRoom(APIView):
             rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id))
         if rooms:
             for room in rooms:
+                images = list()
+                for img in room.images:
+                    image_data = {
+                    'name':img.name,
+                    'url':img.url,
+                    'order':img.order
+                    }
+                    images.append(image_data)
+
                 room_data =  {
                     'id': str(room.id),
                     'hotel_id': str(room.hotel_id),
@@ -87,7 +96,7 @@ class ViewRoom(APIView):
                     'description': str(room.description),
                     'is_smoking': str(room.is_smoking),
                     'amenities': room.amenities,
-                    'img_url': str(room.images),
+                    'images': images,
                     'status': str(room.status),
                     'max_adult': str(room.max_adult),
                     'type': str(room.type)
