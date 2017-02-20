@@ -33,7 +33,7 @@ class CreateRoom(APIView):
         for image in images:
             img = RoomImage()
             img.name = 'name'
-            img.url = image['img_url']
+            img.url = image['url']
             img.order = 1
             imageList.append(img)
 
@@ -62,7 +62,7 @@ class UpdateStatus(APIView):
         elif room_status == "DELETED":
             room_status = 3
 
-        roomEntity = RoomEntity.objects(id=str(room_id),hotel_id=str(hotel_id))
+        roomEntity = RoomEntity.objects(id=str(room_id),hotel_id=str(hotel_id))[0]
 
         roomEntity.status = int(room_status)
         roomEntity.save()
@@ -75,9 +75,9 @@ class ViewRoom(APIView):
         room_status = request.GET['status']
         if 'room_id' in request.GET:
             room_id = request.GET['room_id']
-            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),id=str(room_id))
+            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),id=str(room_id),status=1)
         else:
-            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id))
+            rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),status=1)
         if rooms:
             for room in rooms:
                 images = list()
