@@ -25,7 +25,7 @@ class CreateRoom(APIView):
         roomEntity = None
         if 'room_id' in body:
             room_id = body['room_id']
-            roomEntity = RoomEntity.objects(id=str(room_id))
+            roomEntity = RoomEntity.objects(id=str(room_id))[0]
         else:
             roomEntity = RoomEntity()
 
@@ -47,10 +47,7 @@ class CreateRoom(APIView):
         roomEntity.is_smoking = is_smoking
         roomEntity.max_adult = max_adult
         roomEntity.amenities = amenities
-        if 'room_id' in body:
-            roomEntity.update()
-        else:
-            roomEntity.save()
+        roomEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
 class UpdateStatus(APIView):
@@ -90,7 +87,7 @@ class ViewRoom(APIView):
                     'description': str(room.description),
                     'is_smoking': str(room.is_smoking),
                     'amenities': room.amenities,
-                    'img_url': str(room.images[0].url),
+                    'img_url': str(room.images),
                     'status': str(room.status),
                     'max_adult': str(room.max_adult),
                     'type': str(room.type)
