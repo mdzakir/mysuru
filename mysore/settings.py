@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'ratePlan',
     'report',
     'deals',
+    'search',
+    'promotion',
 ]
 
 MIDDLEWARE_CLASSES = [

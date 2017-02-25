@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^ratePlan/', include('ratePlan.urls')),
     url(r'^bookingP', include('booking.urls')),
     url(r'^deal/', include('deals.urls')),
-    url(r'^search/', include('search.urls'))
+    url(r'^search/', include('search.urls')),
+    url(r'^promotion/', include('promotion.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
