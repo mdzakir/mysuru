@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^user/', include('users.urls')),
     url(r'^room/', include('room.urls')),
     url(r'^ratePlan/', include('ratePlan.urls')),
-    url(r'^bookingP', include('booking.urls')),
+    url(r'^booking/', include('booking.urls')),
     url(r'^deal/', include('deals.urls')),
     url(r'^search/', include('search.urls')),
     url(r'^promotion/', include('promotion.urls'))
