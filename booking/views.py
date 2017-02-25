@@ -79,14 +79,14 @@ class ViewBookings(APIView):
                     'rate_id': str(booking.rate_id),
                     'total_amount': str(booking.total_amount),
                     'total_tax': str(booking.total_tax),
-                    'checkin_date': str(booking.check_in.strftime('%Y-%m-%d')),
-                    'checkout_date': str(booking.check_out.strftime('%Y-%m-%d')),
+                    'checkin_date': str(booking.check_in.strftime('%d %b %Y')),
+                    'checkout_date': str(booking.check_out.strftime('%d %b %Y')),
                     'special_request': str(booking.special_request),
                     'no_of_adults': int(booking.total_adult),
                     'no_of_child': int(booking.total_child),
                     'segment': str(booking.segment),
                     'payment_type': str(booking.payment_type),
-                    'generation_time': str(booking.generation_time.strftime('%Y-%m-%d')),
+                    'generation_time': str(booking.generation_time.strftime('%d %b %Y %H:%S')),
                     'status': str(booking.status)
                 }
                 booking_list.append(booking_data)
