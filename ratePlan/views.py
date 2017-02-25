@@ -15,18 +15,18 @@ class CreateRatePlan(APIView):
         name = body['name']
         description = body['description']
         hotel_id = body['hotel_id']
-        valid_from = body['valid_from']
-        valid_to = body['valid_to']
-        min_adult = body['min_adult']
-        max_adult = body['max_adult']
-        min_length_of_stay = body['min_length_of_stay']
-        max_length_of_stay = body['max_length_of_stay']
-        min_no_of_rooms = body['min_no_of_rooms']
-        max_no_of_rooms = body['max_no_of_rooms']
-        cut_of_days = body['cut_of_days']
+        valid_from = body['validity_start']
+        valid_to = body['validity_end']
+        min_adult = body['min_adults']
+        max_adult = body['max_adults']
+        min_length_of_stay = body['min_los']
+        max_length_of_stay = body['max_los']
+        min_no_of_rooms = body['min_rooms']
+        max_no_of_rooms = body['max_rooms']
+        cut_of_days = body['cut_off_days']
         inclusions = body['inclusions']
-        exclusions = body['exclusions']
-        close_out_period = body['close_out_period']
+        exclusions = body['exlusions']
+        close_out_period = body['blackout_dates']
         allow_modification = body['allow_modification']
         cancellation_policy = body['cancellation_policy']
         data_updated = ''
@@ -43,8 +43,8 @@ class CreateRatePlan(APIView):
         ratePlanEntity.status = 1
         ratePlanEntity.description = description
         ratePlanEntity.hotel_id = hotel_id
-        ratePlanEntity.valid_from = datetime.strptime(str(valid_from), '%Y-%m-%d').date()
-        ratePlanEntity.valid_to = datetime.strptime(str(valid_to), '%Y-%m-%d').date()
+        ratePlanEntity.valid_from = datetime.strptime(str(valid_from), '%d-%m-%Y').date()
+        ratePlanEntity.valid_to = datetime.strptime(str(valid_to), '%d-%m-%Y').date()
         ratePlanEntity.min_adult = int(min_adult)
         ratePlanEntity.max_adult = int(max_adult)
         ratePlanEntity.min_length_of_stay = int(min_length_of_stay)
@@ -91,6 +91,19 @@ class ViewRatePlan(APIView):
                     'hotel_id': str(rate.hotel_id),
                     'name': str(rate.name),
                     'description': str(rate.description),
+                    'status' : rate.status,
+                    'validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
+                    'validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
+                    'blackout_dates' : rate.description,
+                    'min_adults' : rate.min_adult,
+                    'max_adults' : rate.max_adult,
+                    'min_los' : rate.min_length_of_stay,
+                    'max_los' : rate.max_length_of_stay,
+                    'min_rooms' : rate.min_no_of_rooms,
+                    'max_rooms' : rate.max_no_of_rooms,
+                    'allow_modification' : rate.allow_modification,
+                    'cancellation_policy' : rate.cancellation_policy,
+                    'cut_off_days' : rate.cut_of_days,
                 }
                 rate_list.append(rate_data)
             return Response(json.loads(json.dumps(rate_list)), status=status.HTTP_200_OK)

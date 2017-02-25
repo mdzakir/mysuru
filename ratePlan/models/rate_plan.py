@@ -9,16 +9,16 @@ from mongoengine import *
 from enum import Enum
 
 
-# class RatePlanType(Enum):
-#     EP = (1,"EP","Room Only") 
-#     CP = (2,"CP","With Breakfast") 
-#     MAP = (3,"MAP","With Breakfast and Lunch") 
-#     AP = (4,"AP","With Breakfast,Lunch and Dinner") 
+class RatePlanType(Enum):
+    EP = (1,"EP","Room Only") 
+    CP = (2,"CP","With Breakfast") 
+    MAP = (3,"MAP","With Breakfast and Lunch") 
+    AP = (4,"AP","With Breakfast,Lunch and Dinner") 
 
-#     def __init__(self, id, name,description):
-#         self.name = name
-#         self.id = id
-#         self.description = description
+    def __init__(self, id, rp_name,description):
+        self.rp_name = rp_name
+        self.id = id
+        self.description = description
 
 
 
