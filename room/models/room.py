@@ -61,7 +61,3 @@ class RoomEntity(Document):
 
     def get_amenities(self):
         return self.amenities
-
-
-
-    

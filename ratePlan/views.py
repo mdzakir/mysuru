@@ -5,7 +5,7 @@ from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ratePlan.models.rate_plan import RatePlanEntity
+from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions
 from ratePlan.models.prices import Price,PriceDetails
 
 class CreateRatePlan(APIView):
@@ -15,8 +15,9 @@ class CreateRatePlan(APIView):
         name = body['name']
         description = body['description']
         hotel_id = body['hotel_id']
-        valid_from = body['validity_start']
-        valid_to = body['validity_end']
+        valid_from = body['rateplan_validity_start']
+        valid_to = body['rateplan_validity_end']
+        applicable_days = body['applicable_days']
         min_adult = body['min_adults']
         max_adult = body['max_adults']
         min_length_of_stay = body['min_los']
@@ -25,7 +26,7 @@ class CreateRatePlan(APIView):
         max_no_of_rooms = body['max_rooms']
         cut_of_days = body['cut_off_days']
         inclusions = body['inclusions']
-        exclusions = body['exlusions']
+        exclusions = body['exclusions']
         close_out_period = body['blackout_dates']
         allow_modification = body['allow_modification']
         cancellation_policy = body['cancellation_policy']
@@ -38,6 +39,18 @@ class CreateRatePlan(APIView):
         else:
             ratePlanEntity = RatePlanEntity()
             data_updated = 'Created'
+
+        inclusionsList = list()
+        for inclusion in inclusions:
+            inc = RateplanInclusions()
+            inc.name = inclusion['name']
+            inclusionsList.append(inc)
+
+        exclusionsList = list()
+        for exclusion in exclusions:
+            exc = RateplanExclusions()
+            exc.name = exclusion['name']
+            exclusionsList.append(exc)
 
         ratePlanEntity.name = name
         ratePlanEntity.status = 1
@@ -52,9 +65,9 @@ class CreateRatePlan(APIView):
         ratePlanEntity.min_no_of_rooms = int(min_no_of_rooms)
         ratePlanEntity.max_no_of_rooms = int(max_no_of_rooms)
         ratePlanEntity.cut_of_days = int(cut_of_days)
-        ratePlanEntity.inclusions = list()
-        ratePlanEntity.exclusions = list()
-        ratePlanEntity.close_out_preiod = list()
+        ratePlanEntity.inclusions = inclusionsList
+        ratePlanEntity.exclusions = exclusionsList
+        ratePlanEntity.close_out_period = list()
         ratePlanEntity.allow_modification = True
         ratePlanEntity.cancellation_policy = list()
         ratePlanEntity.save()
@@ -86,21 +99,38 @@ class ViewRatePlan(APIView):
     	rates = RatePlanEntity.objects(hotel_id=str(hotel_id))
     	if rates:
             for rate in rates:
+
+                inclusions = list()
+                for inc in rate.inclusions:
+                    inclusion_data = {
+                    'name':inc.name
+                    }
+                    inclusions.append(inclusion_data)
+
+                exclusions = list()
+                for exc in rate.exclusions:
+                    exclusion_data = {
+                    'name':exc.name
+                    }
+                    exclusions.append(exclusion_data)
+
                 rate_data =  {
                     'id': str(rate.id),
                     'hotel_id': str(rate.hotel_id),
                     'name': str(rate.name),
                     'description': str(rate.description),
                     'status' : rate.status,
-                    'validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
-                    'validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
-                    'blackout_dates' : rate.description,
+                    'rateplan_validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
+                    'rateplan_validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
+                    'blackout_dates' : rate.close_out_period,
                     'min_adults' : rate.min_adult,
                     'max_adults' : rate.max_adult,
                     'min_los' : rate.min_length_of_stay,
                     'max_los' : rate.max_length_of_stay,
-                    'min_rooms' : rate.min_no_of_rooms,
-                    'max_rooms' : rate.max_no_of_rooms,
+                    'min_no_of_rooms' : rate.min_no_of_rooms,
+                    'max_no_of_rooms' : rate.max_no_of_rooms,
+                    'inclusions' : inclusions,
+                    'exclusions' : exclusions,
                     'allow_modification' : rate.allow_modification,
                     'cancellation_policy' : rate.cancellation_policy,
                     'cut_off_days' : rate.cut_of_days,
