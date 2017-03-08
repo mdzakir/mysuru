@@ -72,7 +72,6 @@ class ViewRoom(APIView):
     def get(self, request):
         room_list = list()
         hotel_id = request.GET['hotel_id']
-        room_status = request.GET['status']
         if 'room_id' in request.GET:
             room_id = request.GET['room_id']
             rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),id=str(room_id),status=1)

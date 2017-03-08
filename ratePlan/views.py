@@ -5,7 +5,7 @@ from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions
+from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
 
 class CreateRatePlan(APIView):
@@ -27,14 +27,14 @@ class CreateRatePlan(APIView):
         cut_of_days = body['cut_off_days']
         inclusions = body['inclusions']
         exclusions = body['exclusions']
-        close_out_period = body['blackout_dates']
+        blackout_dates = body['blackout_dates']
         allow_modification = body['allow_modification']
         cancellation_policy = body['cancellation_policy']
         data_updated = ''
         ratePlanEntity = None
         if 'rate_id' in body:
             rate_id = body['rate_id']
-            ratePlanEntity = RatePlanEntity.objects(id=str(rate_id)).first()
+            ratePlanEntity = RatePlanEntity.objects(id=str(rate_id))[0]
             data_updated = 'Updated'
         else:
             ratePlanEntity = RatePlanEntity()
@@ -52,6 +52,22 @@ class CreateRatePlan(APIView):
             exc.name = exclusion['name']
             exclusionsList.append(exc)
 
+        blackoutsList = list()
+        for blackout in blackout_dates:
+            blkout = RateplanBlackoutDates()
+            blkout.start = blackout['start']
+            blkout.end = blackout['end']
+            blackoutsList.append(blkout)
+
+        cpList = list()
+        for canc_policy in cancellation_policy:
+            cp = RatePlanCancellationPolicy()
+            cp.from_checkin = canc_policy['from_checkin']
+            cp.to_checkin = canc_policy['to_checkin']
+            cp.amount = canc_policy['amount']
+            cp.amount_type = canc_policy['amount_type']
+            cpList.append(cp)
+
         ratePlanEntity.name = name
         ratePlanEntity.status = 1
         ratePlanEntity.description = description
@@ -67,9 +83,9 @@ class CreateRatePlan(APIView):
         ratePlanEntity.cut_of_days = int(cut_of_days)
         ratePlanEntity.inclusions = inclusionsList
         ratePlanEntity.exclusions = exclusionsList
-        ratePlanEntity.close_out_period = list()
+        ratePlanEntity.blackout_dates = blackoutsList
         ratePlanEntity.allow_modification = True
-        ratePlanEntity.cancellation_policy = list()
+        ratePlanEntity.cancellation_policy = cpList
         ratePlanEntity.save()
         return Response(data_updated, status=status.HTTP_201_CREATED)
 
@@ -86,17 +102,17 @@ class UpdateStatus(APIView):
         elif rate_status == 'DELETED':
             rate_status = 3
 
-        ratePlanEntity = RatePlanEntity.objects(id=str(rate_status),hotel_id=str(hotel_id))
+        ratePlanEntity = RatePlanEntity.objects(id=str(rate_id),hotel_id=str(hotel_id))[0]
         #Inactive Status =2 , 3 for delete
         ratePlanEntity.status = int(rate_status)
         ratePlanEntity.save()
-        return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
+        return Response('Updated room status : ' + rate_id, status=status.HTTP_200_OK)
 
 class ViewRatePlan(APIView):
     def get(self, request):
     	rate_list = list()
     	hotel_id = request.GET['hotel_id']
-    	rates = RatePlanEntity.objects(hotel_id=str(hotel_id))
+    	rates = RatePlanEntity.objects(hotel_id=str(hotel_id),status=1)
     	if rates:
             for rate in rates:
 
@@ -114,6 +130,24 @@ class ViewRatePlan(APIView):
                     }
                     exclusions.append(exclusion_data)
 
+                blackouts = list()
+                for blk in rate.blackout_dates:
+                    blk_data = {
+                    'start':blk.start,
+                    'end':blk.end
+                    }
+                    blackouts.append(blk_data)
+
+                canc_policies = list()
+                for cp in rate.cancellation_policy:
+                    cp = {
+                    'from_checkin':cp.from_checkin,
+                    'to_checkin':cp.to_checkin,
+                    'amount_type':cp.amount_type,
+                    'amount':cp.amount
+                    }
+                    canc_policies.append(cp)
+
                 rate_data =  {
                     'id': str(rate.id),
                     'hotel_id': str(rate.hotel_id),
@@ -122,7 +156,7 @@ class ViewRatePlan(APIView):
                     'status' : rate.status,
                     'rateplan_validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
                     'rateplan_validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
-                    'blackout_dates' : rate.close_out_period,
+                    'blackout_dates' : blackouts,
                     'min_adults' : rate.min_adult,
                     'max_adults' : rate.max_adult,
                     'min_los' : rate.min_length_of_stay,
@@ -132,7 +166,7 @@ class ViewRatePlan(APIView):
                     'inclusions' : inclusions,
                     'exclusions' : exclusions,
                     'allow_modification' : rate.allow_modification,
-                    'cancellation_policy' : rate.cancellation_policy,
+                    'cancellation_policy' : canc_policies,
                     'cut_off_days' : rate.cut_of_days,
                 }
                 rate_list.append(rate_data)

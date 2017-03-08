@@ -32,6 +32,16 @@ class RateplanExclusions(EmbeddedDocument):
     def get_name(self):
         return self.name
 
+class RateplanBlackoutDates(EmbeddedDocument):
+    start = StringField()
+    end = StringField()
+
+    def get_start(self):
+        return self.start
+
+    def get_end(self):
+        return self.end
+
 class RatePlanCancellationPolicy(EmbeddedDocument):
     from_checkin = IntField()
     to_checkin = IntField()
@@ -66,7 +76,7 @@ class RatePlanEntity(Document):
     cut_of_days = IntField()
     inclusions = ListField(EmbeddedDocumentField(RateplanInclusions))
     exclusions = ListField(EmbeddedDocumentField(RateplanExclusions))
-    close_out_period = ListField(DateTimeField())
+    blackout_dates = ListField(EmbeddedDocumentField(RateplanBlackoutDates))
     allow_modification = BooleanField()
     allow_cancellation = BooleanField()
     cancellation_policy = ListField(EmbeddedDocumentField(RatePlanCancellationPolicy))
@@ -119,8 +129,8 @@ class RatePlanEntity(Document):
     def get_exclusions(self):
         return self.exclusions
 
-    def get_close_out_period(self):
-        return self.close_out_period
+    def get_blackout_dates(self):
+        return self.blackout_dates
 
     def get_allow_modification(self):
         return self.allow_modification
