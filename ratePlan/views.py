@@ -5,7 +5,7 @@ from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from ratePlan.models.rate_plan import RatePlanEntity
+from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
 
 class CreateRatePlan(APIView):
@@ -15,8 +15,9 @@ class CreateRatePlan(APIView):
         name = body['name']
         description = body['description']
         hotel_id = body['hotel_id']
-        valid_from = body['validity_start']
-        valid_to = body['validity_end']
+        valid_from = body['rateplan_validity_start']
+        valid_to = body['rateplan_validity_end']
+        applicable_days = body['applicable_days']
         min_adult = body['min_adults']
         max_adult = body['max_adults']
         min_length_of_stay = body['min_los']
@@ -25,19 +26,47 @@ class CreateRatePlan(APIView):
         max_no_of_rooms = body['max_rooms']
         cut_of_days = body['cut_off_days']
         inclusions = body['inclusions']
-        exclusions = body['exlusions']
-        close_out_period = body['blackout_dates']
+        exclusions = body['exclusions']
+        blackout_dates = body['blackout_dates']
         allow_modification = body['allow_modification']
         cancellation_policy = body['cancellation_policy']
         data_updated = ''
         ratePlanEntity = None
         if 'rate_id' in body:
             rate_id = body['rate_id']
-            ratePlanEntity = RatePlanEntity.objects(id=str(rate_id)).first()
+            ratePlanEntity = RatePlanEntity.objects(id=str(rate_id))[0]
             data_updated = 'Updated'
         else:
             ratePlanEntity = RatePlanEntity()
             data_updated = 'Created'
+
+        inclusionsList = list()
+        for inclusion in inclusions:
+            inc = RateplanInclusions()
+            inc.name = inclusion['name']
+            inclusionsList.append(inc)
+
+        exclusionsList = list()
+        for exclusion in exclusions:
+            exc = RateplanExclusions()
+            exc.name = exclusion['name']
+            exclusionsList.append(exc)
+
+        blackoutsList = list()
+        for blackout in blackout_dates:
+            blkout = RateplanBlackoutDates()
+            blkout.start = blackout['start']
+            blkout.end = blackout['end']
+            blackoutsList.append(blkout)
+
+        cpList = list()
+        for canc_policy in cancellation_policy:
+            cp = RatePlanCancellationPolicy()
+            cp.from_checkin = canc_policy['from_checkin']
+            cp.to_checkin = canc_policy['to_checkin']
+            cp.amount = canc_policy['amount']
+            cp.amount_type = canc_policy['amount_type']
+            cpList.append(cp)
 
         ratePlanEntity.name = name
         ratePlanEntity.status = 1
@@ -52,11 +81,11 @@ class CreateRatePlan(APIView):
         ratePlanEntity.min_no_of_rooms = int(min_no_of_rooms)
         ratePlanEntity.max_no_of_rooms = int(max_no_of_rooms)
         ratePlanEntity.cut_of_days = int(cut_of_days)
-        ratePlanEntity.inclusions = list()
-        ratePlanEntity.exclusions = list()
-        ratePlanEntity.close_out_preiod = list()
+        ratePlanEntity.inclusions = inclusionsList
+        ratePlanEntity.exclusions = exclusionsList
+        ratePlanEntity.blackout_dates = blackoutsList
         ratePlanEntity.allow_modification = True
-        ratePlanEntity.cancellation_policy = list()
+        ratePlanEntity.cancellation_policy = cpList
         ratePlanEntity.save()
         return Response(data_updated, status=status.HTTP_201_CREATED)
 
@@ -73,36 +102,71 @@ class UpdateStatus(APIView):
         elif rate_status == 'DELETED':
             rate_status = 3
 
-        ratePlanEntity = RatePlanEntity.objects(id=str(rate_status),hotel_id=str(hotel_id))
+        ratePlanEntity = RatePlanEntity.objects(id=str(rate_id),hotel_id=str(hotel_id))[0]
         #Inactive Status =2 , 3 for delete
         ratePlanEntity.status = int(rate_status)
         ratePlanEntity.save()
-        return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
+        return Response('Updated room status : ' + rate_id, status=status.HTTP_200_OK)
 
 class ViewRatePlan(APIView):
     def get(self, request):
     	rate_list = list()
     	hotel_id = request.GET['hotel_id']
-    	rates = RatePlanEntity.objects(hotel_id=str(hotel_id))
+    	rates = RatePlanEntity.objects(hotel_id=str(hotel_id),status=1)
     	if rates:
             for rate in rates:
+
+                inclusions = list()
+                for inc in rate.inclusions:
+                    inclusion_data = {
+                    'name':inc.name
+                    }
+                    inclusions.append(inclusion_data)
+
+                exclusions = list()
+                for exc in rate.exclusions:
+                    exclusion_data = {
+                    'name':exc.name
+                    }
+                    exclusions.append(exclusion_data)
+
+                blackouts = list()
+                for blk in rate.blackout_dates:
+                    blk_data = {
+                    'start':blk.start,
+                    'end':blk.end
+                    }
+                    blackouts.append(blk_data)
+
+                canc_policies = list()
+                for cp in rate.cancellation_policy:
+                    cp = {
+                    'from_checkin':cp.from_checkin,
+                    'to_checkin':cp.to_checkin,
+                    'amount_type':cp.amount_type,
+                    'amount':cp.amount
+                    }
+                    canc_policies.append(cp)
+
                 rate_data =  {
                     'id': str(rate.id),
                     'hotel_id': str(rate.hotel_id),
                     'name': str(rate.name),
                     'description': str(rate.description),
                     'status' : rate.status,
-                    'validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
-                    'validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
-                    'blackout_dates' : rate.description,
+                    'rateplan_validity_start' : rate.valid_from.strftime('%Y-%m-%d'),
+                    'rateplan_validity_end' : rate.valid_to.strftime('%Y-%m-%d'),
+                    'blackout_dates' : blackouts,
                     'min_adults' : rate.min_adult,
                     'max_adults' : rate.max_adult,
                     'min_los' : rate.min_length_of_stay,
                     'max_los' : rate.max_length_of_stay,
-                    'min_rooms' : rate.min_no_of_rooms,
-                    'max_rooms' : rate.max_no_of_rooms,
+                    'min_no_of_rooms' : rate.min_no_of_rooms,
+                    'max_no_of_rooms' : rate.max_no_of_rooms,
+                    'inclusions' : inclusions,
+                    'exclusions' : exclusions,
                     'allow_modification' : rate.allow_modification,
-                    'cancellation_policy' : rate.cancellation_policy,
+                    'cancellation_policy' : canc_policies,
                     'cut_off_days' : rate.cut_of_days,
                 }
                 rate_list.append(rate_data)

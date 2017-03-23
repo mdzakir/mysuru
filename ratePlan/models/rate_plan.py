@@ -10,17 +10,37 @@ from enum import Enum
 
 
 class RatePlanType(Enum):
-    EP = (1,"EP","Room Only") 
-    CP = (2,"CP","With Breakfast") 
-    MAP = (3,"MAP","With Breakfast and Lunch") 
-    AP = (4,"AP","With Breakfast,Lunch and Dinner") 
+    EP = (1,"EP","Room Only")
+    CP = (2,"CP","With Breakfast")
+    MAP = (3,"MAP","With Breakfast and Lunch")
+    AP = (4,"AP","With Breakfast,Lunch and Dinner")
 
     def __init__(self, id, rp_name,description):
         self.rp_name = rp_name
         self.id = id
         self.description = description
 
+class RateplanInclusions(EmbeddedDocument):
+    name = StringField()
 
+    def get_name(self):
+        return self.name
+
+class RateplanExclusions(EmbeddedDocument):
+    name = StringField()
+
+    def get_name(self):
+        return self.name
+
+class RateplanBlackoutDates(EmbeddedDocument):
+    start = StringField()
+    end = StringField()
+
+    def get_start(self):
+        return self.start
+
+    def get_end(self):
+        return self.end
 
 class RatePlanCancellationPolicy(EmbeddedDocument):
     from_checkin = IntField()
@@ -54,9 +74,9 @@ class RatePlanEntity(Document):
     min_no_of_rooms = IntField()
     max_no_of_rooms = IntField()
     cut_of_days = IntField()
-    inclusions = ListField()
-    exclusions = ListField()
-    close_out_preiod = ListField(DateTimeField())
+    inclusions = ListField(EmbeddedDocumentField(RateplanInclusions))
+    exclusions = ListField(EmbeddedDocumentField(RateplanExclusions))
+    blackout_dates = ListField(EmbeddedDocumentField(RateplanBlackoutDates))
     allow_modification = BooleanField()
     allow_cancellation = BooleanField()
     cancellation_policy = ListField(EmbeddedDocumentField(RatePlanCancellationPolicy))
@@ -109,8 +129,8 @@ class RatePlanEntity(Document):
     def get_exclusions(self):
         return self.exclusions
 
-    def get_close_out_preiod(self):
-        return self.close_out_preiod
+    def get_blackout_dates(self):
+        return self.blackout_dates
 
     def get_allow_modification(self):
         return self.allow_modification
@@ -120,7 +140,3 @@ class RatePlanEntity(Document):
 
     def get_cancellation_policy(self):
         return self.cancellation_policy
-
-
-
-    
