@@ -51,6 +51,8 @@ class CreateBooking(APIView):
         booking_data.payment_type = payment_type
         booking_data.special_request = special_request
         booking_data.generation_time = datetime.now()
+        booking_data.guest_detail = guest
+        booking_data.no_of_rooms = no_of_rooms
         booking_data.save()
         return Response("Booking Created Successfully", status=status.HTTP_201_CREATED)
 
@@ -84,6 +86,11 @@ class ViewBookings(APIView):
                     'special_request': str(booking.special_request),
                     'no_of_adults': int(booking.total_adult),
                     'no_of_child': int(booking.total_child),
+                    'no_of_rooms': booking.no_of_rooms,
+                    'guest_name': booking.guest_detail.name,
+                    'guest_mobile': booking.guest_detail.mobile,
+                    'guest_email': booking.guest_detail.email,
+                    'guest_address': booking.guest_detail.address,
                     'segment': str(booking.segment),
                     'payment_type': str(booking.payment_type),
                     'generation_time': str(booking.generation_time.strftime('%d %b %Y %H:%S')),

@@ -142,15 +142,22 @@ def daterange(start_date, end_date):
 
 
 class ViewInventory(APIView):
-    def post(self, request):
-    	data = request.body.decode('utf-8')
-    	body = json.loads(data)
-    	room_id = body['room_id']
-    	start_date = body['start_date']
-    	end_date = body['end_date']
-
-    	start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
-    	end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
-
-    	for single_date in daterange(start, end):
-    		inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
+    def get(self, request):
+        data = request.body.decode('utf-8')
+        room_id = request.GET['room_id']
+        start_date = request.GET['start_date']
+        end_date = request.GET['end_date']
+        inventory_list = list()
+        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
+        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
+        for single_date in daterange(start, end):
+            inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
+            if inventory is not None:
+                res_data =  {
+                    'room_id': str(inventory.room_id),
+                    'available': str(inventory.available),
+                    'booked': str(inventory.booked),
+                    'blocked': False
+                }
+                inventory_list.append(res_data)
+        return Response(json.loads(json.dumps(inventory_list)), status=status.HTTP_200_OK)

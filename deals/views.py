@@ -18,6 +18,7 @@ class CreateDeal(APIView):
         type = body['type']
         discount_type = body['discount_type']
         discount_value = body['discount_value']
+        applicable_on = body['applicable_on']
         rooms = body['rooms']
         rate_plans = body['rate_plans']
         booking_period = body['booking_period']
@@ -111,7 +112,8 @@ class ViewDeal(APIView):
                     'ratePlans': deal.rate_types,
                     'rooms': deal.room_types,
                     'discount_type': str(deal.discount_type),
-                    'discount_value': str(deal.discount_value)
+                    'discount_value': str(deal.discount_value),
+                    'applicable_on': str(deal.applicable_on)
                     
                 }
                 deal_list.append(deal_data)

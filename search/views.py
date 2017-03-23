@@ -21,35 +21,16 @@ class Search(APIView):
         child = body['child']
         #getting rooms
         rooms = RoomEntity.objects(hotel_id=str(hotel_id))
-
         #getting ratePlans
         ratePlans = RatePlanEntity.objects(hotel_id=str(hotel_id))
 
-        data =  {
-            'id': str(deal.id),
-            'hotel_id': str(deal.hotel_id),
-            'name': str(deal.name),
-            'check_in_period': {
-                                  'start_date':deal.checkIn.start.strftime('%d-%m-%Y'),
-                                  'end_date':deal.checkIn.end.strftime('%d-%m-%Y'),
-                                  'days':deal.checkIn.days,
-                                  'blackout_date':check_in_blackout,
-                                },
-            'booking_period': {
-                                  'start_date':deal.booking.start.strftime('%d-%m-%Y'),
-                                  'end_date':deal.booking.end.strftime('%d-%m-%Y'),
-                                  'days':deal.booking.days,
-                                  'blackout_date':booking_blackout,
-                                },
-            'description': str(deal.description),
-            'deal_status': deal.status,
-            'type': str(deal.type),
-            'ratePlans': deal.rate_types,
-            'rooms': deal.room_types,
-            'discount_type': str(deal.discount_type),
-            'discount_value': str(deal.discount_value)
-            
-        }
-            return Response(json.loads(json.dumps(deal_list)), status=status.HTTP_200_OK)
-        else:
-            return Response('No deal Created', status=status.HTTP_200_OK)
+        for room in rooms:
+            for rate in ratePlans:
+
+
+
+
+        return Response('', status=status.HTTP_200_OK)
+
+    def getPrice(self,roomId,rateId):
+
