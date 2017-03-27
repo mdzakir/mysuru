@@ -24,4 +24,14 @@ class Price(Document):
     date = DateTimeField()
     price = ListField(EmbeddedDocumentField(PriceDetails))
 
+    def get_room_id(self):
+        return self.room_id
 
+    def get_rate_id(self):
+        return self.rate_id
+
+    def get_date(self):
+        return self.date
+
+    def get_price(self):
+        return self.price
