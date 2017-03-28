@@ -17,7 +17,6 @@ class CreateRoom(APIView):
         name = body['name']
         description = body['description']
         hotel_id = body['hotel_id']
-        type = body['type']
         is_smoking = body['is_smoking']
         max_adult = body['max_adult']
         amenities = body['amenities']
@@ -42,8 +41,7 @@ class CreateRoom(APIView):
         #Active Status =2
         roomEntity.status = 1
         roomEntity.description = description
-        roomEntity.hotel_id = hotel_id
-        roomEntity.type = type
+        roomEntity.type = None
         roomEntity.is_smoking = is_smoking
         roomEntity.max_adult = max_adult
         roomEntity.amenities = amenities

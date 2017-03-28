@@ -76,7 +76,7 @@ class RatePlanEntity(Document):
     cut_of_days = IntField()
     inclusions = ListField(EmbeddedDocumentField(RateplanInclusions))
     exclusions = ListField(EmbeddedDocumentField(RateplanExclusions))
-    blackout_dates = ListField(EmbeddedDocumentField(RateplanBlackoutDates))
+    close_out_preiod = ListField(EmbeddedDocumentField(RateplanBlackoutDates))
     allow_modification = BooleanField()
     allow_cancellation = BooleanField()
     cancellation_policy = ListField(EmbeddedDocumentField(RatePlanCancellationPolicy))

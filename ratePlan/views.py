@@ -131,7 +131,7 @@ class ViewRatePlan(APIView):
                     exclusions.append(exclusion_data)
 
                 blackouts = list()
-                for blk in rate.blackout_dates:
+                for blk in rate.close_out_preiod:
                     blk_data = {
                     'start':blk.start,
                     'end':blk.end
