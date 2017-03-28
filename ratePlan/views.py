@@ -4,12 +4,11 @@ import collections
 from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from users.views.user import AuthorizedView
 from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
 
-class CreateRatePlan(APIView):
+class CreateRatePlan(AuthorizedView):
     def post(self, request):
         data = request.body.decode('utf-8')
         body = json.loads(data)
@@ -90,7 +89,7 @@ class CreateRatePlan(APIView):
         ratePlanEntity.save()
         return Response(data_updated, status=status.HTTP_201_CREATED)
 
-class UpdateStatus(APIView):
+class UpdateStatus(AuthorizedView):
     def get(self, request):
         hotel_id = request.GET['hotel_id']
         rate_id = request.GET['rate_id']
@@ -176,7 +175,7 @@ class ViewRatePlan(AuthorizedView):
     		return Response('created', status=status.HTTP_200_OK)
 
 
-class UpdatePrice(APIView):
+class UpdatePrice(AuthorizedView):
     def post(self, request):
         data = request.body.decode('utf-8')
         body = json.loads(data)

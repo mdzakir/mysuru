@@ -2,13 +2,13 @@ import json
 
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from users.views.user import AuthorizedView
 from taxes.models.tax import TaxEntity,RatePlanTaxDetails,DateRangeTaxDetails
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
 
-class CreateTax(APIView):
+class CreateTax(AuthorizedView):
     def post(self, request):
         detail_list = list()
         data = request.body.decode('utf-8')
@@ -43,7 +43,7 @@ class CreateTax(APIView):
         taxEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
-class EditTax(APIView):
+class EditTax(AuthorizedView):
     def put(self, request):
         detail_list = list()
         data = request.body.decode('utf-8')
@@ -79,7 +79,7 @@ class EditTax(APIView):
         taxEntity.save()
         return Response('Updates', status=status.HTTP_200_OK)
 
-class ViewTax(APIView):
+class ViewTax(AuthorizedView):
     def get(self, request):
         data = request.body.decode('utf-8')
         product_id = request.GET['product_id']

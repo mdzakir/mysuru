@@ -18,7 +18,7 @@ from room.views import CreateRoom,ViewRoom,UpdateInventory,ViewInventory, Update
 
 urlpatterns = [
     url(r'^create/', CreateRoom.as_view()),
-    url(r'^view/', ViewRoom.as_view()),
+    url(r'^view', ViewRoom.as_view()),
     url(r'^edit/', CreateRoom.as_view()),
     url(r'^updateStatus/', UpdateStatus.as_view()),
     url(r'^inventory/', UpdateInventory.as_view()),

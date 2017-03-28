@@ -2,13 +2,13 @@ import json
 
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.views import APIView
+from users.views.user import AuthorizedView
 from promotion.models.promotion import PromotionEntity,Period
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
 
-class CreatePromotion(APIView):
+class CreatePromotion(AuthorizedView):
     def post(self, request):
         data = request.body.decode('utf-8')
         body = json.loads(data)
@@ -69,7 +69,7 @@ class CreatePromotion(APIView):
         promotionEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
-class ViewPromotion(APIView):
+class ViewPromotion(AuthorizedView):
     def get(self, request):
         promotion_list = list()
         hotel_id = request.GET['hotel_id']
