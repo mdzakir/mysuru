@@ -3,13 +3,14 @@ import json
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from users.views.user import AuthorizedView
 from room.models.room import RoomEntity,RoomImage
 from room.models.inventory import Inventory
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
 
-class CreateRoom(APIView):
+class CreateRoom(AuthorizedView):
     def post(self, request):
 
         data = request.body.decode('utf-8')
@@ -50,7 +51,7 @@ class CreateRoom(APIView):
         roomEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
-class UpdateStatus(APIView):
+class UpdateStatus(AuthorizedView):
     def get(self, request):
         hotel_id = request.GET['hotel_id']
         room_id = request.GET['room_id']
@@ -68,7 +69,7 @@ class UpdateStatus(APIView):
         roomEntity.save()
         return Response('Updated room status' + room_id, status=status.HTTP_200_OK)
 
-class ViewRoom(APIView):
+class ViewRoom(AuthorizedView):
     def get(self, request):
         room_list = list()
         hotel_id = request.GET['hotel_id']
@@ -107,7 +108,7 @@ class ViewRoom(APIView):
 
 
 
-class UpdateInventory(APIView):
+class UpdateInventory(AuthorizedView):
     def post(self, request):
     	data = request.body.decode('utf-8')
     	body = json.loads(data)
@@ -140,7 +141,7 @@ def daterange(start_date, end_date):
 		yield start_date + timedelta(n)
 
 
-class ViewInventory(APIView):
+class ViewInventory(AuthorizedView):
     def get(self, request):
         data = request.body.decode('utf-8')
         room_id = request.GET['room_id']

@@ -5,6 +5,7 @@ from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from users.views.user import AuthorizedView
 from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
 
@@ -108,7 +109,7 @@ class UpdateStatus(APIView):
         ratePlanEntity.save()
         return Response('Updated room status : ' + rate_id, status=status.HTTP_200_OK)
 
-class ViewRatePlan(APIView):
+class ViewRatePlan(AuthorizedView):
     def get(self, request):
     	rate_list = list()
     	hotel_id = request.GET['hotel_id']
@@ -216,7 +217,7 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-class ViewPricing(APIView):
+class ViewPricing(AuthorizedView):
     def get(self, request):
         data = request.body.decode('utf-8')
         room_id = request.GET['room_id']
