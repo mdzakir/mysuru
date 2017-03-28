@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^edit/', CreateRoom.as_view()),
     url(r'^updateStatus/', UpdateStatus.as_view()),
     url(r'^inventory/', UpdateInventory.as_view()),
-    url(r'^viewInventory/', ViewInventory.as_view()),
+    url(r'^inventoryView', ViewInventory.as_view()),
 ]

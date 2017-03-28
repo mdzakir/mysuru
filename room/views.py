@@ -2,7 +2,6 @@ import json
 
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from users.views.user import AuthorizedView
 from room.models.room import RoomEntity,RoomImage
 from room.models.inventory import Inventory
