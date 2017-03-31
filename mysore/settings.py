@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'deals',
     'search',
     'promotion',
-    'taxes'
+    'taxes',
+    'upload'
 ]
 
 MIDDLEWARE_CLASSES = [
