@@ -10,7 +10,8 @@ def list(request):
     # Handle file upload
     if request.method == 'POST':
         if True:
-            newdoc = Document(docfile = request.FILES['docfile'])
+            # newdoc = Document(docfile = request.FILES['docfile'])
+            newdoc = request.FILES.get('docfile', None)
             newdoc.file_path = '21'
             newdoc.save()
 
