@@ -10,8 +10,10 @@
 		{% if documents %}
 			<ul>
 			{% for document in documents %}
+			   {% if document.docfile %}
 				<li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>
 			<li><img style="height: 200px;width: 200px;" src="{{ document.docfile.url }}"/></li>
+				{% endif %}
 			{% endfor %}
 			</ul>
 		{% else %}
