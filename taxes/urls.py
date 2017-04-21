@@ -19,5 +19,5 @@ from taxes.views import CreateTax,EditTax,ViewTax
 urlpatterns = [
     url(r'^create/', CreateTax.as_view()),
     url(r'^edit/', EditTax.as_view()),
-    url(r'^view/', ViewTax.as_view()),
+    url(r'^view', ViewTax.as_view()),
 ]

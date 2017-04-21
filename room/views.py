@@ -8,6 +8,7 @@ from room.models.inventory import Inventory
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
+from rest_framework.views import APIView
 
 class CreateRoom(AuthorizedView):
     def post(self, request):
@@ -138,23 +139,34 @@ def daterange(start_date, end_date):
 		yield start_date + timedelta(n)
 
 
-class ViewInventory(AuthorizedView):
+class ViewInventory(APIView):
     def get(self, request):
+        inventory_list = list()
         data = request.body.decode('utf-8')
-        room_id = request.GET['room_id']
+        hotel_id = request.GET['hotel_id']
         start_date = request.GET['start_date']
         end_date = request.GET['end_date']
-        inventory_list = list()
         start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
         end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
-        for single_date in daterange(start, end):
-            inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
-            if inventory is not None:
-                res_data =  {
-                    'room_id': str(inventory.room_id),
-                    'available': str(inventory.available),
-                    'booked': str(inventory.booked),
-                    'blocked': False
-                }
-                inventory_list.append(res_data)
+        rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),status=1)
+        if rooms:
+            for room in rooms:
+                room_dict = {}
+                room_dict['room_id'] = str(room.id)
+                room_dict['room_name'] = str(room.name)
+                inventoryList = Inventory.objects.filter(room_id=str(room.id),date__gte = start ,date__lte = end)
+                if inventoryList is not None:
+                    inv_dict = {}
+                    for inv in inventoryList:
+                        data = {
+                            'date': str(inv.date.strftime('%Y-%m-%d')),
+                            'available': inv.available,
+                            'booked': inv.booked,
+                            'blocked': inv.sold_out
+                        }
+                        inv_dict[inv.date.strftime('%Y-%m-%d')] = data
+                    room_dict['inventory_list'] = inv_dict
+
+                inventory_list.append(room_dict)
+
         return Response(json.loads(json.dumps(inventory_list)), status=status.HTTP_200_OK)

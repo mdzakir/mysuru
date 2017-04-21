@@ -82,7 +82,7 @@ class EditTax(AuthorizedView):
 class ViewTax(AuthorizedView):
     def get(self, request):
         data = request.body.decode('utf-8')
-        product_id = request.GET['product_id']
+        product_id = request.GET['hotel_id']
         taxes = TaxEntity.objects.filter(product_id=str(product_id)).first()
         if taxes is not None:
             rate_tax_list = list()
