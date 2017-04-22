@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from users.views.user import AuthorizedView
 from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
+from rest_framework.views import APIView
 
 class CreateRatePlan(AuthorizedView):
     def post(self, request):
@@ -216,7 +217,7 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-class ViewPricing(AuthorizedView):
+class ViewPricing(APIView):
     def get(self, request):
         data = request.body.decode('utf-8')
         room_id = request.GET['room_id']

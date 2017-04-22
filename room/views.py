@@ -106,32 +106,32 @@ class ViewRoom(AuthorizedView):
 
 
 
-class UpdateInventory(AuthorizedView):
+class UpdateInventory(APIView):
     def post(self, request):
-    	data = request.body.decode('utf-8')
-    	body = json.loads(data)
-    	room_id = body['room_id']
-    	availablity = body['availablity']
-    	start_date = body['start_date']
-    	end_date = body['end_date']
-
-    	start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
-    	end = datetime.strptime(str(end_date), '%Y-%m-%d').date()+ timedelta(1)
-
-    	for single_date in daterange(start, end):
-    		inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
-    		if inventory:
-    			inventory.available = availablity
-    			inventory.save()
-    		else:
-    			day_inventory = Inventory()
-    			day_inventory.room_id = room_id
-    			day_inventory.booked = 0
-    			day_inventory.available = availablity
-    			day_inventory.date = single_date
-    			day_inventory.sold_out = False
-    			day_inventory.save()
-    	return Response('created', status=status.HTTP_200_OK)
+        data = request.body.decode('utf-8')
+        body = json.loads(data)
+        room_id = body['room_id']
+        availablity = body['availablity']
+        start_date = body['start_date']
+        end_date = body['end_date']
+        days = body['days']
+        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
+        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()+ timedelta(1)
+        for single_date in daterange(start, end):
+            if days[single_date.weekday()]:
+                inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
+                if inventory:
+                    inventory.available = availablity
+                    inventory.save()
+                else:
+                    day_inventory = Inventory()
+                    day_inventory.room_id = room_id
+                    day_inventory.booked = 0
+                    day_inventory.available = availablity
+                    day_inventory.date = single_date
+                    day_inventory.sold_out = False
+                    day_inventory.save()
+        return Response('created', status=status.HTTP_200_OK)
 
 
 def daterange(start_date, end_date):
