@@ -4,12 +4,12 @@ import collections
 from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
-from users.views.user import AuthorizedView
 from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, RateplanExclusions, RateplanBlackoutDates, RatePlanCancellationPolicy
 from ratePlan.models.prices import Price,PriceDetails
 from rest_framework.views import APIView
+from room.models.room import RoomEntity
 
-class CreateRatePlan(AuthorizedView):
+class CreateRatePlan(APIView):
     def post(self, request):
         data = request.body.decode('utf-8')
         body = json.loads(data)
@@ -90,7 +90,7 @@ class CreateRatePlan(AuthorizedView):
         ratePlanEntity.save()
         return Response(data_updated, status=status.HTTP_201_CREATED)
 
-class UpdateStatus(AuthorizedView):
+class UpdateStatus(APIView):
     def get(self, request):
         hotel_id = request.GET['hotel_id']
         rate_id = request.GET['rate_id']
@@ -109,7 +109,7 @@ class UpdateStatus(AuthorizedView):
         ratePlanEntity.save()
         return Response('Updated room status : ' + rate_id, status=status.HTTP_200_OK)
 
-class ViewRatePlan(AuthorizedView):
+class ViewRatePlan(APIView):
     def get(self, request):
     	rate_list = list()
     	hotel_id = request.GET['hotel_id']
@@ -176,11 +176,10 @@ class ViewRatePlan(AuthorizedView):
     		return Response('created', status=status.HTTP_200_OK)
 
 
-class UpdatePrice(AuthorizedView):
+class UpdatePrice(APIView):
     def post(self, request):
         data = request.body.decode('utf-8')
         body = json.loads(data)
-        hotel_id = body['hotel_id']
         room_id = body['room_id']
         rate_id = body['rate_id']
         start_date = body['start_date']
@@ -217,7 +216,7 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-class ViewPricing(APIView):
+class ViewPricingAction1(APIView):
     def get(self, request):
         data = request.body.decode('utf-8')
         room_id = request.GET['room_id']
@@ -230,11 +229,51 @@ class ViewPricing(APIView):
         for single_date in daterange(start, end):
             pricing = Price.objects.filter(room_id=str(room_id), rate_id=str(rate_id), date = single_date).first()
             if pricing is not None:
+                price_data = {}
+                for price_value in pricing.price:
+                    price_data[price_value.occupancy] = price_value.price
                 res_data =  {
                     'room_id': str(pricing.room_id),
                     'rate_id': str(pricing.rate_id),
                     'date': str(pricing.date),
-                    'price': price_list
+                    'price': price_data
                 }
                 price_list.append(res_data)
+        return Response(json.loads(json.dumps(price_list)), status=status.HTTP_200_OK)
+
+
+class ViewPricingAction(APIView):
+    def get(self, request):
+        price_list = list()
+        data = request.body.decode('utf-8')
+        hotel_id = request.GET['hotel_id']
+        start_date = request.GET['start_date']
+        end_date = request.GET['end_date']
+        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
+        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
+        rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),status=1)
+        if rooms:
+            for room in rooms:
+                room_dict = {}
+                room_dict['room_id'] = str(room.id)
+                room_dict['room_name'] = str(room.name)
+                priceList = Price.objects.filter(room_id=str(room.id),date__gte = start ,date__lte = end)
+                if priceList is not None:
+                    price_dict = {}
+                    for prc in priceList:
+                        price_data = {}
+                        for price_value in prc.price:
+                            price_data[price_value.occupancy] = price_value.price
+
+                        data =  {
+                            'room_id': str(prc.room_id),
+                            'rate_id': str(prc.rate_id),
+                            'date': str(prc.date),
+                            'price': price_data
+                        }
+                        price_dict[prc.date.strftime('%Y-%m-%d')] = data
+                    room_dict['price_list'] = price_dict
+
+                price_list.append(room_dict)
+
         return Response(json.loads(json.dumps(price_list)), status=status.HTTP_200_OK)

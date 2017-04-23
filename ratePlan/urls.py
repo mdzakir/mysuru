@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from ratePlan.views import CreateRatePlan,ViewRatePlan,UpdateStatus,UpdatePrice, ViewPricing
+from ratePlan.views import CreateRatePlan,ViewRatePlan,UpdateStatus,UpdatePrice, ViewPricingAction
 
 urlpatterns = [
     url(r'^create/', CreateRatePlan.as_view()),
@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^edit/', CreateRatePlan.as_view()),
     url(r'^updateStatus/', UpdateStatus.as_view()),
     url(r'^price/', UpdatePrice.as_view()),
-    url(r'^viewPricing/', ViewPricing.as_view())
+    url(r'^pricing', ViewPricingAction.as_view())
 ]
