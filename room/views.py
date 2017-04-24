@@ -111,7 +111,7 @@ class UpdateInventory(APIView):
         data = request.body.decode('utf-8')
         body = json.loads(data)
         room_id = body['room_id']
-        availablity = body['availablity']
+        availability = body['availability']
         start_date = body['start_date']
         end_date = body['end_date']
         days = body['days']
@@ -121,13 +121,13 @@ class UpdateInventory(APIView):
             if days[single_date.weekday()]:
                 inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
                 if inventory:
-                    inventory.available = availablity
+                    inventory.available = availability
                     inventory.save()
                 else:
                     day_inventory = Inventory()
                     day_inventory.room_id = room_id
                     day_inventory.booked = 0
-                    day_inventory.available = availablity
+                    day_inventory.available = availability
                     day_inventory.date = single_date
                     day_inventory.sold_out = False
                     day_inventory.save()

@@ -28,4 +28,3 @@ class Inventory(Document):
 
     def is_sold_out(self):
         return self.sold_out
-
