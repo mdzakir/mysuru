@@ -18,6 +18,7 @@ urlpatterns = [
     url(r'^search/', include('search.urls')),
     url(r'^promotion/', include('promotion.urls')),
     url(r'^tax/', include('taxes.urls')),
-    url(r'^upload/', include('upload.urls'))
+    url(r'^upload/', include('upload.urls')),
+    url(r'^addOns/', include('addOns.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

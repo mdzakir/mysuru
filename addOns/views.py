@@ -21,6 +21,7 @@ class CreateAddOns(APIView):
         days = body['days']
         cut_off = body['cut_off']
         charge_type = body['charge_type']
+        charge_value = body['charge_value']
         is_mandate = body['is_mandate']
         image = body['image']
 
@@ -33,20 +34,31 @@ class CreateAddOns(APIView):
         addOnsEntity.days = list(days)
         addOnsEntity.cut_off = int(cut_off)
         addOnsEntity.charge_type = int(charge_type)
+        addOnsEntity.charge_value = int(charge_value)
         addOnsEntity.is_mandate = is_mandate
         addOnsEntity.image = image
         addOnsEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
 class EditAddOns(APIView):
-    def put(self, request):
+    def post(self, request):
         detail_list = list()
         data = request.body.decode('utf-8')
         body = json.loads(data)
         hotel_id = body['hotel_id']
-        add_ons_id = body['id']
+        add_ons_id = body['addOn_id']
+        name = body['name']
+        description = body['description']
+        valid_from = body['valid_from']
+        valid_to = body['valid_to']
+        days = body['days']
+        cut_off = body['cut_off']
+        charge_type = body['charge_type']
+        charge_value = body['charge_value']
+        is_mandate = body['is_mandate']
+        image = body['image']
         
-        addOnsEntity = addOnsEntity.objects(id=str(add_ons_id))[0]
+        addOnsEntity = AddOnsEntity.objects(id=str(add_ons_id))[0]
         addOnsEntity.hotel_id = hotel_id
         addOnsEntity.name = name
         addOnsEntity.description = description
@@ -55,6 +67,7 @@ class EditAddOns(APIView):
         addOnsEntity.days = list(days)
         addOnsEntity.cut_off = int(cut_off)
         addOnsEntity.charge_type = int(charge_type)
+        addOnsEntity.charge_value = int(charge_value)
         addOnsEntity.is_mandate = is_mandate
         addOnsEntity.image = image
         addOnsEntity.save()
@@ -65,11 +78,16 @@ class ViewAddOns(APIView):
     def get(self, request):
         data = request.body.decode('utf-8')
         hotel_id = request.GET['hotel_id']
-        addOnsList = AddOnsEntity.objects.filter(hotel_id=str(hotel_id))
+        if 'id' in request.GET:
+            addOn_id = request.GET['id']
+            addOnsList = AddOnsEntity.objects.filter(hotel_id=str(hotel_id),id=str(addOn_id))
+        else:
+            addOnsList = AddOnsEntity.objects.filter(hotel_id=str(hotel_id))
         if addOnsList is not None:
             addOns_list = list()
             for addOns in addOnsList:
                 data= {
+                  "id":str(addOns.id),
                   "hotel_id":addOns.hotel_id,
                   "name":addOns.name,
                   "description":addOns.description,
@@ -77,7 +95,10 @@ class ViewAddOns(APIView):
                   "end":addOns.valid_to.strftime('%d-%m-%Y'),
                   "days":addOns.days,
                   "cut_off":addOns.cut_off,
-                  "mandate":addOns.is_mandate
+                  "mandate":addOns.is_mandate,
+                  "charge_type":addOns.charge_type,
+                  "charge_value":addOns.charge_value,
+                  "image":addOns.image
                 }
                 addOns_list.append(data)
 

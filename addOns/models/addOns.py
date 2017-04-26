@@ -16,9 +16,10 @@ class AddOnsEntity(Document):
     valid_to = DateTimeField()
     days = ListField()
     cut_off = IntField()
-    charge_type = IntField()
-    is_mandate = BooleanField()
-    image = StringField()
+    charge_type = IntField(default=0)
+    charge_value = IntField(default=0)
+    is_mandate = BooleanField(default=True)
+    image = StringField(default='')
     
 
 
