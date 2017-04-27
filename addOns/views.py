@@ -40,6 +40,14 @@ class CreateAddOns(APIView):
         addOnsEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
+class DeleteAddOn(APIView):
+    def get(self, request):
+        hotel_id = request.GET['hotel_id']
+        addOn_id = request.GET['id']
+        addOnsEntity = AddOnsEntity.objects(id=str(addOn_id),hotel_id=str(hotel_id))[0]
+        addOnsEntity.delete()
+        return Response('AddOn Deleted Successfully' + str(addOn_id), status=status.HTTP_200_OK)
+
 class EditAddOns(APIView):
     def post(self, request):
         detail_list = list()
