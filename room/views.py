@@ -41,6 +41,7 @@ class CreateRoom(AuthorizedView):
         roomEntity.images = imageList
         #Active Status =2
         roomEntity.status = 1
+        roomEntity.hotel_id = hotel_id
         roomEntity.description = description
         roomEntity.type = None
         roomEntity.is_smoking = is_smoking
@@ -54,6 +55,7 @@ class UpdateStatus(AuthorizedView):
         hotel_id = request.GET['hotel_id']
         room_id = request.GET['room_id']
         room_status = request.GET['status']
+        import pdb;pdb.set_trace()
         if room_status == "ACTIVE":
             room_status = 1
         elif room_status == "INACTIVE":
@@ -102,7 +104,7 @@ class ViewRoom(AuthorizedView):
                 room_list.append(room_data)
             return Response(json.loads(json.dumps(room_list)), status=status.HTTP_200_OK)
         else:
-            return Response('created', status=status.HTTP_200_OK)
+            return Response(json.loads(json.dumps(room_list)), status=status.HTTP_200_OK)
 
 
 

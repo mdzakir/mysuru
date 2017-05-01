@@ -8,6 +8,7 @@ from ratePlan.models.rate_plan import RatePlanEntity, RateplanInclusions, Ratepl
 from ratePlan.models.prices import Price,PriceDetails
 from rest_framework.views import APIView
 from room.models.room import RoomEntity
+from dateutil.parser import parse
 
 class CreateRatePlan(APIView):
     def post(self, request):
@@ -216,32 +217,6 @@ def daterange(start_date, end_date):
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
-class ViewPricingAction1(APIView):
-    def get(self, request):
-        data = request.body.decode('utf-8')
-        room_id = request.GET['room_id']
-        rate_id = request.GET['rate_id']
-        start_date = request.GET['start_date']
-        end_date = request.GET['end_date']
-        price_list = list()
-        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
-        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
-        for single_date in daterange(start, end):
-            pricing = Price.objects.filter(room_id=str(room_id), rate_id=str(rate_id), date = single_date).first()
-            if pricing is not None:
-                price_data = {}
-                for price_value in pricing.price:
-                    price_data[price_value.occupancy] = price_value.price
-                res_data =  {
-                    'room_id': str(pricing.room_id),
-                    'rate_id': str(pricing.rate_id),
-                    'date': str(pricing.date),
-                    'price': price_data
-                }
-                price_list.append(res_data)
-        return Response(json.loads(json.dumps(price_list)), status=status.HTTP_200_OK)
-
-
 class ViewPricingAction(APIView):
     def get(self, request):
         price_list = list()
@@ -249,8 +224,8 @@ class ViewPricingAction(APIView):
         hotel_id = request.GET['hotel_id']
         start_date = request.GET['start_date']
         end_date = request.GET['end_date']
-        start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
-        end = datetime.strptime(str(end_date), '%Y-%m-%d').date()
+        start = parse(start_date)
+        end = parse(end_date)
         rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),status=1)
         if rooms:
             for room in rooms:
