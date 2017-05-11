@@ -14,7 +14,7 @@ class UploadFile(AuthorizedView):
     def post(self, request):
         doc = request.FILES.get('docfile', None)
         newdoc = Document(docfile = doc)
-        newdoc.file_path = '21'
+        newdoc.file_path = request.POST['roomName']
         newdoc.save()
         return Response('created', status=status.HTTP_201_CREATED)
 

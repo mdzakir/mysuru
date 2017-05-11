@@ -3,5 +3,5 @@ from django.conf.urls import patterns, url
 from upload.views import UploadFile
 
 urlpatterns = [
-    url(r'^list/', UploadFile.as_view()),
+    url(r'^upload/', UploadFile.as_view()),
 ]
