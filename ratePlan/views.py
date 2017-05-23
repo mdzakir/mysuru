@@ -227,28 +227,33 @@ class ViewPricingAction(APIView):
         start = parse(start_date)
         end = parse(end_date)
         rooms = RoomEntity.objects.filter(hotel_id=str(hotel_id),status=1)
-        if rooms:
-            for room in rooms:
+        ratePlans = RatePlanEntity.objects.filter(hotel_id=str(hotel_id),status=1)
+        if ratePlans:
+            for ratePlan in ratePlans:
                 room_dict = {}
-                room_dict['room_id'] = str(room.id)
-                room_dict['room_name'] = str(room.name)
-                priceList = Price.objects.filter(room_id=str(room.id),date__gte = start ,date__lte = end)
-                if priceList is not None:
-                    price_dict = {}
-                    for prc in priceList:
-                        price_data = {}
-                        for price_value in prc.price:
-                            price_data[price_value.occupancy] = price_value.price
+                room_dict['rate_plan_id'] = str(ratePlan.id)
+                room_dict['rate_plan_name'] = str(ratePlan.name)
+                if rooms:
+                    for room in rooms:
+                        room_dict['room_id'] = str(room.id)
+                        room_dict['room_name'] = str(room.name)
+                        priceList = Price.objects.filter(room_id=str(room.id),rate_id=str(ratePlan.id),date__gte = start ,date__lte = end)
+                        if priceList is not None:
+                            price_dict = {}
+                            for prc in priceList:
+                                price_data = {}
+                                for price_value in prc.price:
+                                    price_data[price_value.occupancy] = price_value.price
 
-                        data =  {
-                            'room_id': str(prc.room_id),
-                            'rate_id': str(prc.rate_id),
-                            'date': str(prc.date),
-                            'price': price_data
-                        }
-                        price_dict[prc.date.strftime('%Y-%m-%d')] = data
-                    room_dict['price_list'] = price_dict
+                                data =  {
+                                    'room_id': str(prc.room_id),
+                                    'rate_id': str(prc.rate_id),
+                                    'date': str(prc.date),
+                                    'price': price_data
+                                }
+                                price_dict[prc.date.strftime('%Y-%m-%d')] = data
+                            room_dict['price_list'] = price_dict
 
-                price_list.append(room_dict)
+                        price_list.append(room_dict)
 
         return Response(json.loads(json.dumps(price_list)), status=status.HTTP_200_OK)
