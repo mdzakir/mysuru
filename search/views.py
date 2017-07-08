@@ -32,5 +32,4 @@ class Search(APIView):
 
         return Response('', status=status.HTTP_200_OK)
 
-    def getPrice(self,roomId,rateId):
 
