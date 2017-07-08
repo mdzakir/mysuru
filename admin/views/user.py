@@ -78,7 +78,7 @@ def createHotel(request):
         bank_account_name = request.POST['bank_account_name']
         bank_account_id = request.POST['bank_account_id']
         bank_ifsc_code = request.POST['bank_ifsc_code']
-        
+
 
         if hotel_id != None and hotel_id != '':
             hotelEntity = HotelEntity.objects(id=str(hotel_id)).first()
@@ -212,7 +212,7 @@ def editUser(request, id):
 
 
 def details(request, id):
-    if "session_id" in request.session:
+    # if "session_id" in request.session:
         email = request.GET['id']
         user = User.objects.get(email=email)
         hotel_list = HotelEntity.objects().all()
@@ -224,5 +224,5 @@ def details(request, id):
             hotel.id) not in assigned_hotel_ids]
         return render_to_response('supplier-details_new.html',
                                   {'hotels': non_assigned_hotels, 'user': user, 'assigned_hotel_list': assigned_hotels})
-    else:
-        return redirect('/admin/login')
+    # else:
+        # return redirect('/admin/login')
