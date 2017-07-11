@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from users.models.product_assignment import ProductAssignment
-from users.models.user import User
+from users.models.user import User, UserType
 from django.contrib.auth import authenticate
 
 
@@ -21,9 +21,10 @@ class CreateUser(APIView):
     def post(self, request):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
+        user_type = UserType.get_id(body['user_type'])
         user = User.objects.create_superuser(first_name=body['first_name'],last_name=body['last_name'],phone=body['phone'],
                                              email=body['email'],
-                                             password=body['password'])
+                                             password=body['password'],user_type = user_type)
         return Response('User Created Successfully', status=status.HTTP_200_OK)
 
 
@@ -76,4 +77,18 @@ class ChangePassword(AuthorizedView):
                 user.set_password(body['password'])
                 user.save()
             return Response('password Update Successfully', status=status.HTTP_200_OK)
+
+class ChangeStatus(AuthorizedView):
+    def post(self, request):
+        if request.method == 'POST':
+            body_unicode = request.body.decode('utf-8')
+            body = json.loads(body_unicode)
+            try:
+                user = User.objects.get(username__exact=body['username'])
+            except User.DoesNotExist:
+                user = None
+            if user:
+                user.is_active = body['is_active']
+                user.save()
+            return Response('Status Update Successfully', status=status.HTTP_200_OK)
 

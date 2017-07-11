@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
-
+from enum import Enum
 
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, phone, password=None):
@@ -12,10 +12,10 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, first_name, last_name, phone, password, ):
+    def create_superuser(self, email, first_name, last_name, phone, password, user_type):
         user = self.create_user(email, password=password, first_name=first_name, last_name=last_name, phone=phone)
         user.username = first_name
-        user.is_admin = True
+        user.user_type = user_type
         user.save(using=self._db)
         return user
 
@@ -25,8 +25,9 @@ class User(AbstractBaseUser):
     username = models.TextField(verbose_name='username', max_length=255, default='')
     first_name = models.TextField(verbose_name='first_name', max_length=255, default='')
     last_name = models.TextField(verbose_name='last_name', max_length=255, default='')
+    user_type = models.IntegerField(default=1)
     phone = models.TextField(default='')
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
@@ -63,3 +64,32 @@ class User(AbstractBaseUser):
         self.email = email
         self.save()
         return self
+
+
+class UserType(Enum):
+    HOTELIER = (1,"Hotelier")
+    TRAVEL_AGENT = (2,"Travel Agent")
+    CORPORATE = (3,"Corporate")
+    SUPPORT = (4,"Support")
+
+    def __init__(self, id, name):
+        self.type_name = name
+        self.type_id = id
+
+    @classmethod
+    def get_id(cls, name):
+        user_types_details = cls.__members__.values()
+        for user_type in user_types_details:
+            if user_type.name == name:
+                return user_type.type_id
+
+        return -1
+
+    @classmethod
+    def get_name(cls, id):
+        user_types_details = cls.__members__.values()
+        for user_type in user_types_details:
+            if user_type.type_id == id:
+                return user_type.type_name
+
+        return None

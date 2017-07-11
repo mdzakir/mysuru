@@ -16,7 +16,7 @@ class CreateContract(AuthorizedView):
         agent_id = body['agent_id']
         hotel_id = body['hotel_id']
         note = body['note']
-        committion_range = body['committion_range']
+        commission_proposal = body['commission_proposal']
         return Response('created', status=status.HTTP_201_CREATED)
 
 class UpdateStatus(AuthorizedView):
@@ -24,7 +24,6 @@ class UpdateStatus(AuthorizedView):
         hotel_id = request.GET['hotel_id']
         room_id = request.GET['room_id']
         room_status = request.GET['status']
-        import pdb;pdb.set_trace()
         if room_status == "ACTIVE":
             room_status = 1
         elif room_status == "INACTIVE":

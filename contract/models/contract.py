@@ -19,9 +19,9 @@ class ContractType(Enum):
 class ContractStatus(Enum):
     ACCEPTED_BY_HOTELIER = (1,"Hotelier Accepted")
     PENDING_FROM_HOTELIER = (2,"Pending from Hotelier")
-    DECLINE_FROM_HOTELIER = (2,"Hotelier Declined")
-    ACCEPTED_FROM_AGENT = (2,"Agent Accepted")
-    DECLINE_FROM_AGENT = (2,"Agent Declined")
+    DECLINE_FROM_HOTELIER = (3,"Hotelier Declined")
+    ACCEPTED_FROM_AGENT = (4,"Agent Accepted")
+    DECLINE_FROM_AGENT = (5,"Agent Declined")
     
 
     def __init__(self, id, name):
