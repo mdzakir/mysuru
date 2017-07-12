@@ -41,8 +41,55 @@ class Users(AuthorizedView):
         user = User.objects.all()
         return Response(serializers.serialize("json", user), status=status.HTTP_200_OK)
 
+class TravelAgents(APIView):
+    def get(self, request):
+        user_list = list()
+        user = User.objects.filter(user_type = UserType.TRAVEL_AGENT.type_id)
+        if user:
+            for user in user:
+                user_data =  {
+                    'id': str(user.id),
+                    'user_type': str(UserType.get_name(user.user_type)),
+                    'name': str(user.username),
+                    'email': str(user.email),
+                    'mobile': str(user.phone)
+                }
+                user_list.append(user_data)
+        return Response(json.loads(json.dumps(user_list)), status=status.HTTP_200_OK)
 
-class AssignProducts(AuthorizedView):
+class Corporates(APIView):
+    def get(self, request):
+        user_list = list()
+        user = User.objects.filter(user_type = UserType.CORPORATE.type_id)
+        if user:
+            for user in user:
+                user_data =  {
+                    'id': str(user.id),
+                    'user_type': str(UserType.get_name(user.user_type)),
+                    'name': str(user.username),
+                    'email': str(user.email),
+                    'mobile': str(user.phone)
+                }
+                user_list.append(user_data)
+        return Response(json.loads(json.dumps(user_list)), status=status.HTTP_200_OK)
+
+class Hotelier(APIView):
+    def get(self, request):
+        user_list = list()
+        user = User.objects.filter(user_type = UserType.HOTELIER.type_id)
+        if user:
+            for user in user:
+                user_data =  {
+                    'id': str(user.id),
+                    'user_type': str(UserType.get_name(user.user_type)),
+                    'name': str(user.username),
+                    'email': str(user.email),
+                    'mobile': str(user.phone)
+                }
+                user_list.append(user_data)
+        return Response(json.loads(json.dumps(user_list)), status=status.HTTP_200_OK)
+
+class AssignProducts(APIView):
     def post(self, request):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)

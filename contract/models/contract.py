@@ -2,9 +2,8 @@ import datetime
 from collections import defaultdict
 from collections import namedtuple
 import json
-
+from enum import Enum
 from django.conf import settings
-
 from mongoengine import *
 
 
@@ -13,20 +12,57 @@ class ContractType(Enum):
     INSTANT = (2,"Instant")
 
     def __init__(self, id, name):
-        self.name = name
-        self.id = id
+        self.type_name = name
+        self.type_id = id
+
+    @classmethod
+    def get_id(cls, name):
+        contract_type_details = cls.__members__.values()
+        for contract_type in contract_type_details:
+            if contract_type.name == name:
+                return contract_type.type_id
+
+        return -1
+
+    @classmethod
+    def get_name(cls, id):
+        contract_type_details = cls.__members__.values()
+        for contract_type in contract_type_details:
+            if contract_type.type_id == id:
+                return contract_type.type_name
+
+        return None
 
 class ContractStatus(Enum):
-    ACCEPTED_BY_HOTELIER = (1,"Hotelier Accepted")
-    PENDING_FROM_HOTELIER = (2,"Pending from Hotelier")
-    DECLINE_FROM_HOTELIER = (3,"Hotelier Declined")
-    ACCEPTED_FROM_AGENT = (4,"Agent Accepted")
-    DECLINE_FROM_AGENT = (5,"Agent Declined")
+    INITATIVE = (1,"Initiate")
+    ACCEPTED_BY_HOTELIER = (2,"Hotelier Accepted")
+    PENDING_FROM_HOTELIER = (3,"Pending from Hotelier")
+    DECLINE_FROM_HOTELIER = (4,"Hotelier Declined")
+    ACCEPTED_FROM_AGENT = (5,"Agent Accepted")
+    DECLINE_FROM_AGENT = (6,"Agent Declined")
     
 
     def __init__(self, id, name):
-        self.name = name
-        self.id = id
+        self.type_name = name
+        self.type_id = id
+
+    @classmethod
+    def get_id(cls, name):
+        contract_details = cls.__members__.values()
+        for contract in contract_details:
+            if contract.name == name:
+                return contract.type_id
+
+        return -1
+
+    @classmethod
+    def get_name(cls, id):
+        contract_details = cls.__members__.values()
+        for contract in contract_details:
+            if contract.type_id == id:
+                return contract.type_name
+
+        return None
 
 
 class ContractorInfo(EmbeddedDocument):
@@ -62,13 +98,14 @@ class ContractorInfo(EmbeddedDocument):
 
 class ContractEntity(Document):
     hotel_id = StringField()
-    name = StringField()
+    hotel_name = StringField()
     valid_from = DateTimeField()
     valid_to = DateTimeField()
     status = IntField()
+    note = StringField(default='')
     contract_type = IntField()
-    agent_info = EmbeddedDocumentField(ContractorInfo)
-    hotel_info = EmbeddedDocumentField(ContractorInfo)
+    sender_info = EmbeddedDocumentField(ContractorInfo)
+    receiver_info = EmbeddedDocumentField(ContractorInfo)
 
 
     def get_id(self):
@@ -77,8 +114,8 @@ class ContractEntity(Document):
     def get_hotel_id(self):
         return self.hotel_id
 
-    def get_name(self):
-        return self.id
+    def get_hotel_name(self):
+        return self.hotel_name
 
     def get_valid_from(self):
         return self.valid_from
@@ -92,10 +129,10 @@ class ContractEntity(Document):
     def get_contract_type(self):
         return self.contract_type
 
-    def get_agent_info(self):
+    def get_sender_info(self):
         return self.agent_info
 
-    def get_hotel_info(self):
+    def get_receiver_info(self):
         return self.hotel_info
 
 

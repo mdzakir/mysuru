@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from enum import Enum
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, phone, password=None):
         if not email:
@@ -25,9 +26,10 @@ class User(AbstractBaseUser):
     username = models.TextField(verbose_name='username', max_length=255, default='')
     first_name = models.TextField(verbose_name='first_name', max_length=255, default='')
     last_name = models.TextField(verbose_name='last_name', max_length=255, default='')
+    company_name = models.TextField(verbose_name='company_name', default='')
     user_type = models.IntegerField(default=1)
     phone = models.TextField(default='')
-    is_active = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
     objects = UserManager()
@@ -70,7 +72,9 @@ class UserType(Enum):
     HOTELIER = (1,"Hotelier")
     TRAVEL_AGENT = (2,"Travel Agent")
     CORPORATE = (3,"Corporate")
-    SUPPORT = (4,"Support")
+    TRANSPORTER = (4,"Transporter")
+    SUPPORT = (5,"Support")
+    ACTIVITY = (6,"Activity")
 
     def __init__(self, id, name):
         self.type_name = name
@@ -82,7 +86,6 @@ class UserType(Enum):
         for user_type in user_types_details:
             if user_type.name == name:
                 return user_type.type_id
-
         return -1
 
     @classmethod
@@ -91,5 +94,4 @@ class UserType(Enum):
         for user_type in user_types_details:
             if user_type.type_id == id:
                 return user_type.type_name
-
         return None

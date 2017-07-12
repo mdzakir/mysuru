@@ -55,7 +55,8 @@ INSTALLED_APPS = [
     'promotion',
     'taxes',
     'upload',
-    'addOns'
+    'addOns',
+    'contract',
 ]
 
 MIDDLEWARE_CLASSES = [

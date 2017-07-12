@@ -13,4 +13,7 @@ urlpatterns = [
     url(r'^users', user.Users.as_view()),
     url(r'^auth/status', user.AuthenticationStatus.as_view()),
     url(r'^auth', obtain_jwt_token),
+    url(r'^travelAgents', user.TravelAgents.as_view()),
+    url(r'^hoteliers', user.Hotelier.as_view()),
+    url(r'^corporates', user.Corporates.as_view()),
 ]

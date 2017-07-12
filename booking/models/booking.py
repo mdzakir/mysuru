@@ -8,6 +8,25 @@ from django.conf import settings
 from mongoengine import *
 from enum import Enum
 
+
+class AgentDetails(EmbeddedDocument):
+    id = IntField()
+    name = StringField()
+    mobile = StringField()
+    email = StringField()
+
+    def get_name(self):
+        return self.name
+
+    def get_id(self):
+        return self.id
+
+    def get_mobile(self):
+        return self.mobile
+
+    def get_email(self):
+        return self.email
+
 class GuestDetails(EmbeddedDocument):
     name = StringField()
     mobile = StringField()
@@ -74,7 +93,8 @@ class BookingData(Document):
     room_prices = ListField(EmbeddedDocumentField(RoomPrice))
     payment_type = IntField()
     payment_details = EmbeddedDocumentField(PaymentDetail)
-    segment = StringField()
+    agent_details = EmbeddedDocumentField(AgentDetails)
+    segment = IntField()
     
     def get_id(self):
         return self.id
@@ -123,3 +143,28 @@ class BookingData(Document):
 
 
     
+
+class BookingSource(Enum):
+    TRAVEL_AGENT = (1,"Travel Agent")
+    WEBSITE = (2,"Website")
+    CORPORATE = (3,"Corporate")
+
+    def __init__(self, id, name):
+        self.type_name = name
+        self.type_id = id
+
+    @classmethod
+    def get_id(cls, name):
+        booking_type_details = cls.__members__.values()
+        for booking_type in booking_type_details:
+            if booking_type.name == name:
+                return booking_type.type_id
+        return -1
+
+    @classmethod
+    def get_name(cls, id):
+        booking_type_details = cls.__members__.values()
+        for booking_type in booking_type_details:
+            if booking_type.type_id == id:
+                return booking_type.type_name
+        return None
