@@ -40,47 +40,14 @@ class ActivityType(Enum):
 
         return None
 
-class InventoryActivity(EmbeddedDocument):
-    new_inventory = IntField()
-    old_inventory = IntField()
-    sold_out = BooleanField()
-    date = DateTimeField()
-
-    def get_start_date(self):
-        return self.start_date
-
-    def get_end_date(self):
-        return self.end_date
-
-    def get_new_inventory(self):
-        return self.new_inventory
-
-    def get_old_inventory(self):
-        return self.old_inventory
-
-    def is_sold_out(self):
-        return self.sold_out
-
 
 class ActivityEntity(Document):
     user_id = StringField()
     creation_time = DateTimeField()
     activity = IntField()
-    inventory = ListField(EmbeddedDocumentField(InventoryActivity))
-    start_date = DateTimeField()
-    end_date = DateTimeField()
-    hotel_id = StringField()
-    room_id = StringField()
-    
 
     def get_id(self):
         return self.id
-
-    def get_hotel_id(self):
-        return self.hotel_id
-
-    def get_room_id(self):
-        return self.room_id
 
     def get_user_id(self):
         return self.hotel_id
@@ -88,4 +55,5 @@ class ActivityEntity(Document):
     def get_hotel_id(self):
         return self.hotel_id
 
-
+    def get_creation_time(self):
+        return self.creation_time

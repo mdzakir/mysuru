@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from users.views.user import AuthorizedView
 from room.models.room import RoomEntity,RoomImage
 from room.models.inventory import Inventory
+from activity.models.activity import ActivityEntity,ActivityType,InventoryActivity
 from bson import BSON
 from bson import json_util
 from datetime import datetime,timedelta
@@ -119,10 +120,21 @@ class UpdateInventory(APIView):
         days = body['days']
         start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
         end = datetime.strptime(str(end_date), '%Y-%m-%d').date()+ timedelta(1)
+        activity = ActivityEntity()
+        activity.creation_time = datetime.now()
+        activity.activity = ActivityType.INVENTORY.type_id
+        activity.user_id = str(request.user.id)
+        activity.start_date = start
+        activity.end_date = end
+        activity.hotel_id = room_id
+        activity.room_id = room_id
+        inventory_date_wise = list()
         for single_date in daterange(start, end):
             if days[single_date.weekday()]:
+                inventoryActivity = InventoryActivity()
                 inventory = Inventory.objects.filter(room_id=str(room_id),date = single_date).first()
                 if inventory:
+                    inventoryActivity.old_inventory = inventory.available
                     inventory.available = availability
                     inventory.save()
                 else:
@@ -133,6 +145,13 @@ class UpdateInventory(APIView):
                     day_inventory.date = single_date
                     day_inventory.sold_out = False
                     day_inventory.save()
+                    inventoryActivity.old_inventory = 0
+
+                inventoryActivity.date = availability
+                inventoryActivity.new_inventory = availability
+                inventory_date_wise.append(inventoryActivity)
+        activity.inventory = inventory_date_wise
+        activity.save()
         return Response('created', status=status.HTTP_200_OK)
 
 

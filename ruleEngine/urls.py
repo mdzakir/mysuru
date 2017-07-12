@@ -14,8 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from activity.views import ViewActivity
+from contract.views import CreateContract,ViewContract
 
 urlpatterns = [
-    url(r'^view', ViewActivity.as_view()),
+    url(r'^create/', CreateContract.as_view()),
+    url(r'^view', ViewContract.as_view()),
+    url(r'^edit/', CreateContract.as_view()),
+    url(r'^updateStatus', CreateContract.as_view()),
 ]
