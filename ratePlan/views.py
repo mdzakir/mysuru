@@ -1,6 +1,6 @@
 import json
 import collections
-
+from activity.models.activity import ActivityEntity,PriceActivity,ActivityType
 from rest_framework import status
 from datetime import datetime,timedelta
 from rest_framework.response import Response
@@ -197,6 +197,21 @@ class UpdatePrice(APIView):
 
         start = datetime.strptime(str(start_date), '%Y-%m-%d').date()
         end = datetime.strptime(str(end_date), '%Y-%m-%d').date()+ timedelta(1)
+        activity = ActivityEntity()
+        activity.creation_time = datetime.now()
+        activity.activity = ActivityType.PRICES.type_id
+        activity.user_id = str(request.user.id)
+        activity.start_date = start
+        activity.end_date = end
+        activity.hotel_id = room_id
+        activity.room_id = room_id
+        activity.rate_id = rate_id
+
+        price_values = PriceActivity()
+        price_values.new_price =1000
+        price_values.old_price =2000
+        activity.price = price_values
+        activity.save()
 
         for single_date in daterange(start, end):
             price = Price.objects.filter(room_id=str(room_id),date = single_date,rate_id=str(rate_id)).first()

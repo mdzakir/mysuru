@@ -147,7 +147,7 @@ class UpdateInventory(APIView):
                     day_inventory.save()
                     inventoryActivity.old_inventory = 0
 
-                inventoryActivity.date = availability
+                inventoryActivity.date = single_date
                 inventoryActivity.new_inventory = availability
                 inventory_date_wise.append(inventoryActivity)
         activity.inventory = inventory_date_wise

@@ -26,6 +26,20 @@ class ViewActivity(APIView):
         activity_list = list()
         if activities:
             for activity in activities:
+                day_update = list()
+                for inventory in activity.inventory:
+                    day_update_data =  {
+                        "date":str(inventory.date.strftime('%Y-%m-%d')),
+                        "old_inventory":inventory.new_inventory,
+                        "new_inventory":inventory.old_inventory
+
+                    }
+                    day_update.append(day_update_data)
+                day_update_data = {} 
+                if activity.price:
+                    day_update_data['old_price'] =  activity.price.old_price
+                    day_update_data['new_price'] =  activity.price.new_price
+
                 activity_data =  {
                     'creation_date':str(activity.creation_time.strftime('%Y-%m-%d')),
                     'id': str(activity.id),
@@ -34,8 +48,9 @@ class ViewActivity(APIView):
                     'end_date': str(activity.end_date.strftime('%Y-%m-%d')),
                     'updatedBy': str(activity.user_id),
                     'room_id': str(activity.user_id),
-                    'activity_type': str(activity.activity)
-                    # 'inventory_detail': json.dumps(activity.inventory)
+                    'activity_type': str(activity.activity),
+                    'inventory_detail': json.loads(json.dumps(day_update)),
+                    'price_detail': json.loads(json.dumps(day_update_data))
                 }
                 activity_list.append(activity_data)
             return Response(json.loads(json.dumps(activity_list)), status=status.HTTP_200_OK)

@@ -61,16 +61,29 @@ class InventoryActivity(EmbeddedDocument):
     def is_sold_out(self):
         return self.sold_out
 
+class PriceActivity(EmbeddedDocument):
+    new_price = IntField()
+    old_price= IntField()
+
+    
+    def get_new_price(self):
+        return self.new_price
+
+    def get_old_price(self):
+        return self.old_price
+
 
 class ActivityEntity(Document):
     user_id = StringField()
     creation_time = DateTimeField()
     activity = IntField()
     inventory = ListField(EmbeddedDocumentField(InventoryActivity))
+    price = EmbeddedDocumentField(PriceActivity)
     start_date = DateTimeField()
     end_date = DateTimeField()
     hotel_id = StringField()
     room_id = StringField()
+    rate_id = StringField()
     
 
     def get_id(self):

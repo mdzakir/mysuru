@@ -14,11 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url,include
-from contract.views import CreateContract,ViewContract
+from ruleEngine.views import CreateRule,ViewRules,EditRule,ChangeStatus
 
 urlpatterns = [
-    url(r'^create/', CreateContract.as_view()),
-    url(r'^view', ViewContract.as_view()),
-    url(r'^edit/', CreateContract.as_view()),
-    url(r'^updateStatus', CreateContract.as_view()),
+    url(r'^create/', CreateRule.as_view()),
+    url(r'^view', ViewRules.as_view()),
+    url(r'^edit/', EditRule.as_view()),
+    url(r'^status/', ChangeStatus.as_view()),
 ]
