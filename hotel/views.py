@@ -21,7 +21,7 @@ class AmenitiesView(APIView):
 class HotelBasicDetails(APIView):
 	def get(self, request):
 		hotel_id = request.GET['hotel_id']
-		hotel = HotelEntity.objects().first()
+		hotel = HotelEntity.objects().filter(id = str(hotel_id))[0]
 		hotel_dict = {}
 		if hotel:
 			hotel_dict['id'] = str(hotel.id)
@@ -39,7 +39,7 @@ class HotelBasicDetails(APIView):
 class ContactDetails(APIView):
 	def get(self, request):
 		hotel_id = request.GET['hotel_id']
-		hotel = HotelEntity.objects().first()
+		hotel = HotelEntity.objects().filter(id = str(hotel_id))[0]
 		contact_list = list()
 		if hotel:
 			for detail in hotel.contact_person:
@@ -53,7 +53,7 @@ class ContactDetails(APIView):
 class BankDetails(APIView):
 	def get(self, request):
 		hotel_id = request.GET['hotel_id']
-		hotel = HotelEntity.objects().first()
+		hotel = HotelEntity.objects().filter(id = str(hotel_id))[0]
 		bank_list = list()
 		if hotel:
 			for detail in hotel.bank_detail:
@@ -65,3 +65,13 @@ class BankDetails(APIView):
 				bank_detail['ifsc_code'] = detail.ifsc_code
 				bank_list.append(bank_detail)
 		return Response(json.loads(json.dumps(bank_list)), status=status.HTTP_200_OK)
+
+class HotelMap(APIView):
+	def get(self, request):
+		hotel_id = request.GET['hotel_id']
+		hotel = HotelEntity.objects().filter(id = str(hotel_id))[0]
+		if hotel:
+			map_detail = {}
+			map_detail['lat'] = hotel.latitude
+			map_detail['lng'] = hotel.longitude
+		return Response(json.loads(json.dumps(map_detail)), status=status.HTTP_200_OK)

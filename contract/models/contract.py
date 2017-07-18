@@ -101,6 +101,7 @@ class ContractEntity(Document):
     hotel_name = StringField()
     valid_from = DateTimeField()
     valid_to = DateTimeField()
+    creation_time = DateTimeField()
     status = IntField()
     note = StringField(default='')
     contract_type = IntField()

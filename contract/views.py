@@ -47,6 +47,7 @@ class CreateContract(APIView):
         contractEntity.hotel_id = hotel_id
         contractEntity.hotel_name = hotel_name
         contractEntity.note = note
+        contractEntity.creation_time = datetime.now()
         contractEntity.save()
         return Response('created', status=status.HTTP_201_CREATED)
 
@@ -61,6 +62,8 @@ class ViewContract(APIView):
                     'id': str(contract.id),
                     'hotel_id': str(contract.hotel_id),
                     'hotel_name': str(contract.hotel_name),
+                    'creation_time': str(contract.creation_time),
+                    'created_by': str(contract.sender_info.name),
                     'note': str(contract.note),
                     'contract_type': str(ContractType.get_name(contract.contract_type)),
                     'status': str(ContractStatus.get_name(contract.status))
