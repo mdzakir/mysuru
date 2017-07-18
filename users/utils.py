@@ -13,6 +13,8 @@ def jwt_response_payload_handler(token, user=None, request=None):
            hotel = HotelEntity.objects.filter(id = first_hotel['id']).first()
         return {
             'token': token,
+            'user': UserSerializer(user).data,
+            'hotel_id': str(hotel.id),
         }
     else:
         return {

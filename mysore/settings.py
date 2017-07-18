@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'addOns',
     'contract',
     'activity',
+    'ruleEngine',
 ]
 
 MIDDLEWARE_CLASSES = [
